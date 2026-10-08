@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+{%- from "_macros.html" import icon -%}
+{% block title %}{{ _("Réglages") }}{% endblock %}
+{% block heading %}{{ _("Réglages du site") }}{% endblock %}
+{% block content %}
+<form method="post" class="settings-form"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <fieldset class="panel"><legend>{{ _("Identité et accueil") }}</legend>
+    <div class="field-row"><div class="field"><label for="s-name">{{ _("Nom de la boutique") }}</label><input class="input" id="s-name" name="site_name" value="{{ settings.site_name }}" maxlength="40"></div>
+      <div class="field"><label for="s-tag">{{ _("Sous-titre") }}</label><input class="input" id="s-tag" name="tagline" value="{{ settings.tagline }}" maxlength="60"></div></div>
+    <div class="field"><label for="s-ann">{{ _("Bandeau d'annonce") }} <span class="muted">({{ _("vide = masqué") }})</span></label><input class="input" id="s-ann" name="announcement" value="{{ settings.announcement }}" maxlength="200"></div>
+    <div class="field"><label for="s-ht">{{ _("Titre de l'accueil") }}</label><textarea class="textarea" id="s-ht" name="hero_title" rows="2" maxlength="80">{{ settings.hero_title }}</textarea><p class="field-hint">{{ _("Une ligne par retour à la ligne.") }}</p></div>
+    <div class="field"><label for="s-hs">{{ _("Sous-titre de l'accueil") }}</label><textarea class="textarea" id="s-hs" name="hero_subtitle" rows="3" maxlength="260">{{ settings.hero_subtitle }}</textarea></div>
+  </fieldset>
+  <fieldset class="panel"><legend>{{ _("Contact et réseaux") }}</legend>
+    <div class="field-row"><div class="field"><label for="s-ph">{{ _("Téléphone") }}</label><input class="input" id="s-ph" name="phone" value="{{ settings.phone }}" maxlength="30"></div>
+      <div class="field"><label for="s-wa">{{ _("WhatsApp") }} <span class="muted">({{ _("ex. 213556723036") }})</span></label><input class="input" id="s-wa" name="whatsapp" value="{{ settings.whatsapp }}" maxlength="20" inputmode="numeric"></div>
+      <div class="field"><label for="s-em">{{ _("E-mail") }}</label><input class="input" id="s-em" name="email" type="email" value="{{ settings.email }}" maxlength="120"></div></div>
+    <div class="field-row"><div class="field"><label for="s-ig">{{ _("Instagram (URL)") }}</label><input class="input" id="s-ig" name="instagram" value="{{ settings.instagram }}" maxlength="200"></div>
+      <div class="field"><label for="s-fb">{{ _("Facebook (URL)") }}</label><input class="input" id="s-fb" name="facebook" value="{{ settings.facebook }}" maxlength="200"></div></div>
+  </fieldset>
+  <fieldset class="panel"><legend>{{ _("Livraison et retours") }}</legend>
+    <div class="field-row"><div class="field"><label for="s-dd">{{ _("Délai de livraison") }}</label><input class="input" id="s-dd" name="delivery_delay" value="{{ settings.delivery_delay }}" maxlength="40"></div>
+      <div class="field"><label for="s-rd">{{ _("Jours pour un échange") }}</label><input class="input" id="s-rd" name="return_days" value="{{ settings.return_days }}" maxlength="3" inputmode="numeric"></div></div>
+    <p class="field-hint">{{ _("Les tarifs par wilaya se modifient dans le fichier") }} <code>data_dz.py</code>.</p>
+  </fieldset>
+  <div class="form-bar"><button class="btn btn--lg" type="submit">{{ icon('check') }} {{ _("Enregistrer") }}</button></div>
+</form>
+{% endblock %}

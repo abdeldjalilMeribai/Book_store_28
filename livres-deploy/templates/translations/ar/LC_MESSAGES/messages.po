@@ -1,0 +1,1512 @@
+# Arabic translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-10-08 08:20+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ar\n"
+"Language-Team: ar <LL@li.org>\n"
+"Plural-Forms: nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : "
+"n%100>=3 && n%100<=10 ? 3 : n%100>=0 && n%100<=2 ? 4 : 5);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#, python-format
+msgid ""
+"%(site_name)s est une librairie en ligne algérienne. Notre idée est "
+"simple : vous ne devriez pas avoir à payer un livre avant de l'avoir "
+"entre les mains."
+msgstr ""
+"%(site_name)s هي مكتبة إلكترونية جزائرية. فكرتنا بسيطة: لا ينبغي أن تدفع "
+"ثمن كتاب قبل أن تلمسه بيديك."
+
+msgid "+10 ou −2"
+msgstr "+10 أو -2"
+
+msgid "1. Vos coordonnées"
+msgstr "1. بيانات الاتصال"
+
+msgid "2. Livraison"
+msgstr "2. التوصيل"
+
+msgid "3. Paiement"
+msgstr "3. الدفع"
+
+msgid "4ᵉ de couverture, extraits — 6 max"
+msgstr "الغلاف الخلفي، مقتطفات — 6 كحد أقصى"
+
+msgid "58 wilayas"
+msgstr "58 ولاية"
+
+msgid "8 caractères minimum, avec une majuscule, une minuscule et un chiffre."
+msgstr "8 أحرف على الأقل، تتضمن حرفاً كبيراً وصغيراً ورقماً."
+
+msgid "Abonnés à la newsletter"
+msgstr "المشتركون في النشرة البريدية"
+
+msgid "Accueil"
+msgstr "الرئيسية"
+
+msgid "Achat"
+msgstr "سعر الشراء"
+
+msgid "Actif"
+msgstr "نشط"
+
+msgid "Action"
+msgstr "إجراء"
+
+msgid "Actions"
+msgstr "إجراءات"
+
+msgid "Admin"
+msgstr "مسؤول"
+
+msgid "Administration"
+msgstr "لوحة الإدارة"
+
+msgid "Adresse"
+msgstr "العنوان"
+
+msgid "Adresse complète"
+msgstr "العنوان الكامل"
+
+msgid "Adresse e-mail"
+msgstr "البريد الإلكتروني"
+
+msgid "Afficher"
+msgstr "إظهار"
+
+msgid "Aide"
+msgstr "المساعدة"
+
+msgid "Ajouter"
+msgstr "إضافة"
+
+msgid "Ajouter au panier"
+msgstr "أضف إلى السلة"
+
+msgid "Ajouter aux favoris"
+msgstr "إضافة إلى المفضلة"
+
+msgid "Ajoutez un livre : vous ne payez rien avant la livraison."
+msgstr "أضف كتاباً: لن تدفع شيئاً قبل الاستلام."
+
+msgid "Ajoutez un livre pour passer commande."
+msgstr "أضف كتاباً إلى السلة لمتابعة الطلب."
+
+msgid "Ajoutez votre premier livre pour remplir le catalogue."
+msgstr "أضف كتابك الأول للبدء في ملء الفهرس."
+
+msgid "Ajouté au panier"
+msgstr "أضيف إلى السلة"
+
+msgid "Ajouté aux favoris"
+msgstr "أضيف إلى المفضلة"
+
+msgid "Ajuster"
+msgstr "تعديل"
+
+msgid "Alerte stock bas"
+msgstr "تنبيه انخفاض المخزون"
+
+msgid "Aller au contenu"
+msgstr "الانتقال إلى المحتوى"
+
+msgid "Amazigh"
+msgstr "الأمازيغية"
+
+msgid "Ancien prix"
+msgstr "السعر القديم"
+
+msgid "Anglais"
+msgstr "الإنجليزية"
+
+msgid "Annuler"
+msgstr "إلغاء"
+
+msgid "Annuler remet les livres en stock automatiquement."
+msgstr "إلغاء الطلب يعيد الكتب إلى المخزون تلقائياً."
+
+msgid "Annulée"
+msgstr "ملغاة"
+
+msgid "Année"
+msgstr "سنة النشر"
+
+msgid "Aperçu de la couverture"
+msgstr "معاينة الغلاف"
+
+msgid "Aperçu du livre"
+msgstr "معاينة الكتاب"
+
+msgid "Aperçu indisponible pour le moment."
+msgstr "المعاينة غير متوفرة حالياً."
+
+msgid "Aperçu rapide"
+msgstr "معاينة سريعة"
+
+msgid "Appliquer"
+msgstr "تطبيق"
+
+msgid "Arabe"
+msgstr "العربية"
+
+msgid "Aucun"
+msgstr "بدون"
+
+msgid "Aucun abonné pour l'instant."
+msgstr "لا يوجد أي مشترك حالياً."
+
+msgid "Aucun avis"
+msgstr "لا توجد تقييمات"
+
+msgid "Aucun favori"
+msgstr "لا توجد عناصر مفضلة"
+
+msgid "Aucun genre"
+msgstr "لا يوجد أي تصنيف"
+
+msgid "Aucun livre"
+msgstr "لا يوجد أي كتاب"
+
+msgid "Aucun livre ne correspond"
+msgstr "لا يوجد كتاب يطابق بحثك"
+
+msgid "Aucun mouvement enregistré."
+msgstr "لا توجد أي حركة مسجلة."
+
+msgid ""
+"Aucun paiement maintenant : vous réglez le livreur en espèces, après "
+"avoir vérifié votre livre."
+msgstr "لا تدفع الآن: الدفع نقداً للموزع بعد استلام الكتاب وتفحصه."
+
+msgid "Aucune carte, aucun virement. Vous réglez en espèces au livreur."
+msgstr "بدون بطاقة بنكية وبدون تحويل. تدفع نقداً للموزع عند الاستلام."
+
+msgid "Aucune commande"
+msgstr "لا توجد طلبات"
+
+msgid "Aucune commande pour l'instant"
+msgstr "لا توجد أي طلبات حالياً"
+
+msgid "Aucune vente sur la période."
+msgstr "لا توجد مبيعات خلال هذه الفترة."
+
+msgid "Augmenter"
+msgstr "زيادة"
+
+msgid "Augmenter la quantité"
+msgstr "زيادة الكمية"
+
+msgid "Auteur"
+msgstr "المؤلف"
+
+msgid "Autre"
+msgstr "أخرى"
+
+msgid "Autres images"
+msgstr "صور إضافية"
+
+msgid "Avis"
+msgstr "الآراء"
+
+msgid "Avis clients"
+msgstr "آراء الزبائن"
+
+msgid "Avis lecteurs"
+msgstr "آراء القراء"
+
+msgid "Bandeau d'annonce"
+msgstr "شريط الإعلانات"
+
+msgid "Beau livre"
+msgstr "كتاب فاخر"
+
+msgid "Best-seller"
+msgstr "الأكثر مبيعاً"
+
+msgid "Best-sellers"
+msgstr "الأكثر مبيعاً"
+
+#, python-format
+msgid "Bonjour %(name)s"
+msgstr "مرحباً %(name)s"
+
+msgid "Broché"
+msgstr "غلاف ورقي"
+
+msgid "Bureau de livraison"
+msgstr "مكتب التوصيل"
+
+msgid "Bénéfice"
+msgstr "الأرباح"
+
+msgid "Bénéfice sur les livres"
+msgstr "الربح من الكتب"
+
+msgid "Catalogue"
+msgstr "فهرس"
+
+msgid "Ce livre est épuisé."
+msgstr "هذا الكتاب نفد من المخزون."
+
+msgid ""
+"Cette commande a été annulée. Pour toute question, contactez-nous avec "
+"votre code de suivi."
+msgstr "تم إلغاء هذا الطلب. لأي استفسار، يرجى التواصل معنا مع ذكر رمز التتبع."
+
+msgid "Changer mon mot de passe"
+msgstr "تغيير كلمة المرور"
+
+#, python-format
+msgid "Chaque colis est protégé. En cas de problème, échange sous %(days)s jours."
+msgstr ""
+"كل طرد مغلف بعناية. في حال وجود مشكلة، إمكانية الاستبدال خلال %(days)s "
+"أيام."
+
+msgid "Chiffre d'affaires livré"
+msgstr "رقم الأعمال المسلّم"
+
+msgid "Choisir…"
+msgstr "اختر…"
+
+msgid "Choisissez un mot de passe que vous n'utilisez nulle part ailleurs."
+msgstr "اختر كلمة مرور فريدة لا تستخدمها في أي موقع آخر."
+
+msgid "Choisissez une wilaya"
+msgstr "اختر الولاية"
+
+msgid "Choisissez votre wilaya."
+msgstr "يرجى اختيار ولايتك."
+
+msgid "Classement"
+msgstr "الترتيب والتصنيف"
+
+msgid "Client"
+msgstr "الزبون"
+
+msgid "Clients"
+msgstr "الزبائن"
+
+msgid "Code"
+msgstr "الرمز"
+
+msgid "Code copié"
+msgstr "تم نسخ الرمز"
+
+msgid "Code de suivi"
+msgstr "رمز التتبع"
+
+msgid "Code, nom, téléphone"
+msgstr "الرمز، الاسم، الهاتف"
+
+msgid "Commande"
+msgstr "الطلب"
+
+msgid "Commande confirmée"
+msgstr "تم تأكيد الطلب"
+
+msgid "Commande du"
+msgstr "طلب بتاريخ"
+
+#, python-format
+msgid "Commande du %(date)s"
+msgstr "طلب بتاريخ %(date)s"
+
+msgid "Commande enregistrée"
+msgstr "تم تسجيل الطلب بنجاح"
+
+msgid "Commande reçue"
+msgstr "تم استلام الطلب"
+
+msgid "Commander"
+msgstr "إتمام الطلب"
+
+msgid "Commander maintenant"
+msgstr "اطلب الآن"
+
+msgid "Commandes"
+msgstr "الطلبات"
+
+msgid "Commandes en préparation ou expédiées"
+msgstr "طلبات قيد التحضير أو تم شحنها"
+
+msgid "Comment se passe le paiement ?"
+msgstr "كيف يتم الدفع؟"
+
+msgid "Comment suivre ma commande ?"
+msgstr "كيف أتتبع طلبي؟"
+
+msgid "Commune"
+msgstr "البلدية"
+
+msgid "Comptes"
+msgstr "الحسابات"
+
+msgid "Comptez"
+msgstr "المدة المتوقعة"
+
+msgid "Confirmer la commande"
+msgstr "تأكيد الطلب"
+
+msgid "Confirmer le mot de passe"
+msgstr "تأكيد كلمة المرور"
+
+msgid "Confirmer le nouveau mot de passe"
+msgstr "تأكيد كلمة المرور الجديدة"
+
+msgid "Connexion"
+msgstr "تسجيل الدخول"
+
+msgid "Connexion impossible. Vérifiez votre réseau puis réessayez."
+msgstr "تعذر الاتصال. تحقق من اتصالك بالإنترنت وأعد المحاولة."
+
+msgid "Contact et réseaux"
+msgstr "الاتصال وشبكات التواصل"
+
+msgid "Continuer mes achats"
+msgstr "متابعة التسوق"
+
+msgid "Copie impossible"
+msgstr "تعذر النسخ"
+
+msgid "Copier le code"
+msgstr "نسخ الرمز"
+
+msgid "Coup de cœur"
+msgstr "كتاب مميز"
+
+msgid "Coup de cœur (page d'accueil)"
+msgstr "كتاب مميز (الصفحة الرئيسية)"
+
+#, python-format
+msgid "Coup de cœur : %(title)s"
+msgstr "كتاب مميز : %(title)s"
+
+msgid "Couverture actuelle"
+msgstr "الغلاف الحالي"
+
+#, python-format
+msgid "Couverture de %(title)s"
+msgstr "غلاف %(title)s"
+
+#, python-brace-format
+msgid "Couverture de {title}"
+msgstr "غلاف {title}"
+
+msgid "Créer mon compte"
+msgstr "إنشاء حسابي"
+
+msgid "Créer un compte"
+msgstr "إنشاء حساب"
+
+msgid "Créez des genres pour que vos clients parcourent le catalogue."
+msgstr "أنشئ تصنيفات ليتمكن زبائنك من تصفح الفهرس بسهولة."
+
+msgid "DA"
+msgstr "دج"
+
+msgid "Date"
+msgstr "التاريخ"
+
+msgid "Dernières commandes"
+msgstr "آخر الطلبات"
+
+msgid ""
+"Des livres choisis, expédiés partout en Algérie. Vous vérifiez le colis, "
+"puis vous payez le livreur."
+msgstr ""
+"كتب مختارة بعناية، نصل بها إلى جميع أنحاء الجزائر. تتفحص الطرد أولاً ثم "
+"تدفع للموزع."
+
+msgid "Des livres qui arrivent jusqu'à vous."
+msgstr "كتب تصل مباشرة إليك."
+
+msgid "Description"
+msgstr "الوصف"
+
+msgid "Diminuer"
+msgstr "إنقاص"
+
+msgid "Diminuer la quantité"
+msgstr "إنقاص الكمية"
+
+msgid "Donnez votre avis"
+msgstr "أضف تقييمك ورأيك"
+
+msgid "Déconnexion"
+msgstr "تسجيل الخروج"
+
+msgid "Découvrir ce livre"
+msgstr "اكتشف هذا الكتاب"
+
+msgid "Déjà inscrit ?"
+msgstr "لديك حساب بالفعل؟"
+
+msgid "Délai de livraison"
+msgstr "مدة التوصيل"
+
+msgid "Désactiver"
+msgstr "تعطيل"
+
+msgid "Désactivé"
+msgstr "معطل"
+
+msgid "Détails"
+msgstr "التفاصيل"
+
+msgid "Détails du livre"
+msgstr "تفاصيل الكتاب"
+
+msgid "E-mail"
+msgstr "البريد الإلكتروني"
+
+msgid "Elles apparaîtront ici dès qu'un client commande."
+msgstr "ستظهر الطلبات هنا فور قيام الزبائن بالطلب."
+
+msgid "En confirmant, vous recevrez un code de suivi à conserver."
+msgstr "عند التأكيد، ستتلقى رمز تتبع للاحتفاظ به."
+
+msgid "En cours de livraison"
+msgstr "جاري التوصيل"
+
+msgid "En ligne"
+msgstr "منشور"
+
+msgid "En préparation"
+msgstr "قيد التحضير"
+
+msgid "En stock"
+msgstr "متوفر في المخزون"
+
+msgid "En stock uniquement"
+msgstr "المتوفر في المخزون فقط"
+
+msgid "En stock, expédié sous 24 h"
+msgstr "متوفر، يتم الشحن خلال 24 ساعة"
+
+msgid "Enregistrer"
+msgstr "حفظ التغييرات"
+
+msgid "Entrez le code reçu à la commande et le numéro de téléphone utilisé."
+msgstr "أدخل الرمز الذي استلمته عند الطلب ورقم الهاتف."
+
+msgid "Envoi en cours…"
+msgstr "جاري الإرسال…"
+
+msgid "Erreur"
+msgstr "خطأ"
+
+msgid "Espèces, au livreur, après vérification du colis"
+msgstr "نقداً للموزع بعد التأكد من سلامة الطرد"
+
+msgid "Essais & Philosophie"
+msgstr "مقالات وفلسفة"
+
+msgid "Essayez un autre mot, retirez un filtre ou parcourez tout le catalogue."
+msgstr "جرب كلمة بحث أخرى، أزل أحد الفلاتر أو تصفح كامل الفهرس."
+
+msgid "Et si le livre arrive abîmé ?"
+msgstr "ماذا لو وصل الكتاب تالفاً؟"
+
+msgid "Explorer"
+msgstr "استكشف"
+
+msgid "Expédiée"
+msgstr "تم الشحن"
+
+msgid "Facebook (URL)"
+msgstr "فيسبوك (الرابط)"
+
+msgid "Facultatif : vous pouvez aussi commander sans compte."
+msgstr "اختياري: يمكنك أيضاً الطلب بدون إنشاء حساب."
+
+msgid "Faut-il un compte pour commander ?"
+msgstr "هل يلزم إنشاء حساب للطلب؟"
+
+msgid "Fermer"
+msgstr "إغلاق"
+
+msgid "Fermer le panier"
+msgstr "إغلاق السلة"
+
+msgid "Fermer les favoris"
+msgstr "إغلاق المفضلة"
+
+msgid "Fiche technique"
+msgstr "بطاقة تقنية"
+
+msgid "Fil d'Ariane"
+msgstr "مسار التصفح"
+
+msgid "Filtrer"
+msgstr "تصفية"
+
+msgid "Filtrer par statut"
+msgstr "تصفية حسب الحالة"
+
+msgid "Filtres actifs"
+msgstr "الفلاتر النشطة"
+
+msgid "Filtres et tri"
+msgstr "الفلاتر والترتيب"
+
+msgid "Finaliser ma commande"
+msgstr "إتمام الطلب"
+
+msgid "Format"
+msgstr "الحجم"
+
+msgid "Français"
+msgstr "الفرنسية"
+
+msgid "Genre"
+msgstr "التصنيف"
+
+msgid "Genres"
+msgstr "التصنيفات"
+
+msgid "Historique"
+msgstr "سجل الحركات"
+
+msgid "ISBN"
+msgstr "الردمك (ISBN)"
+
+msgid "Identité et accueil"
+msgstr "الهوية والصفحة الرئيسية"
+
+msgid "Ils ont reçu leur colis"
+msgstr "آراء وتجارب القراء"
+
+msgid "Images"
+msgstr "الصور"
+
+msgid "Images du livre"
+msgstr "صور الكتاب"
+
+msgid "Indiquez votre adresse pour la livraison à domicile."
+msgstr "يرجى تحديد عنوانك للتوصيل إلى المنزل."
+
+msgid "Indiquez votre commune."
+msgstr "يرجى إدخال بلديتك."
+
+msgid "Indiquez votre nom complet."
+msgstr "يرجى إدخال اسمك الكامل."
+
+msgid "Indisponible"
+msgstr "غير متوفر"
+
+msgid "Informations"
+msgstr "المعلومات"
+
+msgid "Inscrit"
+msgstr "تاريخ التسجيل"
+
+msgid "Instagram (URL)"
+msgstr "إنستغرام (الرابط)"
+
+msgid "JPG, PNG ou WEBP. Format conseillé : 2 × 3 (ex. 800 × 1200 px)."
+msgstr "JPG أو PNG أو WEBP. الحجم الموصى به: 2 × 3 (مثال: 800 × 1200 بكسل)."
+
+msgid "Jeunesse & Bandes dessinées"
+msgstr "ناشئة وقصص مصورة"
+
+msgid "Jours pour un échange"
+msgstr "مهلة الاستبدال (بالأيام)"
+
+msgid "La commande n'a pas pu être enregistrée."
+msgstr "تعذر تسجيل الطلب."
+
+msgid "Langue"
+msgstr "اللغة"
+
+msgid "Le livre est abîmé ? Refusez-le. Sinon, vous réglez le livreur en espèces."
+msgstr "الكتاب متضرر؟ يمكنك رفضه بكل بساطة. خلاف ذلك، تدفع نقداً للموزع."
+
+msgid "Le livreur vous appelle"
+msgstr "الموزع سيتصل بك"
+
+msgid "Le livreur vous appelle et vient chez vous"
+msgstr "يتصل بك الموزع ويصلك إلى منزلك"
+
+msgid "Lectures pour petits et grands"
+msgstr "قراءات للأطفال واليافعين"
+
+msgid "Les avis laissés sur les fiches livres apparaîtront ici."
+msgstr "التقييمات المسجلة على صفحات الكتب ستظهر هنا."
+
+msgid "Les commandes passées en étant connecté apparaissent ici."
+msgstr "تظهر الطلبات المسجلة أثناء تسجيل الدخول هنا."
+
+msgid ""
+"Les frais de livraison sont calculés à l'étape suivante, selon votre "
+"wilaya."
+msgstr "تحسب مصاريف التوصيل في الخطوة التالية حسب ولايتك."
+
+msgid "Les grands classiques et romans contemporains"
+msgstr "أمهات الكتب الكلاسيكية والروايات المعاصرة"
+
+msgid "Les plus lus"
+msgstr "الأكثر قراءة"
+
+msgid "Les plus vendus"
+msgstr "الأكثر مبيعاً"
+
+msgid "Les tarifs par wilaya se modifient dans le fichier"
+msgstr "يمكن تعديل أسعار التوصيل حسب الولاية في الملف"
+
+msgid "Littérature algérienne"
+msgstr "أدب جزائري"
+
+msgid "Livraison"
+msgstr "التوصيل"
+
+msgid "Livraison et retours"
+msgstr "التوصيل والإرجاع"
+
+msgid "Livre"
+msgstr "الكتاب"
+
+msgid "Livre en bon état"
+msgstr "كتاب بحالة ممتازة"
+
+msgid "Livres"
+msgstr "الكتب"
+
+msgid "Livres commandés"
+msgstr "الكتب المطلوبة"
+
+msgid "Livres les plus vendus"
+msgstr "الكتب الأكثر مبيعاً"
+
+msgid "Livres similaires"
+msgstr "كتب مشابهة"
+
+msgid "Livrée"
+msgstr "تم التسليم"
+
+msgid "Marge"
+msgstr "الهامش"
+
+msgid "Masquer"
+msgstr "إخفاء"
+
+msgid "Masqué"
+msgstr "مخفي"
+
+msgid "Masqués"
+msgstr "المخفية"
+
+msgid "Max"
+msgstr "الأقصى"
+
+msgid "Menu"
+msgstr "القائمة"
+
+msgid "Merci !"
+msgstr "شكراً لك!"
+
+#, python-format
+msgid "Merci %(name)s, c'est noté."
+msgstr "شكراً %(name)s، تم استلام طلبك."
+
+msgid "Mes commandes"
+msgstr "طلباتي"
+
+msgid "Mes favoris"
+msgstr "مفضلاتي"
+
+msgid "Mettre à jour"
+msgstr "تحديث"
+
+msgid "Min"
+msgstr "الأدنى"
+
+msgid "Mode de livraison"
+msgstr "طريقة التوصيل"
+
+msgid "Modifier"
+msgstr "تعديل"
+
+msgid "Modifier le livre"
+msgstr "تعديل الكتاب"
+
+msgid "Mon compte"
+msgstr "حسابي"
+
+msgid "Mon panier"
+msgstr "سلتي"
+
+msgid "Mot de passe"
+msgstr "كلمة المرور"
+
+msgid "Mot de passe actuel"
+msgstr "كلمة المرور الحالية"
+
+msgid "Motif"
+msgstr "السبب"
+
+msgid "Motif (réception, casse…)"
+msgstr "السبب (استلام، تلف...)"
+
+msgid "Navigation mobile"
+msgstr "قائمة الهاتف"
+
+msgid "Navigation principale"
+msgstr "القائمة الرئيسية"
+
+msgid "Niveaux de stock"
+msgstr "مستويات المخزون"
+
+msgid "Nom"
+msgstr "الاسم"
+
+msgid "Nom complet"
+msgstr "الاسم الكامل"
+
+msgid "Nom de la boutique"
+msgstr "اسم المتجر"
+
+msgid "Non. Un compte sert seulement à retrouver vos commandes au même endroit."
+msgstr "لا. الحساب يفيدك فقط في تتبع ومراجعة طلباتك في مكان واحد."
+
+msgid "Note"
+msgstr "التقييم"
+
+msgid "Note :"
+msgstr "التقييم :"
+
+msgid ""
+"Nous choisissons des livres que nous aimerions recevoir : romans, "
+"littérature algérienne, jeunesse, idées. Chaque colis est emballé pour "
+"arriver intact."
+msgstr ""
+"نختار كتباً نتمنى قراءتها بأنفسنا: روايات، أدب جزائري، كتب ناشئة وفكر. كل"
+" طرد يُغلف بعناية ليصلك سليماً تماماً."
+
+msgid "Nous contacter"
+msgstr "اتصل بنا"
+
+msgid "Nous expédions"
+msgstr "نقوم بالشحن"
+
+msgid ""
+"Nous préparons votre colis. Notez ce code : il vous permet de suivre la "
+"commande avec votre numéro de téléphone."
+msgstr "نحن نحضر طردك الآن. احتفظ بهذا الرمز لمتابعة الشحنة مع رقم هاتفك."
+
+msgid "Nouveau genre"
+msgstr "تصنيف جديد"
+
+msgid "Nouveau livre"
+msgstr "كتاب جديد"
+
+msgid "Nouveau mot de passe"
+msgstr "كلمة مرور جديدة"
+
+msgid "Nouveauté"
+msgstr "أحدث الكتب"
+
+msgid "Nouveautés"
+msgstr "أحدث الكتب"
+
+msgid "Nouveautés par e-mail"
+msgstr "جديدنا عبر البريد"
+
+msgid "Nouvelle"
+msgstr "جديدة"
+
+msgid "Nouvelles commandes"
+msgstr "طلبات جديدة"
+
+msgid "Numéro invalide : 10 chiffres commençant par 05, 06 ou 07."
+msgstr "رقم غير صالح: 10 أرقام تبدأ بـ 05 أو 06 أو 07."
+
+msgid "Ordre"
+msgstr "الترتيب"
+
+msgid ""
+"Oui, tant qu'elle n'est pas expédiée : écrivez-nous sur WhatsApp en "
+"indiquant votre code de suivi."
+msgstr ""
+"نعم، طالما لم يتم شحنها بعد: تواصل معنا عبر واتساب مع ذكر رمز التتبع "
+"الخاص بك."
+
+msgid "Ouvrir le menu"
+msgstr "فتح القائمة"
+
+msgid "Ouvrir les commandes"
+msgstr "عرض الطلبات"
+
+msgid "Où est mon colis ?"
+msgstr "أين طردي؟"
+
+msgid "Page précédente"
+msgstr "الصفحة السابقة"
+
+msgid "Page suivante"
+msgstr "الصفحة التالية"
+
+msgid "Pages"
+msgstr "عدد الصفحات"
+
+msgid "Pagination"
+msgstr "التنقل بين الصفحات"
+
+msgid "Paiement au livreur"
+msgstr "الدفع للموزع"
+
+msgid "Paiement à la livraison"
+msgstr "الدفع عند الاستلام"
+
+msgid "Paiement à la livraison."
+msgstr "الدفع عند الاستلام."
+
+msgid "Paramètres"
+msgstr "الإعدادات"
+
+msgid "Parcourir le catalogue"
+msgstr "تصفح الفهرس"
+
+msgid "Parcourir par genre"
+msgstr "تصفح حسب التصنيف"
+
+msgid "Pas encore d'avis. Soyez le premier à partager votre lecture."
+msgstr "لا توجد تقييمات بعد. كن أول من يشاركنا انطباعه عن هذا الكتاب."
+
+msgid "Pas encore de commande."
+msgstr "لا توجد أي طلبات بعد."
+
+msgid "Pas encore de compte ?"
+msgstr "ليس لديك حساب؟"
+
+msgid "Passée le"
+msgstr "بتاريخ"
+
+msgid "Payez à la livraison"
+msgstr "ادفع عند الاستلام"
+
+#, python-format
+msgid "Plus que %(n)s exemplaire"
+msgstr "تبقى %(n)s نسخة فقط"
+
+#, python-format
+msgid "Plus que %(n)s exemplaires"
+msgstr "تبقى %(n)s نسخ فقط"
+
+#, python-brace-format
+msgid "Plus que {n} en stock"
+msgstr "متبقي {n} فقط في المخزون"
+
+msgid "Poche"
+msgstr "جيب"
+
+msgid "Points forts"
+msgstr "أبرز النقاط"
+
+msgid "Première de couverture"
+msgstr "صورة الغلاف الأمامي"
+
+msgid "Prix"
+msgstr "السعر"
+
+msgid "Prix (DA)"
+msgstr "السعر (دج)"
+
+msgid "Prix croissant"
+msgstr "السعر: من الأقل إلى الأعلى"
+
+msgid "Prix d'achat (DA)"
+msgstr "سعر الشراء (دج)"
+
+msgid "Prix de vente (DA)"
+msgstr "سعر البيع (دج)"
+
+msgid "Prix décroissant"
+msgstr "السعر: من الأعلى إلى الأقل"
+
+msgid "Prix et stock"
+msgstr "السعر والمخزون"
+
+msgid "Prix maximum"
+msgstr "السعر الأقصى"
+
+msgid "Prix minimum"
+msgstr "السعر الأدنى"
+
+msgid "Publier mon avis"
+msgstr "نشر التقييم"
+
+msgid "Puis-je modifier ou annuler une commande ?"
+msgstr "هل يمكنني تعديل أو إلغاء طلب؟"
+
+msgid "Période"
+msgstr "الفترة"
+
+msgid "Quantité"
+msgstr "الكمية"
+
+#, python-brace-format
+msgid "Quantité de {title}"
+msgstr "كمية {title}"
+
+#, python-brace-format
+msgid "Quantité limitée à {n} pour ce livre."
+msgstr "الكمية محدودة بـ {n} لهذا الكتاب."
+
+msgid "Quels sont les délais et les frais de livraison ?"
+msgstr "ما هي مدة ورسوم التوصيل؟"
+
+msgid "Questions fréquentes"
+msgstr "الأسئلة الشائعة"
+
+msgid "Qui sommes-nous"
+msgstr "من نحن"
+
+msgid "Recherche"
+msgstr "بحث"
+
+#, python-format
+msgid "Recherche : %(q)s"
+msgstr "بحث : %(q)s"
+
+msgid "Rechercher"
+msgstr "بحث"
+
+msgid "Rechercher un livre, un auteur"
+msgstr "ابحث عن كتاب، مؤلف..."
+
+msgid "Rechercher…"
+msgstr "بحث…"
+
+msgid "Refusez le colis au moment de la livraison, ou contactez-nous sous"
+msgstr "يمكنك رفض استلام الطرد عند وصوله، أو التواصل معنا خلال"
+
+msgid "Relié"
+msgstr "مجلّد"
+
+msgid "Rester connecté"
+msgstr "تذكرني"
+
+msgid "Retirer"
+msgstr "حذف"
+
+msgid "Retirer ce filtre"
+msgstr "إزالة هذا الفلتر"
+
+msgid "Retiré des favoris"
+msgstr "تم الحذف من المفضلة"
+
+msgid "Retour"
+msgstr "رجوع"
+
+msgid "Retour sous"
+msgstr "إمكانية الاستبدال خلال"
+
+msgid "Retour à l'accueil"
+msgstr "العودة إلى الرئيسية"
+
+msgid "Retrouvez vos commandes en un seul endroit."
+msgstr "تابع طلباتك السابقة في مكان واحد."
+
+msgid "Romans & Fiction"
+msgstr "روايات وخيال"
+
+msgid "Romans, nouvelles et poésie d'auteurs algériens"
+msgstr "روايات، قصص قصيرة وشعر لكتاب جزائريين"
+
+msgid "Réactiver"
+msgstr "إعادة التفعيل"
+
+msgid "Récapitulatif"
+msgstr "ملخص الطلب"
+
+msgid "Réflexions, sciences humaines et histoire"
+msgstr "أفكار، علوم إنسانية وتاريخ"
+
+msgid "Réglages"
+msgstr "الإعدادات"
+
+msgid "Réglages du site"
+msgstr "إعدادات الموقع"
+
+msgid "Réinitialiser"
+msgstr "إعادة تعيين"
+
+msgid "Répartition des notes"
+msgstr "توزيع التقييمات"
+
+msgid "Résumé"
+msgstr "نبذة عن الكتاب"
+
+msgid "S'inscrire"
+msgstr "اشترك الآن"
+
+msgid "Sans genre"
+msgstr "بدون تصنيف"
+
+msgid "Se connecter"
+msgstr "تسجيل الدخول"
+
+msgid "Se déconnecter"
+msgstr "تسجيل الخروج"
+
+msgid "Sert au calcul du bénéfice."
+msgstr "يستخدم لحساب هامش الربح."
+
+msgid "Seuil d'alerte"
+msgstr "حد التنبيه"
+
+msgid "Sous-titre"
+msgstr "العنوان الفرعي"
+
+msgid "Sous-titre de l'accueil"
+msgstr "العنوان الفرعي للرئيسية"
+
+msgid "Sous-total"
+msgstr "المجموع الفرعي"
+
+msgid "Sous-total livres"
+msgstr "مجموع الكتب"
+
+msgid "Statut"
+msgstr "الحالة"
+
+msgid "Statuts"
+msgstr "الحالات"
+
+msgid "Stock"
+msgstr "المخزون"
+
+msgid "Stock bas"
+msgstr "مخزون منخفض"
+
+msgid "Suivre"
+msgstr "تتبع"
+
+msgid "Suivre ma commande"
+msgstr "تتبع طلبي"
+
+#, python-format
+msgid "Supprimer %(caption)s"
+msgstr "حذف %(caption)s"
+
+#, python-format
+msgid "Supprimer %(name)s"
+msgstr "حذف %(name)s"
+
+#, python-format
+msgid "Supprimer %(title)s"
+msgstr "حذف %(title)s"
+
+msgid "Supprimer cet avis ?"
+msgstr "هل تريد حذف هذا التقييم؟"
+
+msgid "Supprimer cette image ?"
+msgstr "هل تريد حذف هذه الصورة؟"
+
+#, python-format
+msgid "Supprimer l'avis de %(name)s"
+msgstr "حذف تقييم %(name)s"
+
+#, python-format
+msgid ""
+"Supprimer le genre « %(name)s » ? Ses livres resteront en ligne, sans "
+"genre."
+msgstr "هل تريد حذف التصنيف « %(name)s »؟ ستبقى كتبه معروضة بدون تصنيف."
+
+#, python-format
+msgid "Supprimer « %(title)s » ? Cette action est définitive."
+msgstr "هل تريد حذف « %(title)s »؟ هذا الإجراء نهائي ولا رجعة فيه."
+
+msgid "Système"
+msgstr "النظام"
+
+msgid "Séparez les paragraphes par une ligne vide."
+msgstr "افصل بين الفقرات بسطر فارغ."
+
+msgid "Tableau de bord"
+msgstr "لوحة التحكم"
+
+msgid "Titre"
+msgstr "العنوان"
+
+msgid "Titre A → Z"
+msgstr "العنوان: أ إلى ي"
+
+msgid "Titre de l'accueil"
+msgstr "عنوان الصفحة الرئيسية"
+
+msgid "Titre, auteur, ISBN"
+msgstr "العنوان، المؤلف، الردمك"
+
+msgid "Total"
+msgstr "المجموع"
+
+msgid "Touchez le cœur d'un livre pour le retrouver ici."
+msgstr "انقر على رمز القلب في أي كتاب لتجده هنا."
+
+msgid "Tous"
+msgstr "الكل"
+
+msgid "Tous les genres"
+msgstr "جميع التصنيفات"
+
+msgid "Tous les stocks sont confortables."
+msgstr "جميع المخزونات كافية ومستقرة."
+
+msgid "Tout le catalogue"
+msgstr "كامل الفهرس"
+
+msgid "Tout voir"
+msgstr "عرض الكل"
+
+msgid "Toutes"
+msgstr "الكل"
+
+msgid "Trier par"
+msgstr "ترتيب حسب"
+
+msgid "Téléphone"
+msgstr "رقم الهاتف"
+
+msgid "Un livre de votre panier est épuisé : retirez-le pour continuer."
+msgstr "أحد الكتب في سلتك نفد: احذفه للمتابعة."
+
+msgid ""
+"Un seul formulaire : nom, téléphone, wilaya. Aucun paiement en ligne, "
+"aucune carte."
+msgstr "استمارة بسيطة: الاسم، الهاتف والولاية. بدون بطاقة دفع وبدون دفع إلكتروني."
+
+msgid "Une erreur est survenue."
+msgstr "حدث خطأ ما."
+
+msgid "Une librairie qui vient à vous."
+msgstr "مكتبة تصل إلى باب بيتك."
+
+msgid "Une ligne par retour à la ligne."
+msgstr "سطر لكل فقرة."
+
+msgid "Utilisez la page"
+msgstr "استخدم صفحة"
+
+msgid "Valider"
+msgstr "تأكيد"
+
+msgid "Variation pour"
+msgstr "تعديل كمية"
+
+msgid "Ville"
+msgstr "المدينة"
+
+msgid "Visible dans le catalogue"
+msgstr "ظاهر في الفهرس"
+
+msgid "Voir"
+msgstr "معاينة"
+
+msgid "Voir la fiche"
+msgstr "عرض التفاصيل"
+
+msgid "Voir le catalogue"
+msgstr "تصفح الفهرس"
+
+msgid "Voir le site"
+msgstr "زيارة الموقع"
+
+msgid "Voir tout le catalogue"
+msgstr "عرض كامل الفهرس"
+
+msgid "Vos coordonnées"
+msgstr "بيانات الاتصال"
+
+msgid "Votre adresse e-mail"
+msgstr "بريدك الإلكتروني"
+
+msgid "Votre avis"
+msgstr "تعليقك"
+
+msgid "Votre commande"
+msgstr "تفاصيل طلبك"
+
+msgid ""
+"Votre mot de passe est provisoire : choisissez-en un nouveau pour "
+"continuer."
+msgstr "كلمة المرور مؤقتة: اختر كلمة مرور جديدة للمتابعة."
+
+msgid "Votre nom"
+msgstr "اسمك الكامل"
+
+msgid "Votre note"
+msgstr "تقييمك"
+
+msgid "Votre panier a été mis à jour (prix ou stock)."
+msgstr "تم تحديث سلتك (الأسعار أو المخزون)."
+
+msgid "Votre panier est vide"
+msgstr "سلتك فارغة"
+
+msgid "Votre ville"
+msgstr "مدينتك"
+
+msgid "Vous aimerez aussi"
+msgstr "قد يعجبك أيضاً"
+
+msgid ""
+"Vous choisissez, vous commandez en une minute, nous expédions. Le livreur"
+" vous appelle, vous ouvrez le colis, vous vérifiez le livre — et "
+"seulement alors, vous payez. S'il est abîmé, vous le refusez."
+msgstr ""
+"تختار كتابك، تطلبه في دقيقة، ونحن نشحنه إليك. يتصل بك الموزع، تفتح الطرد "
+"وتتفحص الكتاب — وعندها فقط تدفع. إذا كان تالفاً يمكنك رفضه فوراً."
+
+msgid "Vous commandez"
+msgstr "تطلب الكتاب"
+
+msgid "Vous ne payez qu'en ouvrant le colis."
+msgstr "لا تدفع حتى تفتح الطرد وتتفحصه."
+
+msgid "Vous récupérez le colis au bureau le plus proche"
+msgstr "تستلم طردك من أقرب مكتب توصيل"
+
+msgid "Vous vérifiez, puis vous payez"
+msgstr "تتفحص، ثم تدفع"
+
+msgid "WhatsApp"
+msgstr "واتساب"
+
+msgid "Wilaya"
+msgstr "الولاية"
+
+msgid "alerte ≤"
+msgstr "تنبيه ≤"
+
+msgid "après avoir vérifié votre livre"
+msgstr "بعد التأكد من سلامة كتابك"
+
+msgid "avec votre code de suivi et le numéro de téléphone saisi à la commande."
+msgstr "باستخدام رمز التتبع ورقم الهاتف المسجل عند الطلب."
+
+msgid "avis"
+msgstr "تقييم"
+
+msgid "clients"
+msgstr "زبائن"
+
+msgid "commande à préparer"
+msgstr "طلب قيد التحضير"
+
+msgid "commandes à préparer"
+msgstr "طلبات قيد التحضير"
+
+msgid "dans les 58 wilayas"
+msgstr "إلى 58 ولاية"
+
+msgid "dans les 58 wilayas, à domicile ou au bureau de livraison."
+msgstr "إلى 58 ولاية، حتى باب المنزل أو في مكتب التوصيل."
+
+msgid "de"
+msgstr "للكاتب"
+
+msgid ""
+"en général. Les frais dépendent de votre wilaya et du mode choisi "
+"(domicile ou bureau de livraison) : ils s'affichent avant que vous "
+"validiez."
+msgstr ""
+"في العادة. وتعتمد الرسوم على ولايتك والطريقة المختارة (المنزل أو المكتب):"
+" تظهر بوضوح قبل تأكيد طلبك."
+
+msgid "ex. 213556723036"
+msgstr "مثال: 213556723036"
+
+msgid "facultatif"
+msgstr "اختياري"
+
+msgid "jours pour un échange."
+msgstr "أيام لإمكانية الاستبدال."
+
+msgid "jours si le livre est abîmé"
+msgstr "أيام إذا كان الكتاب تالفاً"
+
+msgid "livre"
+msgstr "كتاب"
+
+msgid "livre livré"
+msgstr "كتاب تم تسليمه"
+
+msgid "livres"
+msgstr "كتب"
+
+msgid "livres livrés"
+msgstr "كتب تم تسليمها"
+
+msgid "maintenant"
+msgstr "الآن"
+
+msgid "promo"
+msgstr "تخفيض"
+
+msgid "reste"
+msgstr "المتبقي"
+
+msgid "si le livre est abîmé"
+msgstr "في حال وجود أي تلف"
+
+msgid "sur"
+msgstr "حول"
+
+msgid "sur 5"
+msgstr "من 5"
+
+msgid "titre"
+msgstr "عنوان"
+
+msgid "titres"
+msgstr "عناوين"
+
+msgid "un par ligne, facultatif"
+msgstr "عنصر في كل سطر، اختياري"
+
+msgid "vide = masqué"
+msgstr "فارغ = مخفي"
+
+msgid "À domicile"
+msgstr "توصيل للمنزل"
+
+msgid ""
+"À domicile ou en bureau de livraison, avec un tarif clair avant de "
+"confirmer."
+msgstr "توصيل للمنزل أو لمكتب الاستلام، مع تسعيرة واضحة تماماً قبل التأكيد."
+
+msgid "À encaisser"
+msgstr "المبلغ للتحصيل"
+
+msgid ""
+"À la livraison, en espèces, une fois le colis ouvert et le livre vérifié."
+" Rien n'est débité à la commande."
+msgstr ""
+"عند الاستلام، نقداً، بعد فتح الطرد والتأكد من سلامة الكتاب. لا تدفع أي "
+"شيء مسبقاً."
+
+msgid "À payer"
+msgstr "المبلغ المطلوب"
+
+msgid "À payer à la commande"
+msgstr "المطلوب عند الطلب"
+
+msgid "À propos"
+msgstr "من نحن"
+
+msgid "À régler au livreur"
+msgstr "المبلغ الإجمالي عند الاستلام"
+
+msgid "Articles commandés"
+msgstr "الكتب المطلوبة"
+
+msgid "Colis livré avec succès"
+msgstr "تم تسليم الطرد بنجاح"
+
+msgid "Commande annulée"
+msgstr "طلب ملغى"
+
+msgid "Copier"
+msgstr "نسخ"
+
+msgid "Frais de port"
+msgstr "تكلفة التوصيل"
+
+msgid "Le livreur vous contactera par téléphone avant son passage."
+msgstr "سيتصل بك الموزع هاتفياً قبل الوصول لتسليم الطرد."
+
+msgid "Livraison & Règlement"
+msgstr "التوصيل والدفع"
+
+msgid ""
+"Nous préparons soigneusement vos livres. Le transporteur prendra en "
+"charge votre colis sous peu."
+msgstr "نحن نجهز كتبك بعناية فائقة. سيتسلم الموزع طردك في أقرب وقت."
+
+msgid "Paiement en espèces au livreur après vérification du colis."
+msgstr "الدفع نقداً للموزع بعد تفحص الطرد والتأكد منه."
+
+msgid "Statut de la commande"
+msgstr "حالة الطلب"
+
+msgid "Terminé"
+msgstr "مكتمل"
+
+msgid "En cours"
+msgstr "قيد التنفيذ"
+
+msgid "À venir"
+msgstr "قريباً"
+
+msgid "Votre colis est en route !"
+msgstr "طردك في الطريق إليك!"
+
+msgid "Votre commande est en cours de préparation"
+msgstr "طلبك قيد التحضير حالياً"
+
+msgid "Votre commande vous a été remise en mains propres. Bonne lecture !"
+msgstr "تم تسليم طلبك بنجاح. نتمنى لك قراءة ممتعة!"
+
+#, python-format
+msgid "Échange sous %(days)s jours"
+msgstr "استبدال خلال %(days)s أيام"
+
+msgid "Écrire sur WhatsApp"
+msgstr "مراسلة عبر واتساب"
+
+msgid "Éditeur"
+msgstr "دار النشر"
+
+msgid "Épuisé"
+msgstr "نفد"
+
+msgid "Épuisé : retirez ce livre pour commander"
+msgstr "نفد: احذف هذا الكتاب لإتمام الطلب"
+
+msgid "Épuisé : retirez-le du panier"
+msgstr "نفد: احذفه من السلة"
+
+msgid "Épuisé pour le moment"
+msgstr "نفد من المخزون حالياً"
+
+msgid "Étape 1"
+msgstr "المرحلة 1"
+
+msgid "Étape 2"
+msgstr "المرحلة 2"
+
+msgid "Étape 3"
+msgstr "المرحلة 3"
+
+#, python-format
+msgid "Étape %(current)s sur %(total)s"
+msgstr "المرحلة %(current)s من %(total)s"
+
+msgid "Étapes de la commande"
+msgstr "مراحل الطلب"
+
+msgid "État"
+msgstr "الحالة"
+
+msgid "Étiquette"
+msgstr "شارة"
+
+msgid "à"
+msgstr "في"
+
+msgid "à la commande"
+msgstr "عند الطلب"
+

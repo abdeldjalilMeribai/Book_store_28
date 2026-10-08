@@ -1,0 +1,16 @@
+{% extends "admin/base.html" %}
+{%- from "_macros.html" import icon -%}
+{% block title %}{{ _("Commandes") }}{% endblock %}
+{% block heading %}{{ _("Commandes") }}{% endblock %}
+{% block content %}
+<nav class="periods" aria-label="{{ _('Filtrer par statut') }}"><a href="{{ url_for('admin.orders') }}"{% if not status %} aria-current="true"{% endif %}>{{ _("Toutes") }}</a>
+  {% for s, label in ORDER_STATUS_LABELS.items() %}<a href="{{ url_for('admin.orders', statut=s) }}"{% if status == s %} aria-current="true"{% endif %}>{{ label }} <span class="nums">{{ counts.get(s, 0) }}</span></a>{% endfor %}</nav>
+<form class="adm-filter" method="get">{% if status %}<input type="hidden" name="statut" value="{{ status }}">{% endif %}<label class="sr-only" for="o-q">{{ _("Rechercher") }}</label><input class="input" id="o-q" type="search" name="q" value="{{ q }}" placeholder="{{ _('Code, nom, téléphone') }}" maxlength="40"><button class="btn btn--ghost" type="submit">{{ _("Rechercher") }}</button></form>
+{% if orders %}
+<div class="table-wrap"><table class="table"><thead><tr><th scope="col">{{ _("Code") }}</th><th scope="col">{{ _("Client") }}</th><th scope="col">{{ _("Wilaya") }}</th><th scope="col" class="num">{{ _("Livres") }}</th><th scope="col" class="num">{{ _("Total") }}</th><th scope="col">{{ _("Statut") }}</th><th scope="col">{{ _("Date") }}</th></tr></thead><tbody>
+{% for o in orders %}<tr><td><a class="pixel" href="{{ url_for('admin.order_detail', order_id=o.id) }}">{{ o.tracking_code }}</a>{% if not o.is_notified %} <span class="dot" title="{{ _('Nouvelle') }}"></span>{% endif %}</td>
+  <td><b>{{ o.full_name }}</b><br><small class="muted">{{ o.phone }}</small></td><td>{{ (WILAYA_AR.get(o.wilaya_code) if lang == 'ar' else None) or o.wilaya_name }}<br><small class="muted">{{ DELIVERY_LABELS[o.delivery_method] }}</small></td>
+  <td class="num nums">{{ o.qty }}</td><td class="num nums">{{ o.total_amount | money }}</td><td><span class="pill pill--{{ o.status }}">{{ ORDER_STATUS_LABELS[o.status] }}</span></td><td class="muted">{{ o.created_at | dt }}</td></tr>{% endfor %}
+</tbody></table></div>
+{% else %}<div class="empty">{{ icon('box') }}<h3>{{ _("Aucune commande") }}</h3><p>{{ _("Elles apparaîtront ici dès qu'un client commande.") }}</p></div>{% endif %}
+{% endblock %}

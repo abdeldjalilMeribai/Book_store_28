@@ -1,0 +1,49 @@
+{% extends "admin/base.html" %}
+{%- from "_macros.html" import icon -%}
+{% block title %}{{ _("Tableau de bord") }}{% endblock %}
+{% block heading %}{{ _("Tableau de bord") }}{% endblock %}
+{% block content %}
+<section class="adm-hello">
+  <img src="{{ static_l('img/deco-admin.jpg') }}" alt="" width="1600" height="900">
+  <div><p class="muted">{{ _("Bonjour %(name)s", name=current_user.username) }}</p><h2>{{ stats.by_status.pending }} {{ _("commande à préparer") if stats.by_status.pending <= 1 else _("commandes à préparer") }}</h2>
+    <a class="btn btn--sm" href="{{ url_for('admin.orders', statut='pending') }}">{{ _("Ouvrir les commandes") }}</a></div>
+</section>
+
+<nav class="periods" aria-label="{{ _('Période') }}">{% for key, label in periods.items() %}<a href="{{ url_for('admin.dashboard', periode=key) }}"{% if key == period %} aria-current="true"{% endif %}>{{ _(label) }}</a>{% endfor %}</nav>
+
+<section class="kpis">
+  <div class="kpi"><span class="kpi__label">{{ _("Chiffre d'affaires livré") }}</span><b class="kpi__value pixel">{{ stats.revenue | money }}</b><small class="muted">{{ stats.books_sold }} {{ _("livres livrés") if stats.books_sold > 1 else _("livre livré") }}</small></div>
+  <div class="kpi"><span class="kpi__label">{{ _("Bénéfice") }}</span><b class="kpi__value pixel">{{ stats.profit | money }}</b><small class="muted">{{ _("Marge") }} {{ stats.margin }} %</small></div>
+  <div class="kpi"><span class="kpi__label">{{ _("En cours de livraison") }}</span><b class="kpi__value pixel">{{ stats.pipeline | money }}</b><small class="muted">{{ _("Commandes en préparation ou expédiées") }}</small></div>
+  <div class="kpi"><span class="kpi__label">{{ _("Commandes") }}</span><b class="kpi__value pixel">{{ stats.orders }}</b><small class="muted">{{ counts.books }} {{ _("livres") }} · {{ counts.users }} {{ _("clients") }} · {{ counts.reviews }} {{ _("avis") }}</small></div>
+</section>
+
+<div class="adm-grid">
+  <section class="panel adm-chart" aria-labelledby="ch-t">
+    <h2 id="ch-t" class="adm-h2">{{ _("Chiffre d'affaires livré") }}</h2>
+    {% set n = stats.series | length %}
+    <svg class="chart" viewBox="0 0 {{ n * 24 }} 140" role="img" aria-label="Histogramme" preserveAspectRatio="none">
+      <line x1="0" y1="120" x2="{{ n * 24 }}" y2="120" class="chart__axis"/>
+      {% for p in stats.series %}{% set h = (p.value * 108 / peak) | round(1) %}
+      <rect class="chart__bar{{ ' chart__bar--empty' if not p.value }}" x="{{ loop.index0 * 24 + 4 }}" y="{{ 120 - (h if p.value else 2) }}" width="16" height="{{ h if p.value else 2 }}" rx="2"><title>{{ p.label }} : {{ p.value | money }}</title></rect>
+      {% endfor %}
+    </svg>
+    <div class="chart__legend"><span>{{ (stats.series[0].label[8:10] ~ '/' ~ stats.series[0].label[5:7]) if period not in ('90d','year','all') else stats.series[0].label[5:7] ~ '/' ~ stats.series[0].label[0:4] }}</span><span>{{ (stats.series[-1].label[8:10] ~ '/' ~ stats.series[-1].label[5:7]) if period not in ('90d','year','all') else stats.series[-1].label[5:7] ~ '/' ~ stats.series[-1].label[0:4] }}</span></div>
+  </section>
+  <section class="panel" aria-labelledby="st-t">
+    <h2 id="st-t" class="adm-h2">{{ _("Statuts") }}</h2>
+    <ul class="status-list">{% set total = stats.orders or 1 %}
+      {% for s, label in ORDER_STATUS_LABELS.items() %}<li><span class="pill pill--{{ s }}">{{ label }}</span><progress class="prog prog--{{ s }}" max="{{ total }}" value="{{ stats.by_status[s] }}"></progress><b class="nums">{{ stats.by_status[s] }}</b></li>{% endfor %}
+    </ul>
+  </section>
+</div>
+
+<div class="adm-grid adm-grid--3">
+  <section class="panel" aria-labelledby="tp-t"><h2 id="tp-t" class="adm-h2">{{ _("Livres les plus vendus") }}</h2>
+    {% if stats.top %}<ol class="rank">{% for t in stats.top %}<li><span class="rank__n pixel">{{ loop.index }}</span><span><b>{{ t.title }}</b><small class="muted"> {{ t.author }}</small></span><b class="nums">{{ t.qty }}</b></li>{% endfor %}</ol>{% else %}<p class="muted">{{ _("Aucune vente sur la période.") }}</p>{% endif %}</section>
+  <section class="panel" aria-labelledby="ls-t"><h2 id="ls-t" class="adm-h2">{{ _("Stock bas") }}</h2>
+    {% if low_stock %}<ul class="rank">{% for b in low_stock %}<li><span></span><a href="{{ url_for('admin.stock', livre=b.id) }}">{{ b.title }}</a><b class="nums {{ 'text-danger' if b.stock == 0 else 'text-warn' }}">{{ b.stock }}</b></li>{% endfor %}</ul>{% else %}<p class="muted">{{ _("Tous les stocks sont confortables.") }}</p>{% endif %}</section>
+  <section class="panel" aria-labelledby="rc-t"><h2 id="rc-t" class="adm-h2">{{ _("Dernières commandes") }}</h2>
+    {% if recent %}<ul class="rank">{% for o in recent %}<li><span class="pill pill--{{ o.status }}">{{ ORDER_STATUS_LABELS[o.status] }}</span><a href="{{ url_for('admin.order_detail', order_id=o.id) }}">{{ o.full_name }}</a><b class="nums">{{ o.total_amount | money }}</b></li>{% endfor %}</ul>{% else %}<p class="muted">{{ _("Pas encore de commande.") }}</p>{% endif %}</section>
+</div>
+{% endblock %}

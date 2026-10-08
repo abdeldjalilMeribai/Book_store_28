@@ -1,0 +1,16 @@
+{% extends "_auth.html" %}
+{% from "_macros.html" import field %}
+{% block title %}{{ _("Connexion") }} — {{ settings.site_name }}{% endblock %}
+{% block auth_form %}
+<h1 class="page-title">{{ _("Connexion") }}</h1>
+<p class="muted">{{ _("Retrouvez vos commandes en un seul endroit.") }}</p>
+<form method="post" action="{{ url_for('account.login') }}" novalidate>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  {% if next %}<input type="hidden" name="next" value="{{ next }}">{% endif %}
+  {{ field('email', _('Adresse e-mail'), form.email, None, 'email', autocomplete='email', maxlength=255) }}
+  <div class="field"><label for="f-password">{{ _("Mot de passe") }}</label><input class="input" id="f-password" name="password" type="password" required autocomplete="current-password" maxlength="200"></div>
+  <label class="check mb-field"><input type="checkbox" name="remember" value="1"> {{ _("Rester connecté") }}</label>
+  <button class="btn btn--lg btn--block mt-4" type="submit">{{ _("Se connecter") }}</button>
+</form>
+<p class="mt-5 muted">{{ _("Pas encore de compte ?") }} <a href="{{ url_for('account.register', next=next) }}">{{ _("Créer un compte") }}</a></p>
+{% endblock %}

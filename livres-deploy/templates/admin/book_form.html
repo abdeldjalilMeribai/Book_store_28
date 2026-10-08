@@ -1,0 +1,61 @@
+{% extends "admin/base.html" %}
+{%- from "_macros.html" import icon -%}
+{% block title %}{{ (_('Modifier') ~ ' ' ~ book.title) if book else _('Nouveau livre') }}{% endblock %}
+{% block heading %}{{ _('Modifier le livre') if book else _('Nouveau livre') }}{% endblock %}
+{% block actions %}<a class="btn btn--ghost btn--sm" href="{{ url_for('admin.books') }}">{{ icon('arrow-left') }} {{ _("Retour") }}</a>{% if book %}<a class="btn btn--ghost btn--sm" href="{{ url_for('shop.book_detail', slug=book.slug) }}" target="_blank" rel="noopener">{{ icon('eye') }} {{ _("Voir") }}</a>{% endif %}{% endblock %}
+{% block content %}
+{% macro err(n) %}{% if errors.get(n) %}<p class="field-error" id="e-{{ n }}">{{ errors[n] }}</p>{% endif %}{% endmacro %}
+<form class="book-form" method="post" enctype="multipart/form-data" novalidate>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <div class="adm-cols">
+    <div>
+      <fieldset class="panel"><legend>{{ _("Informations") }}</legend>
+        <div class="field"><label for="b-title">{{ _("Titre") }}</label><input class="input" id="b-title" name="title" value="{{ form.title }}" maxlength="160" required{% if errors.title %} aria-invalid="true"{% endif %}>{{ err('title') }}</div>
+        <div class="field-row">
+          <div class="field"><label for="b-author">{{ _("Auteur") }}</label><input class="input" id="b-author" name="author" value="{{ form.author }}" maxlength="120" required{% if errors.author %} aria-invalid="true"{% endif %}>{{ err('author') }}</div>
+          <div class="field"><label for="b-pub">{{ _("Éditeur") }} <span class="muted">({{ _("facultatif") }})</span></label><input class="input" id="b-pub" name="publisher" value="{{ form.publisher }}" maxlength="120"></div>
+        </div>
+        <div class="field"><label for="b-desc">{{ _("Résumé") }}</label><textarea class="textarea" id="b-desc" name="description" rows="7" maxlength="5000" required{% if errors.description %} aria-invalid="true"{% endif %}>{{ form.description }}</textarea><p class="field-hint">{{ _("Séparez les paragraphes par une ligne vide.") }}</p>{{ err('description') }}</div>
+        <div class="field"><label for="b-hl">{{ _("Points forts") }} <span class="muted">({{ _("un par ligne, facultatif") }})</span></label><textarea class="textarea" id="b-hl" name="highlights" rows="3" maxlength="800">{{ form.highlights }}</textarea></div>
+      </fieldset>
+      <fieldset class="panel"><legend>{{ _("Fiche technique") }}</legend>
+        <div class="field-row">
+          <div class="field"><label for="b-lang">{{ _("Langue") }}</label><select class="select" id="b-lang" name="language">{% for l in languages %}<option{% if form.language == l %} selected{% endif %} value="{{ l }}">{{ VALUE_LABELS.get(l, l) }}</option>{% endfor %}</select></div>
+          <div class="field"><label for="b-format">{{ _("Format") }}</label><select class="select" id="b-format" name="format">{% for f in formats %}<option{% if form.format == f %} selected{% endif %} value="{{ f }}">{{ VALUE_LABELS.get(f, f) }}</option>{% endfor %}</select></div>
+          <div class="field"><label for="b-pages">{{ _("Pages") }}</label><input class="input" id="b-pages" name="pages" type="number" min="1" inputmode="numeric" value="{{ form.pages }}"></div>
+          <div class="field"><label for="b-year">{{ _("Année") }}</label><input class="input" id="b-year" name="year" type="number" min="1000" max="2100" inputmode="numeric" value="{{ form.year }}"></div>
+          <div class="field"><label for="b-isbn">{{ _("ISBN") }}</label><input class="input" id="b-isbn" name="isbn" value="{{ form.isbn }}" maxlength="20"></div>
+        </div>
+      </fieldset>
+    </div>
+    <div>
+      <fieldset class="panel"><legend>{{ _("Prix et stock") }}</legend>
+        <div class="field-row">
+          <div class="field"><label for="b-price">{{ _("Prix de vente (DA)") }}</label><input class="input" id="b-price" name="price" type="number" min="1" inputmode="numeric" value="{{ form.price }}" required{% if errors.price %} aria-invalid="true"{% endif %}>{{ err('price') }}</div>
+          <div class="field"><label for="b-old">{{ _("Ancien prix") }} <span class="muted">({{ _("promo") }})</span></label><input class="input" id="b-old" name="old_price" type="number" min="0" inputmode="numeric" value="{{ form.old_price }}">{{ err('old_price') }}</div>
+          <div class="field"><label for="b-cost">{{ _("Prix d'achat (DA)") }}</label><input class="input" id="b-cost" name="cost_price" type="number" min="0" inputmode="numeric" value="{{ form.cost_price }}"><p class="field-hint">{{ _("Sert au calcul du bénéfice.") }}</p></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label for="b-stock">{{ _("Stock") }}</label><input class="input" id="b-stock" name="stock" type="number" min="0" inputmode="numeric" value="{{ form.stock }}" required{% if errors.stock %} aria-invalid="true"{% endif %}>{{ err('stock') }}</div>
+          <div class="field"><label for="b-thr">{{ _("Alerte stock bas") }}</label><input class="input" id="b-thr" name="low_stock_threshold" type="number" min="0" inputmode="numeric" value="{{ form.low_stock_threshold }}"></div>
+        </div>
+      </fieldset>
+      <fieldset class="panel"><legend>{{ _("Classement") }}</legend>
+        <div class="field"><label for="b-cat">{{ _("Genre") }}</label><select class="select" id="b-cat" name="category_id"><option value="">{{ _("Sans genre") }}</option>{% for c in categories %}<option value="{{ c.id }}"{% if form.category_id == c.id %} selected{% endif %}>{{ c.name }}</option>{% endfor %}</select></div>
+        <div class="field"><label for="b-badge">{{ _("Étiquette") }}</label><select class="select" id="b-badge" name="badge">{% for k, v in badges.items() %}<option value="{{ k }}"{% if form.badge == k %} selected{% endif %}>{{ _(v) }}</option>{% endfor %}</select></div>
+        <label class="check"><input type="checkbox" name="is_featured" value="1"{% if form.is_featured %} checked{% endif %}> {{ _("Coup de cœur (page d'accueil)") }}</label>
+        <label class="check mt-4"><input type="checkbox" name="is_published" value="1"{% if form.is_published %} checked{% endif %}> {{ _("Visible dans le catalogue") }}</label>
+      </fieldset>
+      <fieldset class="panel"><legend>{{ _("Images") }}</legend>
+        <div class="field"><label for="b-cover">{{ _("Première de couverture") }}</label>
+          {% if book and book.cover_url %}<img class="cover-prev" src="{{ book.cover_url }}" alt="{{ _('Couverture actuelle') }}" width="90" height="135">{% endif %}
+          <input class="input" id="b-cover" name="cover" type="file" accept="image/jpeg,image/png,image/webp,image/jfif,image/avif,.jpg,.jpeg,.png,.webp,.jfif,.avif" data-preview>{{ err('cover') }}<p class="field-hint">{{ _("JPG, PNG ou WEBP. Format conseillé : 2 × 3 (ex. 800 × 1200 px).") }}</p></div>
+        <div class="field"><label for="b-imgs">{{ _("Autres images") }} <span class="muted">({{ _("4ᵉ de couverture, extraits — 6 max") }})</span></label><input class="input" id="b-imgs" name="images" type="file" accept="image/jpeg,image/png,image/webp,image/jfif,image/avif,.jpg,.jpeg,.png,.webp,.jfif,.avif" multiple></div>
+        {% if images %}<ul class="img-grid">{% for im in images %}<li><img src="{{ im.url }}" alt="{{ im.caption }}" width="80" height="120" loading="lazy"><span>{{ im.caption }}</span>
+          <button class="btn btn--danger btn--sm" type="submit" formaction="{{ url_for('admin.book_image_delete', book_id=book.id, image_id=im.id) }}" formmethod="post" formnovalidate data-confirm-btn="{{ _('Supprimer cette image ?') }}" aria-label="{{ _('Supprimer %(caption)s', caption=im.caption) }}">{{ icon('trash') }}</button></li>{% endfor %}</ul>{% endif %}
+      </fieldset>
+    </div>
+  </div>
+  <div class="form-bar"><button class="btn btn--lg" type="submit">{{ icon('check') }} {{ _("Enregistrer") }}</button><a class="btn btn--lg btn--ghost" href="{{ url_for('admin.books') }}">{{ _("Annuler") }}</a></div>
+</form>
+{% endblock %}

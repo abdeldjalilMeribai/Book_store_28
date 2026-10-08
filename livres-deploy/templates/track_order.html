@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Suivre ma commande — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="split">
+  <div class="split__art"><picture><source media="(max-width: 720px)" srcset="{{ static_v('img/deco-suivi-sm.jpg') }}"><img src="{{ static_v('img/deco-suivi.jpg') }}" alt="" width="1600" height="900"></picture></div>
+  <div class="split__form wrap">
+    <h1 class="page-title">{{ _("Où est mon colis ?") }}</h1>
+    <p class="muted">{{ _("Entrez le code reçu à la commande et le numéro de téléphone utilisé.") }}</p>
+    {% if error %}<div class="flash flash--error" role="alert">{{ icon('alert') }}<span>{{ error }}</span></div>{% endif %}
+    <form method="post" action="{{ url_for('shop.track') }}" class="track-form" novalidate>
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="field"><label for="t-code">{{ _("Code de suivi") }}</label><input class="input pixel" id="t-code" name="code" value="{{ code }}" placeholder="L28-XXXX-XXXX-XXXX" autocomplete="off" autocapitalize="characters" spellcheck="false" maxlength="40" required></div>
+      <div class="field"><label for="t-phone">{{ _("Téléphone") }}</label><input class="input" id="t-phone" name="phone" type="tel" inputmode="tel" value="{{ phone }}" placeholder="05 50 12 34 56" autocomplete="tel" maxlength="30" required></div>
+      <button class="btn btn--lg" type="submit">{{ icon('search') }} {{ _("Suivre ma commande") }}</button>
+    </form>
+  </div>
+</section>
+
+{% if order %}
+<section class="wrap track-result" aria-live="polite">
+  <div class="flex-between track-result__head">
+    <div><p class="muted small">{{ _("Commande du") }} {{ order.created_at | d }}</p><h2 class="pixel">{{ order.tracking_code }}</h2></div>
+    <span class="pill pill--{{ order.status }}">{{ ORDER_STATUS_LABELS[order.status] }}</span>
+  </div>
+  {% if order.status == 'cancelled' %}
+  <div class="flash flash--error">{{ icon('alert') }}<span>{{ _("Cette commande a été annulée. Pour toute question, contactez-nous avec votre code de suivi.") }}</span></div>
+  {% else %}
+  {% set step = {'pending': 0, 'shipped': 1, 'delivered': 2}[order.status] %}
+<ol class="timeline" style="--p: {{ step }}" aria-label="{{ _('Étapes de la commande') }}">
+  <li class="done{{ ' now' if step == 0 }}"{% if step == 0 %} aria-current="step"{% endif %}>
+    <span class="timeline__node">{{ icon('box') }}</span>{{ _("En préparation") }}<small>{{ _("Commande reçue") }}</small></li>
+  <li class="{{ 'done' if step >= 1 }}{{ ' now' if step == 1 }}"{% if step == 1 %} aria-current="step"{% endif %}>
+    <span class="timeline__node">{{ icon('truck') }}</span>{{ _("Expédiée") }}<small>{{ _("Le livreur vous appelle") }}</small></li>
+  <li class="{{ 'done' if step >= 2 }}{{ ' now' if step == 2 }}"{% if step == 2 %} aria-current="step"{% endif %}>
+    <span class="timeline__node">{{ icon('home') }}</span>{{ _("Livrée") }}<small>{{ _("Paiement au livreur") }}</small></li>
+</ol>
+  {% endif %}
+  <div class="track-grid">
+    <div class="panel"><h3>{{ _("Livres") }}</h3><ul class="track-items">{% for it in items %}<li class="flex-between"><span>{{ it.quantity }} × <b>{{ it.title }}</b> <span class="muted">— {{ it.author }}</span></span><span class="nums">{{ (it.price * it.quantity) | money }}</span></li>{% endfor %}</ul></div>
+    <div class="panel"><h3>{{ _("Livraison") }}</h3>
+      <p class="mb-0">{{ DELIVERY_LABELS[order.delivery_method] }} — {{ (WILAYA_AR.get(order.wilaya_code) if lang == 'ar' else None) or order.wilaya_name }}, {{ order.commune }}</p>
+      <dl class="sum"><div><dt>{{ _("Livres") }}</dt><dd class="nums">{{ order.subtotal | money }}</dd></div><div><dt>{{ _("Livraison") }}</dt><dd class="nums">{{ order.delivery_price | money }}</dd></div><div class="sum__total"><dt>{{ _("À régler au livreur") }}</dt><dd class="nums">{{ order.total_amount | money }}</dd></div></dl></div>
+  </div>
+</section>
+{% endif %}
+{% endblock %}

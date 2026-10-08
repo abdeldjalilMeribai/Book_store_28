@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon, status_pill with context %}
+{% block title %}{{ _("Mon compte") }} — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="wrap account">
+  <div class="flex-between page-head page-head--row"><div><h1 class="page-title">{{ _("Bonjour %(name)s", name=current_user.username) }}</h1><p class="muted">{{ current_user.email }}</p></div>
+    <div class="account__actions">
+      {% if current_user.is_admin %}<a class="btn" href="{{ url_for('admin.dashboard') }}">{{ icon('grid') }} {{ _("Administration") }}</a>{% endif %}
+      <a class="btn btn--ghost" href="{{ url_for('account.change_password') }}">{{ icon('lock') }} {{ _("Mot de passe") }}</a>
+      <form method="post" action="{{ url_for('account.logout') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn--ghost" type="submit">{{ icon('logout') }} {{ _("Se déconnecter") }}</button></form>
+    </div></div>
+  <h2 class="section__title">{{ _("Mes commandes") }}</h2>
+  {% if orders %}
+  <ul class="orders-list">
+    {% for o in orders %}
+    <li class="panel flex-between"><div><b class="pixel">{{ o.tracking_code }}</b><p class="muted small mb-0">{{ o.created_at | d }} · {{ (WILAYA_AR.get(o.wilaya_code) if lang == 'ar' else None) or o.wilaya_name }}</p></div>
+      <div class="orders-list__right">{{ status_pill(o.status) }}<b class="nums">{{ o.total_amount | money }}</b><a class="btn btn--ghost btn--sm" href="{{ url_for('shop.track', code=o.tracking_code) }}">{{ _("Suivre") }}</a></div></li>
+    {% endfor %}
+  </ul>
+  {% else %}
+  <div class="empty">{{ icon('box') }}<h3>{{ _("Aucune commande pour l'instant") }}</h3><p>{{ _("Les commandes passées en étant connecté apparaissent ici.") }}</p><a class="btn" href="{{ url_for('shop.catalog') }}">{{ _("Parcourir le catalogue") }}</a></div>
+  {% endif %}
+</section>
+{% endblock %}

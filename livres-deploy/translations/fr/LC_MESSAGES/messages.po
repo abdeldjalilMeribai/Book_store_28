@@ -1,0 +1,1531 @@
+# French translations for PROJECT.
+# Copyright (C) 2026 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2026-10-08 08:20+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.18.0\n"
+
+#, python-format
+msgid ""
+"%(site_name)s est une librairie en ligne algérienne. Notre idée est "
+"simple : vous ne devriez pas avoir à payer un livre avant de l'avoir "
+"entre les mains."
+msgstr ""
+"%(site_name)s est une librairie en ligne algérienne. Notre idée est "
+"simple : vous ne devriez pas avoir à payer un livre avant de l'avoir "
+"entre les mains."
+
+msgid "+10 ou −2"
+msgstr "+10 ou −2"
+
+msgid "1. Vos coordonnées"
+msgstr "1. Vos coordonnées"
+
+msgid "2. Livraison"
+msgstr "2. Livraison"
+
+msgid "3. Paiement"
+msgstr "3. Paiement"
+
+msgid "4ᵉ de couverture, extraits — 6 max"
+msgstr "4ᵉ de couverture, extraits — 6 max"
+
+msgid "58 wilayas"
+msgstr "58 wilayas"
+
+msgid "8 caractères minimum, avec une majuscule, une minuscule et un chiffre."
+msgstr "8 caractères minimum, avec une majuscule, une minuscule et un chiffre."
+
+msgid "Abonnés à la newsletter"
+msgstr "Abonnés à la newsletter"
+
+msgid "Accueil"
+msgstr "Accueil"
+
+msgid "Achat"
+msgstr "Achat"
+
+msgid "Actif"
+msgstr "Actif"
+
+msgid "Action"
+msgstr "Action"
+
+msgid "Actions"
+msgstr "Actions"
+
+msgid "Admin"
+msgstr "Admin"
+
+msgid "Administration"
+msgstr "Administration"
+
+msgid "Adresse"
+msgstr "Adresse"
+
+msgid "Adresse complète"
+msgstr "Adresse complète"
+
+msgid "Adresse e-mail"
+msgstr "Adresse e-mail"
+
+msgid "Afficher"
+msgstr "Afficher"
+
+msgid "Aide"
+msgstr "Aide"
+
+msgid "Ajouter"
+msgstr "Ajouter"
+
+msgid "Ajouter au panier"
+msgstr "Ajouter au panier"
+
+msgid "Ajouter aux favoris"
+msgstr "Ajouter aux favoris"
+
+msgid "Ajoutez un livre : vous ne payez rien avant la livraison."
+msgstr "Ajoutez un livre : vous ne payez rien avant la livraison."
+
+msgid "Ajoutez un livre pour passer commande."
+msgstr "Ajoutez un livre pour passer commande."
+
+msgid "Ajoutez votre premier livre pour remplir le catalogue."
+msgstr "Ajoutez votre premier livre pour remplir le catalogue."
+
+msgid "Ajouté au panier"
+msgstr "Ajouté au panier"
+
+msgid "Ajouté aux favoris"
+msgstr "Ajouté aux favoris"
+
+msgid "Ajuster"
+msgstr "Ajuster"
+
+msgid "Alerte stock bas"
+msgstr "Alerte stock bas"
+
+msgid "Aller au contenu"
+msgstr "Aller au contenu"
+
+msgid "Amazigh"
+msgstr "Amazigh"
+
+msgid "Ancien prix"
+msgstr "Ancien prix"
+
+msgid "Anglais"
+msgstr "Anglais"
+
+msgid "Annuler"
+msgstr "Annuler"
+
+msgid "Annuler remet les livres en stock automatiquement."
+msgstr "Annuler remet les livres en stock automatiquement."
+
+msgid "Annulée"
+msgstr "Annulée"
+
+msgid "Année"
+msgstr "Année"
+
+msgid "Aperçu de la couverture"
+msgstr "Aperçu de la couverture"
+
+msgid "Aperçu du livre"
+msgstr "Aperçu du livre"
+
+msgid "Aperçu indisponible pour le moment."
+msgstr "Aperçu indisponible pour le moment."
+
+msgid "Aperçu rapide"
+msgstr "Aperçu rapide"
+
+msgid "Appliquer"
+msgstr "Appliquer"
+
+msgid "Arabe"
+msgstr "Arabe"
+
+msgid "Aucun"
+msgstr "Aucun"
+
+msgid "Aucun abonné pour l'instant."
+msgstr "Aucun abonné pour l'instant."
+
+msgid "Aucun avis"
+msgstr "Aucun avis"
+
+msgid "Aucun favori"
+msgstr "Aucun favori"
+
+msgid "Aucun genre"
+msgstr "Aucun genre"
+
+msgid "Aucun livre"
+msgstr "Aucun livre"
+
+msgid "Aucun livre ne correspond"
+msgstr "Aucun livre ne correspond"
+
+msgid "Aucun mouvement enregistré."
+msgstr "Aucun mouvement enregistré."
+
+msgid ""
+"Aucun paiement maintenant : vous réglez le livreur en espèces, après "
+"avoir vérifié votre livre."
+msgstr ""
+"Aucun paiement maintenant : vous réglez le livreur en espèces, après "
+"avoir vérifié votre livre."
+
+msgid "Aucune carte, aucun virement. Vous réglez en espèces au livreur."
+msgstr "Aucune carte, aucun virement. Vous réglez en espèces au livreur."
+
+msgid "Aucune commande"
+msgstr "Aucune commande"
+
+msgid "Aucune commande pour l'instant"
+msgstr "Aucune commande pour l'instant"
+
+msgid "Aucune vente sur la période."
+msgstr "Aucune vente sur la période."
+
+msgid "Augmenter"
+msgstr "Augmenter"
+
+msgid "Augmenter la quantité"
+msgstr "Augmenter la quantité"
+
+msgid "Auteur"
+msgstr "Auteur"
+
+msgid "Autre"
+msgstr "Autre"
+
+msgid "Autres images"
+msgstr "Autres images"
+
+msgid "Avis"
+msgstr "Avis"
+
+msgid "Avis clients"
+msgstr "Avis clients"
+
+msgid "Avis lecteurs"
+msgstr "Avis lecteurs"
+
+msgid "Bandeau d'annonce"
+msgstr "Bandeau d'annonce"
+
+msgid "Beau livre"
+msgstr "Beau livre"
+
+msgid "Best-seller"
+msgstr "Best-seller"
+
+msgid "Best-sellers"
+msgstr "Best-sellers"
+
+#, python-format
+msgid "Bonjour %(name)s"
+msgstr "Bonjour %(name)s"
+
+msgid "Broché"
+msgstr "Broché"
+
+msgid "Bureau de livraison"
+msgstr "Bureau de livraison"
+
+msgid "Bénéfice"
+msgstr "Bénéfice"
+
+msgid "Bénéfice sur les livres"
+msgstr "Bénéfice sur les livres"
+
+msgid "Catalogue"
+msgstr "Catalogue"
+
+msgid "Ce livre est épuisé."
+msgstr "Ce livre est épuisé."
+
+msgid ""
+"Cette commande a été annulée. Pour toute question, contactez-nous avec "
+"votre code de suivi."
+msgstr ""
+"Cette commande a été annulée. Pour toute question, contactez-nous avec "
+"votre code de suivi."
+
+msgid "Changer mon mot de passe"
+msgstr "Changer mon mot de passe"
+
+#, python-format
+msgid "Chaque colis est protégé. En cas de problème, échange sous %(days)s jours."
+msgstr "Chaque colis est protégé. En cas de problème, échange sous %(days)s jours."
+
+msgid "Chiffre d'affaires livré"
+msgstr "Chiffre d'affaires livré"
+
+msgid "Choisir…"
+msgstr "Choisir…"
+
+msgid "Choisissez un mot de passe que vous n'utilisez nulle part ailleurs."
+msgstr "Choisissez un mot de passe que vous n'utilisez nulle part ailleurs."
+
+msgid "Choisissez une wilaya"
+msgstr "Choisissez une wilaya"
+
+msgid "Choisissez votre wilaya."
+msgstr "Choisissez votre wilaya."
+
+msgid "Classement"
+msgstr "Classement"
+
+msgid "Client"
+msgstr "Client"
+
+msgid "Clients"
+msgstr "Clients"
+
+msgid "Code"
+msgstr "Code"
+
+msgid "Code copié"
+msgstr "Code copié"
+
+msgid "Code de suivi"
+msgstr "Code de suivi"
+
+msgid "Code, nom, téléphone"
+msgstr "Code, nom, téléphone"
+
+msgid "Commande"
+msgstr "Commande"
+
+msgid "Commande confirmée"
+msgstr "Commande confirmée"
+
+msgid "Commande du"
+msgstr "Commande du"
+
+#, python-format
+msgid "Commande du %(date)s"
+msgstr "Commande du %(date)s"
+
+msgid "Commande enregistrée"
+msgstr "Commande enregistrée"
+
+msgid "Commande reçue"
+msgstr "Commande reçue"
+
+msgid "Commander"
+msgstr "Commander"
+
+msgid "Commander maintenant"
+msgstr "Commander maintenant"
+
+msgid "Commandes"
+msgstr "Commandes"
+
+msgid "Commandes en préparation ou expédiées"
+msgstr "Commandes en préparation ou expédiées"
+
+msgid "Comment se passe le paiement ?"
+msgstr "Comment se passe le paiement ?"
+
+msgid "Comment suivre ma commande ?"
+msgstr "Comment suivre ma commande ?"
+
+msgid "Commune"
+msgstr "Commune"
+
+msgid "Comptes"
+msgstr "Comptes"
+
+msgid "Comptez"
+msgstr "Comptez"
+
+msgid "Confirmer la commande"
+msgstr "Confirmer la commande"
+
+msgid "Confirmer le mot de passe"
+msgstr "Confirmer le mot de passe"
+
+msgid "Confirmer le nouveau mot de passe"
+msgstr "Confirmer le nouveau mot de passe"
+
+msgid "Connexion"
+msgstr "Connexion"
+
+msgid "Connexion impossible. Vérifiez votre réseau puis réessayez."
+msgstr "Connexion impossible. Vérifiez votre réseau puis réessayez."
+
+msgid "Contact et réseaux"
+msgstr "Contact et réseaux"
+
+msgid "Continuer mes achats"
+msgstr "Continuer mes achats"
+
+msgid "Copie impossible"
+msgstr "Copie impossible"
+
+msgid "Copier le code"
+msgstr "Copier le code"
+
+msgid "Coup de cœur"
+msgstr "Coup de cœur"
+
+msgid "Coup de cœur (page d'accueil)"
+msgstr "Coup de cœur (page d'accueil)"
+
+#, python-format
+msgid "Coup de cœur : %(title)s"
+msgstr "Coup de cœur : %(title)s"
+
+msgid "Couverture actuelle"
+msgstr "Couverture actuelle"
+
+#, python-format
+msgid "Couverture de %(title)s"
+msgstr "Couverture de %(title)s"
+
+#, python-brace-format
+msgid "Couverture de {title}"
+msgstr "Couverture de {title}"
+
+msgid "Créer mon compte"
+msgstr "Créer mon compte"
+
+msgid "Créer un compte"
+msgstr "Créer un compte"
+
+msgid "Créez des genres pour que vos clients parcourent le catalogue."
+msgstr "Créez des genres pour que vos clients parcourent le catalogue."
+
+msgid "DA"
+msgstr "DA"
+
+msgid "Date"
+msgstr "Date"
+
+msgid "Dernières commandes"
+msgstr "Dernières commandes"
+
+msgid ""
+"Des livres choisis, expédiés partout en Algérie. Vous vérifiez le colis, "
+"puis vous payez le livreur."
+msgstr ""
+"Des livres choisis, expédiés partout en Algérie. Vous vérifiez le colis, "
+"puis vous payez le livreur."
+
+msgid "Des livres qui arrivent jusqu'à vous."
+msgstr "Des livres qui arrivent jusqu'à vous."
+
+msgid "Description"
+msgstr "Description"
+
+msgid "Diminuer"
+msgstr "Diminuer"
+
+msgid "Diminuer la quantité"
+msgstr "Diminuer la quantité"
+
+msgid "Donnez votre avis"
+msgstr "Donnez votre avis"
+
+msgid "Déconnexion"
+msgstr "Déconnexion"
+
+msgid "Découvrir ce livre"
+msgstr "Découvrir ce livre"
+
+msgid "Déjà inscrit ?"
+msgstr "Déjà inscrit ?"
+
+msgid "Délai de livraison"
+msgstr "Délai de livraison"
+
+msgid "Désactiver"
+msgstr "Désactiver"
+
+msgid "Désactivé"
+msgstr "Désactivé"
+
+msgid "Détails"
+msgstr "Détails"
+
+msgid "Détails du livre"
+msgstr "Détails du livre"
+
+msgid "E-mail"
+msgstr "E-mail"
+
+msgid "Elles apparaîtront ici dès qu'un client commande."
+msgstr "Elles apparaîtront ici dès qu'un client commande."
+
+msgid "En confirmant, vous recevrez un code de suivi à conserver."
+msgstr "En confirmant, vous recevrez un code de suivi à conserver."
+
+msgid "En cours de livraison"
+msgstr "En cours de livraison"
+
+msgid "En ligne"
+msgstr "En ligne"
+
+msgid "En préparation"
+msgstr "En préparation"
+
+msgid "En stock"
+msgstr "En stock"
+
+msgid "En stock uniquement"
+msgstr "En stock uniquement"
+
+msgid "En stock, expédié sous 24 h"
+msgstr "En stock, expédié sous 24 h"
+
+msgid "Enregistrer"
+msgstr "Enregistrer"
+
+msgid "Entrez le code reçu à la commande et le numéro de téléphone utilisé."
+msgstr "Entrez le code reçu à la commande et le numéro de téléphone utilisé."
+
+msgid "Envoi en cours…"
+msgstr "Envoi en cours…"
+
+msgid "Erreur"
+msgstr "Erreur"
+
+msgid "Espèces, au livreur, après vérification du colis"
+msgstr "Espèces, au livreur, après vérification du colis"
+
+msgid "Essais & Philosophie"
+msgstr "Essais & Philosophie"
+
+msgid "Essayez un autre mot, retirez un filtre ou parcourez tout le catalogue."
+msgstr "Essayez un autre mot, retirez un filtre ou parcourez tout le catalogue."
+
+msgid "Et si le livre arrive abîmé ?"
+msgstr "Et si le livre arrive abîmé ?"
+
+msgid "Explorer"
+msgstr "Explorer"
+
+msgid "Expédiée"
+msgstr "Expédiée"
+
+msgid "Facebook (URL)"
+msgstr "Facebook (URL)"
+
+msgid "Facultatif : vous pouvez aussi commander sans compte."
+msgstr "Facultatif : vous pouvez aussi commander sans compte."
+
+msgid "Faut-il un compte pour commander ?"
+msgstr "Faut-il un compte pour commander ?"
+
+msgid "Fermer"
+msgstr "Fermer"
+
+msgid "Fermer le panier"
+msgstr "Fermer le panier"
+
+msgid "Fermer les favoris"
+msgstr "Fermer les favoris"
+
+msgid "Fiche technique"
+msgstr "Fiche technique"
+
+msgid "Fil d'Ariane"
+msgstr "Fil d'Ariane"
+
+msgid "Filtrer"
+msgstr "Filtrer"
+
+msgid "Filtrer par statut"
+msgstr "Filtrer par statut"
+
+msgid "Filtres actifs"
+msgstr "Filtres actifs"
+
+msgid "Filtres et tri"
+msgstr "Filtres et tri"
+
+msgid "Finaliser ma commande"
+msgstr "Finaliser ma commande"
+
+msgid "Format"
+msgstr "Format"
+
+msgid "Français"
+msgstr "Français"
+
+msgid "Genre"
+msgstr "Genre"
+
+msgid "Genres"
+msgstr "Genres"
+
+msgid "Historique"
+msgstr "Historique"
+
+msgid "ISBN"
+msgstr "ISBN"
+
+msgid "Identité et accueil"
+msgstr "Identité et accueil"
+
+msgid "Ils ont reçu leur colis"
+msgstr "Ils ont reçu leur colis"
+
+msgid "Images"
+msgstr "Images"
+
+msgid "Images du livre"
+msgstr "Images du livre"
+
+msgid "Indiquez votre adresse pour la livraison à domicile."
+msgstr "Indiquez votre adresse pour la livraison à domicile."
+
+msgid "Indiquez votre commune."
+msgstr "Indiquez votre commune."
+
+msgid "Indiquez votre nom complet."
+msgstr "Indiquez votre nom complet."
+
+msgid "Indisponible"
+msgstr "Indisponible"
+
+msgid "Informations"
+msgstr "Informations"
+
+msgid "Inscrit"
+msgstr "Inscrit"
+
+msgid "Instagram (URL)"
+msgstr "Instagram (URL)"
+
+msgid "JPG, PNG ou WEBP. Format conseillé : 2 × 3 (ex. 800 × 1200 px)."
+msgstr "JPG, PNG ou WEBP. Format conseillé : 2 × 3 (ex. 800 × 1200 px)."
+
+msgid "Jeunesse & Bandes dessinées"
+msgstr "Jeunesse & Bandes dessinées"
+
+msgid "Jours pour un échange"
+msgstr "Jours pour un échange"
+
+msgid "La commande n'a pas pu être enregistrée."
+msgstr "La commande n'a pas pu être enregistrée."
+
+msgid "Langue"
+msgstr "Langue"
+
+msgid "Le livre est abîmé ? Refusez-le. Sinon, vous réglez le livreur en espèces."
+msgstr "Le livre est abîmé ? Refusez-le. Sinon, vous réglez le livreur en espèces."
+
+msgid "Le livreur vous appelle"
+msgstr "Le livreur vous appelle"
+
+msgid "Le livreur vous appelle et vient chez vous"
+msgstr "Le livreur vous appelle et vient chez vous"
+
+msgid "Lectures pour petits et grands"
+msgstr "Lectures pour petits et grands"
+
+msgid "Les avis laissés sur les fiches livres apparaîtront ici."
+msgstr "Les avis laissés sur les fiches livres apparaîtront ici."
+
+msgid "Les commandes passées en étant connecté apparaissent ici."
+msgstr "Les commandes passées en étant connecté apparaissent ici."
+
+msgid ""
+"Les frais de livraison sont calculés à l'étape suivante, selon votre "
+"wilaya."
+msgstr ""
+"Les frais de livraison sont calculés à l'étape suivante, selon votre "
+"wilaya."
+
+msgid "Les grands classiques et romans contemporains"
+msgstr "Les grands classiques et romans contemporains"
+
+msgid "Les plus lus"
+msgstr "Les plus lus"
+
+msgid "Les plus vendus"
+msgstr "Les plus vendus"
+
+msgid "Les tarifs par wilaya se modifient dans le fichier"
+msgstr "Les tarifs par wilaya se modifient dans le fichier"
+
+msgid "Littérature algérienne"
+msgstr "Littérature algérienne"
+
+msgid "Livraison"
+msgstr "Livraison"
+
+msgid "Livraison et retours"
+msgstr "Livraison et retours"
+
+msgid "Livre"
+msgstr "Livre"
+
+msgid "Livre en bon état"
+msgstr "Livre en bon état"
+
+msgid "Livres"
+msgstr "Livres"
+
+msgid "Livres commandés"
+msgstr "Livres commandés"
+
+msgid "Livres les plus vendus"
+msgstr "Livres les plus vendus"
+
+msgid "Livres similaires"
+msgstr "Livres similaires"
+
+msgid "Livrée"
+msgstr "Livrée"
+
+msgid "Marge"
+msgstr "Marge"
+
+msgid "Masquer"
+msgstr "Masquer"
+
+msgid "Masqué"
+msgstr "Masqué"
+
+msgid "Masqués"
+msgstr "Masqués"
+
+msgid "Max"
+msgstr "Max"
+
+msgid "Menu"
+msgstr "Menu"
+
+msgid "Merci !"
+msgstr "Merci !"
+
+#, python-format
+msgid "Merci %(name)s, c'est noté."
+msgstr "Merci %(name)s, c'est noté."
+
+msgid "Mes commandes"
+msgstr "Mes commandes"
+
+msgid "Mes favoris"
+msgstr "Mes favoris"
+
+msgid "Mettre à jour"
+msgstr "Mettre à jour"
+
+msgid "Min"
+msgstr "Min"
+
+msgid "Mode de livraison"
+msgstr "Mode de livraison"
+
+msgid "Modifier"
+msgstr "Modifier"
+
+msgid "Modifier le livre"
+msgstr "Modifier le livre"
+
+msgid "Mon compte"
+msgstr "Mon compte"
+
+msgid "Mon panier"
+msgstr "Mon panier"
+
+msgid "Mot de passe"
+msgstr "Mot de passe"
+
+msgid "Mot de passe actuel"
+msgstr "Mot de passe actuel"
+
+msgid "Motif"
+msgstr "Motif"
+
+msgid "Motif (réception, casse…)"
+msgstr "Motif (réception, casse…)"
+
+msgid "Navigation mobile"
+msgstr "Navigation mobile"
+
+msgid "Navigation principale"
+msgstr "Navigation principale"
+
+msgid "Niveaux de stock"
+msgstr "Niveaux de stock"
+
+msgid "Nom"
+msgstr "Nom"
+
+msgid "Nom complet"
+msgstr "Nom complet"
+
+msgid "Nom de la boutique"
+msgstr "Nom de la boutique"
+
+msgid "Non. Un compte sert seulement à retrouver vos commandes au même endroit."
+msgstr "Non. Un compte sert seulement à retrouver vos commandes au même endroit."
+
+msgid "Note"
+msgstr "Note"
+
+msgid "Note :"
+msgstr "Note :"
+
+msgid ""
+"Nous choisissons des livres que nous aimerions recevoir : romans, "
+"littérature algérienne, jeunesse, idées. Chaque colis est emballé pour "
+"arriver intact."
+msgstr ""
+"Nous choisissons des livres que nous aimerions recevoir : romans, "
+"littérature algérienne, jeunesse, idées. Chaque colis est emballé pour "
+"arriver intact."
+
+msgid "Nous contacter"
+msgstr "Nous contacter"
+
+msgid "Nous expédions"
+msgstr "Nous expédions"
+
+msgid ""
+"Nous préparons votre colis. Notez ce code : il vous permet de suivre la "
+"commande avec votre numéro de téléphone."
+msgstr ""
+"Nous préparons votre colis. Notez ce code : il vous permet de suivre la "
+"commande avec votre numéro de téléphone."
+
+msgid "Nouveau genre"
+msgstr "Nouveau genre"
+
+msgid "Nouveau livre"
+msgstr "Nouveau livre"
+
+msgid "Nouveau mot de passe"
+msgstr "Nouveau mot de passe"
+
+msgid "Nouveauté"
+msgstr "Nouveauté"
+
+msgid "Nouveautés"
+msgstr "Nouveautés"
+
+msgid "Nouveautés par e-mail"
+msgstr "Nouveautés par e-mail"
+
+msgid "Nouvelle"
+msgstr "Nouvelle"
+
+msgid "Nouvelles commandes"
+msgstr "Nouvelles commandes"
+
+msgid "Numéro invalide : 10 chiffres commençant par 05, 06 ou 07."
+msgstr "Numéro invalide : 10 chiffres commençant par 05, 06 ou 07."
+
+msgid "Ordre"
+msgstr "Ordre"
+
+msgid ""
+"Oui, tant qu'elle n'est pas expédiée : écrivez-nous sur WhatsApp en "
+"indiquant votre code de suivi."
+msgstr ""
+"Oui, tant qu'elle n'est pas expédiée : écrivez-nous sur WhatsApp en "
+"indiquant votre code de suivi."
+
+msgid "Ouvrir le menu"
+msgstr "Ouvrir le menu"
+
+msgid "Ouvrir les commandes"
+msgstr "Ouvrir les commandes"
+
+msgid "Où est mon colis ?"
+msgstr "Où est mon colis ?"
+
+msgid "Page précédente"
+msgstr "Page précédente"
+
+msgid "Page suivante"
+msgstr "Page suivante"
+
+msgid "Pages"
+msgstr "Pages"
+
+msgid "Pagination"
+msgstr "Pagination"
+
+msgid "Paiement au livreur"
+msgstr "Paiement au livreur"
+
+msgid "Paiement à la livraison"
+msgstr "Paiement à la livraison"
+
+msgid "Paiement à la livraison."
+msgstr "Paiement à la livraison."
+
+msgid "Paramètres"
+msgstr "Paramètres"
+
+msgid "Parcourir le catalogue"
+msgstr "Parcourir le catalogue"
+
+msgid "Parcourir par genre"
+msgstr "Parcourir par genre"
+
+msgid "Pas encore d'avis. Soyez le premier à partager votre lecture."
+msgstr "Pas encore d'avis. Soyez le premier à partager votre lecture."
+
+msgid "Pas encore de commande."
+msgstr "Pas encore de commande."
+
+msgid "Pas encore de compte ?"
+msgstr "Pas encore de compte ?"
+
+msgid "Passée le"
+msgstr "Passée le"
+
+msgid "Payez à la livraison"
+msgstr "Payez à la livraison"
+
+#, python-format
+msgid "Plus que %(n)s exemplaire"
+msgstr "Plus que %(n)s exemplaire"
+
+#, python-format
+msgid "Plus que %(n)s exemplaires"
+msgstr "Plus que %(n)s exemplaires"
+
+#, python-brace-format
+msgid "Plus que {n} en stock"
+msgstr "Plus que {n} en stock"
+
+msgid "Poche"
+msgstr "Poche"
+
+msgid "Points forts"
+msgstr "Points forts"
+
+msgid "Première de couverture"
+msgstr "Première de couverture"
+
+msgid "Prix"
+msgstr "Prix"
+
+msgid "Prix (DA)"
+msgstr "Prix (DA)"
+
+msgid "Prix croissant"
+msgstr "Prix croissant"
+
+msgid "Prix d'achat (DA)"
+msgstr "Prix d'achat (DA)"
+
+msgid "Prix de vente (DA)"
+msgstr "Prix de vente (DA)"
+
+msgid "Prix décroissant"
+msgstr "Prix décroissant"
+
+msgid "Prix et stock"
+msgstr "Prix et stock"
+
+msgid "Prix maximum"
+msgstr "Prix maximum"
+
+msgid "Prix minimum"
+msgstr "Prix minimum"
+
+msgid "Publier mon avis"
+msgstr "Publier mon avis"
+
+msgid "Puis-je modifier ou annuler une commande ?"
+msgstr "Puis-je modifier ou annuler une commande ?"
+
+msgid "Période"
+msgstr "Période"
+
+msgid "Quantité"
+msgstr "Quantité"
+
+#, python-brace-format
+msgid "Quantité de {title}"
+msgstr "Quantité de {title}"
+
+#, python-brace-format
+msgid "Quantité limitée à {n} pour ce livre."
+msgstr "Quantité limitée à {n} pour ce livre."
+
+msgid "Quels sont les délais et les frais de livraison ?"
+msgstr "Quels sont les délais et les frais de livraison ?"
+
+msgid "Questions fréquentes"
+msgstr "Questions fréquentes"
+
+msgid "Qui sommes-nous"
+msgstr "Qui sommes-nous"
+
+msgid "Recherche"
+msgstr "Recherche"
+
+#, python-format
+msgid "Recherche : %(q)s"
+msgstr "Recherche : %(q)s"
+
+msgid "Rechercher"
+msgstr "Rechercher"
+
+msgid "Rechercher un livre, un auteur"
+msgstr "Rechercher un livre, un auteur"
+
+msgid "Rechercher…"
+msgstr "Rechercher…"
+
+msgid "Refusez le colis au moment de la livraison, ou contactez-nous sous"
+msgstr "Refusez le colis au moment de la livraison, ou contactez-nous sous"
+
+msgid "Relié"
+msgstr "Relié"
+
+msgid "Rester connecté"
+msgstr "Rester connecté"
+
+msgid "Retirer"
+msgstr "Retirer"
+
+msgid "Retirer ce filtre"
+msgstr "Retirer ce filtre"
+
+msgid "Retiré des favoris"
+msgstr "Retiré des favoris"
+
+msgid "Retour"
+msgstr "Retour"
+
+msgid "Retour sous"
+msgstr "Retour sous"
+
+msgid "Retour à l'accueil"
+msgstr "Retour à l'accueil"
+
+msgid "Retrouvez vos commandes en un seul endroit."
+msgstr "Retrouvez vos commandes en un seul endroit."
+
+msgid "Romans & Fiction"
+msgstr "Romans & Fiction"
+
+msgid "Romans, nouvelles et poésie d'auteurs algériens"
+msgstr "Romans, nouvelles et poésie d'auteurs algériens"
+
+msgid "Réactiver"
+msgstr "Réactiver"
+
+msgid "Récapitulatif"
+msgstr "Récapitulatif"
+
+msgid "Réflexions, sciences humaines et histoire"
+msgstr "Réflexions, sciences humaines et histoire"
+
+msgid "Réglages"
+msgstr "Réglages"
+
+msgid "Réglages du site"
+msgstr "Réglages du site"
+
+msgid "Réinitialiser"
+msgstr "Réinitialiser"
+
+msgid "Répartition des notes"
+msgstr "Répartition des notes"
+
+msgid "Résumé"
+msgstr "Résumé"
+
+msgid "S'inscrire"
+msgstr "S'inscrire"
+
+msgid "Sans genre"
+msgstr "Sans genre"
+
+msgid "Se connecter"
+msgstr "Se connecter"
+
+msgid "Se déconnecter"
+msgstr "Se déconnecter"
+
+msgid "Sert au calcul du bénéfice."
+msgstr "Sert au calcul du bénéfice."
+
+msgid "Seuil d'alerte"
+msgstr "Seuil d'alerte"
+
+msgid "Sous-titre"
+msgstr "Sous-titre"
+
+msgid "Sous-titre de l'accueil"
+msgstr "Sous-titre de l'accueil"
+
+msgid "Sous-total"
+msgstr "Sous-total"
+
+msgid "Sous-total livres"
+msgstr "Sous-total livres"
+
+msgid "Statut"
+msgstr "Statut"
+
+msgid "Statuts"
+msgstr "Statuts"
+
+msgid "Stock"
+msgstr "Stock"
+
+msgid "Stock bas"
+msgstr "Stock bas"
+
+msgid "Suivre"
+msgstr "Suivre"
+
+msgid "Suivre ma commande"
+msgstr "Suivre ma commande"
+
+#, python-format
+msgid "Supprimer %(caption)s"
+msgstr "Supprimer %(caption)s"
+
+#, python-format
+msgid "Supprimer %(name)s"
+msgstr "Supprimer %(name)s"
+
+#, python-format
+msgid "Supprimer %(title)s"
+msgstr "Supprimer %(title)s"
+
+msgid "Supprimer cet avis ?"
+msgstr "Supprimer cet avis ?"
+
+msgid "Supprimer cette image ?"
+msgstr "Supprimer cette image ?"
+
+#, python-format
+msgid "Supprimer l'avis de %(name)s"
+msgstr "Supprimer l'avis de %(name)s"
+
+#, python-format
+msgid ""
+"Supprimer le genre « %(name)s » ? Ses livres resteront en ligne, sans "
+"genre."
+msgstr ""
+"Supprimer le genre « %(name)s » ? Ses livres resteront en ligne, sans "
+"genre."
+
+#, python-format
+msgid "Supprimer « %(title)s » ? Cette action est définitive."
+msgstr "Supprimer « %(title)s » ? Cette action est définitive."
+
+msgid "Système"
+msgstr "Système"
+
+msgid "Séparez les paragraphes par une ligne vide."
+msgstr "Séparez les paragraphes par une ligne vide."
+
+msgid "Tableau de bord"
+msgstr "Tableau de bord"
+
+msgid "Titre"
+msgstr "Titre"
+
+msgid "Titre A → Z"
+msgstr "Titre A → Z"
+
+msgid "Titre de l'accueil"
+msgstr "Titre de l'accueil"
+
+msgid "Titre, auteur, ISBN"
+msgstr "Titre, auteur, ISBN"
+
+msgid "Total"
+msgstr "Total"
+
+msgid "Touchez le cœur d'un livre pour le retrouver ici."
+msgstr "Touchez le cœur d'un livre pour le retrouver ici."
+
+msgid "Tous"
+msgstr "Tous"
+
+msgid "Tous les genres"
+msgstr "Tous les genres"
+
+msgid "Tous les stocks sont confortables."
+msgstr "Tous les stocks sont confortables."
+
+msgid "Tout le catalogue"
+msgstr "Tout le catalogue"
+
+msgid "Tout voir"
+msgstr "Tout voir"
+
+msgid "Toutes"
+msgstr "Toutes"
+
+msgid "Trier par"
+msgstr "Trier par"
+
+msgid "Téléphone"
+msgstr "Téléphone"
+
+msgid "Un livre de votre panier est épuisé : retirez-le pour continuer."
+msgstr "Un livre de votre panier est épuisé : retirez-le pour continuer."
+
+msgid ""
+"Un seul formulaire : nom, téléphone, wilaya. Aucun paiement en ligne, "
+"aucune carte."
+msgstr ""
+"Un seul formulaire : nom, téléphone, wilaya. Aucun paiement en ligne, "
+"aucune carte."
+
+msgid "Une erreur est survenue."
+msgstr "Une erreur est survenue."
+
+msgid "Une librairie qui vient à vous."
+msgstr "Une librairie qui vient à vous."
+
+msgid "Une ligne par retour à la ligne."
+msgstr "Une ligne par retour à la ligne."
+
+msgid "Utilisez la page"
+msgstr "Utilisez la page"
+
+msgid "Valider"
+msgstr "Valider"
+
+msgid "Variation pour"
+msgstr "Variation pour"
+
+msgid "Ville"
+msgstr "Ville"
+
+msgid "Visible dans le catalogue"
+msgstr "Visible dans le catalogue"
+
+msgid "Voir"
+msgstr "Voir"
+
+msgid "Voir la fiche"
+msgstr "Voir la fiche"
+
+msgid "Voir le catalogue"
+msgstr "Voir le catalogue"
+
+msgid "Voir le site"
+msgstr "Voir le site"
+
+msgid "Voir tout le catalogue"
+msgstr "Voir tout le catalogue"
+
+msgid "Vos coordonnées"
+msgstr "Vos coordonnées"
+
+msgid "Votre adresse e-mail"
+msgstr "Votre adresse e-mail"
+
+msgid "Votre avis"
+msgstr "Votre avis"
+
+msgid "Votre commande"
+msgstr "Votre commande"
+
+msgid ""
+"Votre mot de passe est provisoire : choisissez-en un nouveau pour "
+"continuer."
+msgstr ""
+"Votre mot de passe est provisoire : choisissez-en un nouveau pour "
+"continuer."
+
+msgid "Votre nom"
+msgstr "Votre nom"
+
+msgid "Votre note"
+msgstr "Votre note"
+
+msgid "Votre panier a été mis à jour (prix ou stock)."
+msgstr "Votre panier a été mis à jour (prix ou stock)."
+
+msgid "Votre panier est vide"
+msgstr "Votre panier est vide"
+
+msgid "Votre ville"
+msgstr "Votre ville"
+
+msgid "Vous aimerez aussi"
+msgstr "Vous aimerez aussi"
+
+msgid ""
+"Vous choisissez, vous commandez en une minute, nous expédions. Le livreur"
+" vous appelle, vous ouvrez le colis, vous vérifiez le livre — et "
+"seulement alors, vous payez. S'il est abîmé, vous le refusez."
+msgstr ""
+"Vous choisissez, vous commandez en une minute, nous expédions. Le livreur"
+" vous appelle, vous ouvrez le colis, vous vérifiez le livre — et "
+"seulement alors, vous payez. S'il est abîmé, vous le refusez."
+
+msgid "Vous commandez"
+msgstr "Vous commandez"
+
+msgid "Vous ne payez qu'en ouvrant le colis."
+msgstr "Vous ne payez qu'en ouvrant le colis."
+
+msgid "Vous récupérez le colis au bureau le plus proche"
+msgstr "Vous récupérez le colis au bureau le plus proche"
+
+msgid "Vous vérifiez, puis vous payez"
+msgstr "Vous vérifiez, puis vous payez"
+
+msgid "WhatsApp"
+msgstr "WhatsApp"
+
+msgid "Wilaya"
+msgstr "Wilaya"
+
+msgid "alerte ≤"
+msgstr "alerte ≤"
+
+msgid "après avoir vérifié votre livre"
+msgstr "après avoir vérifié votre livre"
+
+msgid "avec votre code de suivi et le numéro de téléphone saisi à la commande."
+msgstr "avec votre code de suivi et le numéro de téléphone saisi à la commande."
+
+msgid "avis"
+msgstr "avis"
+
+msgid "clients"
+msgstr "clients"
+
+msgid "commande à préparer"
+msgstr "commande à préparer"
+
+msgid "commandes à préparer"
+msgstr "commandes à préparer"
+
+msgid "dans les 58 wilayas"
+msgstr "dans les 58 wilayas"
+
+msgid "dans les 58 wilayas, à domicile ou au bureau de livraison."
+msgstr "dans les 58 wilayas, à domicile ou au bureau de livraison."
+
+msgid "de"
+msgstr "de"
+
+msgid ""
+"en général. Les frais dépendent de votre wilaya et du mode choisi "
+"(domicile ou bureau de livraison) : ils s'affichent avant que vous "
+"validiez."
+msgstr ""
+"en général. Les frais dépendent de votre wilaya et du mode choisi "
+"(domicile ou bureau de livraison) : ils s'affichent avant que vous "
+"validiez."
+
+msgid "ex. 213556723036"
+msgstr "ex. 213556723036"
+
+msgid "facultatif"
+msgstr "facultatif"
+
+msgid "jours pour un échange."
+msgstr "jours pour un échange."
+
+msgid "jours si le livre est abîmé"
+msgstr "jours si le livre est abîmé"
+
+msgid "livre"
+msgstr "livre"
+
+msgid "livre livré"
+msgstr "livre livré"
+
+msgid "livres"
+msgstr "livres"
+
+msgid "livres livrés"
+msgstr "livres livrés"
+
+msgid "maintenant"
+msgstr "maintenant"
+
+msgid "promo"
+msgstr "promo"
+
+msgid "reste"
+msgstr "reste"
+
+msgid "si le livre est abîmé"
+msgstr "si le livre est abîmé"
+
+msgid "sur"
+msgstr "sur"
+
+msgid "sur 5"
+msgstr "sur 5"
+
+msgid "titre"
+msgstr "titre"
+
+msgid "titres"
+msgstr "titres"
+
+msgid "un par ligne, facultatif"
+msgstr "un par ligne, facultatif"
+
+msgid "vide = masqué"
+msgstr "vide = masqué"
+
+msgid "À domicile"
+msgstr "À domicile"
+
+msgid ""
+"À domicile ou en bureau de livraison, avec un tarif clair avant de "
+"confirmer."
+msgstr ""
+"À domicile ou en bureau de livraison, avec un tarif clair avant de "
+"confirmer."
+
+msgid "À encaisser"
+msgstr "À encaisser"
+
+msgid ""
+"À la livraison, en espèces, une fois le colis ouvert et le livre vérifié."
+" Rien n'est débité à la commande."
+msgstr ""
+"À la livraison, en espèces, une fois le colis ouvert et le livre vérifié."
+" Rien n'est débité à la commande."
+
+msgid "À payer"
+msgstr "À payer"
+
+msgid "À payer à la commande"
+msgstr "À payer à la commande"
+
+msgid "À propos"
+msgstr "À propos"
+
+msgid "À régler au livreur"
+msgstr "À régler au livreur"
+
+msgid "Articles commandés"
+msgstr "Articles commandés"
+
+msgid "Colis livré avec succès"
+msgstr "Colis livré avec succès"
+
+msgid "Commande annulée"
+msgstr "Commande annulée"
+
+msgid "Copier"
+msgstr "Copier"
+
+msgid "Frais de port"
+msgstr "Frais de port"
+
+msgid "Le livreur vous contactera par téléphone avant son passage."
+msgstr "Le livreur vous contactera par téléphone avant son passage."
+
+msgid "Livraison & Règlement"
+msgstr "Livraison & Règlement"
+
+msgid ""
+"Nous préparons soigneusement vos livres. Le transporteur prendra en "
+"charge votre colis sous peu."
+msgstr ""
+"Nous préparons soigneusement vos livres. Le transporteur prendra en "
+"charge votre colis sous peu."
+
+msgid "Paiement en espèces au livreur après vérification du colis."
+msgstr "Paiement en espèces au livreur après vérification du colis."
+
+msgid "Statut de la commande"
+msgstr "Statut de la commande"
+
+msgid "Terminé"
+msgstr "Terminé"
+
+msgid "En cours"
+msgstr "En cours"
+
+msgid "À venir"
+msgstr "À venir"
+
+msgid "Votre colis est en route !"
+msgstr "Votre colis est en route !"
+
+msgid "Votre commande est en cours de préparation"
+msgstr "Votre commande est en cours de préparation"
+
+msgid "Votre commande vous a été remise en mains propres. Bonne lecture !"
+msgstr "Votre commande vous a été remise en mains propres. Bonne lecture !"
+
+#, python-format
+msgid "Échange sous %(days)s jours"
+msgstr "Échange sous %(days)s jours"
+
+msgid "Écrire sur WhatsApp"
+msgstr "Écrire sur WhatsApp"
+
+msgid "Éditeur"
+msgstr "Éditeur"
+
+msgid "Épuisé"
+msgstr "Épuisé"
+
+msgid "Épuisé : retirez ce livre pour commander"
+msgstr "Épuisé : retirez ce livre pour commander"
+
+msgid "Épuisé : retirez-le du panier"
+msgstr "Épuisé : retirez-le du panier"
+
+msgid "Épuisé pour le moment"
+msgstr "Épuisé pour le moment"
+
+msgid "Étape 1"
+msgstr "Étape 1"
+
+msgid "Étape 2"
+msgstr "Étape 2"
+
+msgid "Étape 3"
+msgstr "Étape 3"
+
+#, python-format
+msgid "Étape %(current)s sur %(total)s"
+msgstr "Étape %(current)s sur %(total)s"
+
+msgid "Étapes de la commande"
+msgstr "Étapes de la commande"
+
+msgid "État"
+msgstr "État"
+
+msgid "Étiquette"
+msgstr "Étiquette"
+
+msgid "à"
+msgstr "à"
+
+msgid "à la commande"
+msgstr "à la commande"
+

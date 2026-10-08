@@ -5,7 +5,10 @@ import unittest
 
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
+import pgtest  # définit DATABASE_URL vers la base de test : à garder AVANT « from app import … »
 import db
+import seed_demo
+import tempfile
 import security
 from app import create_app
 
@@ -13,7 +16,11 @@ from app import create_app
 class I18nTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.app = create_app({"TESTING": True})
+        pgtest.reset()
+        cls.uploads = tempfile.mkdtemp()
+        cls.app = create_app({"DATABASE": pgtest.TEST_URL, "TESTING": True, "UPLOAD_FOLDER": cls.uploads})
+        seed_demo.OUT_DIR = cls.uploads
+        seed_demo.run(cls.app)
 
     def setUp(self):
         self.client = self.app.test_client()
