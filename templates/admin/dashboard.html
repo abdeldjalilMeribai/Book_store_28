@@ -4,7 +4,7 @@
 {% block heading %}{{ _("Tableau de bord") }}{% endblock %}
 {% block content %}
 <section class="adm-hello">
-  <img src="{{ static_v('img/deco-admin.jpg') }}" alt="" width="1600" height="900">
+  <img src="{{ static_l('img/deco-admin.jpg') }}" alt="" width="1600" height="900">
   <div><p class="muted">{{ _("Bonjour %(name)s", name=current_user.username) }}</p><h2>{{ stats.by_status.pending }} {{ _("commande à préparer") if stats.by_status.pending <= 1 else _("commandes à préparer") }}</h2>
     <a class="btn btn--sm" href="{{ url_for('admin.orders', statut='pending') }}">{{ _("Ouvrir les commandes") }}</a></div>
 </section>

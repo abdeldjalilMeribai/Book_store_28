@@ -4,8 +4,8 @@
 {% block content %}
 <section class="hero">
   <picture class="hero__bg">
-    <source media="(max-width: 720px)" srcset="{{ static_v('img/hero-1-sm.jpg') }}">
-    <img src="{{ static_v('img/hero-1.jpg') }}" alt="" width="1600" height="900" fetchpriority="high">
+    <source media="(max-width: 720px)" srcset="{{ static_l('img/hero-1-sm.jpg') }}">
+    <img src="{{ static_l('img/hero-1.jpg') }}" alt="" width="1600" height="900" fetchpriority="high">
   </picture>
   <div class="wrap hero__inner">
     <h1 class="hero__title">{% for ln in settings.hero_title | lines %}{{ ln }}{% if not loop.last %}<br>{% endif %}{% endfor %}</h1>
@@ -75,7 +75,7 @@
 {% endif %}
 
 <section class="about-band" aria-labelledby="t-about">
-  <img src="{{ static_v('img/about.jpg') }}" alt="" width="1600" height="900" loading="lazy">
+  <img src="{{ static_l('img/about.jpg') }}" alt="" width="1600" height="900" loading="lazy">
   <div class="wrap about-band__inner">
     <div class="about-band__text">
       <h2 id="t-about">{{ _("Une librairie qui vient à vous.") }}</h2>

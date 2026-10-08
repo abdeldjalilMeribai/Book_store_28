@@ -27,11 +27,14 @@
   <div class="flash flash--error">{{ icon('alert') }}<span>{{ _("Cette commande a été annulée. Pour toute question, contactez-nous avec votre code de suivi.") }}</span></div>
   {% else %}
   {% set step = {'pending': 0, 'shipped': 1, 'delivered': 2}[order.status] %}
-  <ol class="timeline" aria-label="{{ _('Étapes de la commande') }}">
-    <li class="done{{ ' now' if step == 0 }}">{{ _("En préparation") }}<small>{{ _("Commande reçue") }}</small></li>
-    <li class="{{ 'done' if step >= 1 }}{{ ' now' if step == 1 }}">{{ _("Expédiée") }}<small>{{ _("Le livreur vous appelle") }}</small></li>
-    <li class="{{ 'done' if step >= 2 }}{{ ' now' if step == 2 }}">{{ _("Livrée") }}<small>{{ _("Paiement au livreur") }}</small></li>
-  </ol>
+<ol class="timeline" style="--p: {{ step }}" aria-label="{{ _('Étapes de la commande') }}">
+  <li class="done{{ ' now' if step == 0 }}"{% if step == 0 %} aria-current="step"{% endif %}>
+    <span class="timeline__node">{{ icon('box') }}</span>{{ _("En préparation") }}<small>{{ _("Commande reçue") }}</small></li>
+  <li class="{{ 'done' if step >= 1 }}{{ ' now' if step == 1 }}"{% if step == 1 %} aria-current="step"{% endif %}>
+    <span class="timeline__node">{{ icon('truck') }}</span>{{ _("Expédiée") }}<small>{{ _("Le livreur vous appelle") }}</small></li>
+  <li class="{{ 'done' if step >= 2 }}{{ ' now' if step == 2 }}"{% if step == 2 %} aria-current="step"{% endif %}>
+    <span class="timeline__node">{{ icon('home') }}</span>{{ _("Livrée") }}<small>{{ _("Paiement au livreur") }}</small></li>
+</ol>
   {% endif %}
   <div class="track-grid">
     <div class="panel"><h3>{{ _("Livres") }}</h3><ul class="track-items">{% for it in items %}<li class="flex-between"><span>{{ it.quantity }} × <b>{{ it.title }}</b> <span class="muted">— {{ it.author }}</span></span><span class="nums">{{ (it.price * it.quantity) | money }}</span></li>{% endfor %}</ul></div>

@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% from "_macros.html" import icon, status_pill %}
+{% from "_macros.html" import icon, status_pill with context %}
 {% block title %}{{ _("Mon compte") }} — {{ settings.site_name }}{% endblock %}
 {% block content %}
 <section class="wrap account">

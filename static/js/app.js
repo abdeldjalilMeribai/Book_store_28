@@ -183,6 +183,7 @@
   // ───── Tiroirs ─────
   let lastFocus = null;
   function openDrawer(name) {
+    $('#mobile-sheet')?.classList.remove('is-open'); $('[data-menu]')?.setAttribute('aria-expanded', 'false');
     const drawer = $(`[data-drawer="${name}"]`); if (!drawer) return;
     lastFocus = document.activeElement; $$('.drawer.is-open').forEach(closeDrawer);
     drawer.classList.add('is-open'); drawer.setAttribute('aria-hidden', 'false'); $('[data-scrim]').classList.add('is-open'); document.body.classList.add('no-scroll');

@@ -57,9 +57,7 @@
       <button type="button" class="icon-btn burger" data-menu aria-expanded="false" aria-controls="mobile-sheet" aria-label="{{ _('Ouvrir le menu') }}"><span class="burger__open">{{ icon('menu') }}</span><span class="burger__close">{{ icon('close') }}</span></button>
     </div>
   </div>
-</header>
-
-<div class="mobile-sheet" id="mobile-sheet">
+  <div class="mobile-sheet" id="mobile-sheet">
   <form class="searchbar" role="search" action="{{ url_for('shop.catalog') }}" method="get">
     <label class="sr-only" for="q-mobile">{{ _("Rechercher un livre, un auteur") }}</label>
     {{ icon('search') }}
@@ -75,6 +73,9 @@
     {% if current_user %}<a href="{{ url_for('account.profile') }}">{{ _("Mon compte") }} {{ icon('arrow') }}</a>{% else %}<a href="{{ url_for('account.login') }}">{{ _("Se connecter") }} {{ icon('arrow') }}</a>{% endif %}
   </nav>
 </div>
+</header>
+
+
 
 {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}
 <div class="wrap flashes" role="status">

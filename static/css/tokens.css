@@ -32,6 +32,7 @@
   --font-display: "Bricolage", "Arial Narrow", system-ui, sans-serif;
   --font-body: "Work Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-pixel: "Pixelify", ui-monospace, "Courier New", monospace;
+  --font-num: var(--font-display);
 
   --step--1: clamp(0.8rem, 0.78rem + 0.1vw, 0.875rem);
   --step-0: clamp(1rem, 0.97rem + 0.15vw, 1.0625rem);

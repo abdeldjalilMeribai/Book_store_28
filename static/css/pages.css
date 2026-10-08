@@ -21,7 +21,7 @@
 .hero__bg, .hero__bg img { position: absolute; inset: 0; width: 100%; height: 100%; }
 .hero__bg img { object-fit: cover; object-position: 62% 50%; z-index: -2; }
 .hero::after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, var(--ink-0) 0%, rgb(10 8 6 / .9) 26%, rgb(10 8 6 / .45) 58%, rgb(10 8 6 / .05) 100%), linear-gradient(0deg, var(--ink-0) 0%, transparent 22%); }
-.hero__inner { padding-block: var(--space-8) var(--space-7); }
+.hero__inner { position: relative; z-index: 1; padding-block: var(--space-8) var(--space-7); }
 .hero__title { font-size: var(--step-4); max-width: 11ch; text-shadow: 0 2px 30px rgb(0 0 0 / .6); }
 .hero__sub { font-size: var(--step-1); color: var(--paper-dim); max-width: 36ch; margin: var(--space-5) 0 var(--space-7); line-height: 1.45; }
 .hero__screen { margin-bottom: var(--space-5); }
@@ -110,7 +110,7 @@ progress::-webkit-progress-bar { background: var(--ink-3); } progress::-webkit-p
 .checkout .line { grid-template-columns: 48px 1fr auto; padding: .7rem 0; } .checkout .line img { width: 48px; }
 .checkout .choice label { align-items: center; } .checkout .choice .icon { color: var(--orange); }
 .checkout .panel { margin-bottom: var(--space-5); }
-.done { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-8); align-items: start; padding-block: var(--space-8); }
+section.done { display: grid; grid-template-columns: 1.3fr 1fr; gap: var(--space-8); align-items: start; padding-block: var(--space-8); }
 .done__ok { display: inline-flex; gap: .5rem; align-items: center; color: var(--ok); font-weight: 700; margin-bottom: var(--space-4); } .done h1 { font-size: var(--step-3); margin-bottom: var(--space-4); }
 .screen__value--code { font-size: clamp(1.3rem, .9rem + 2.2vw, 2.4rem); letter-spacing: .02em; }
 .done__actions { display: flex; gap: .7rem; flex-wrap: wrap; } .done__sum ul { display: grid; gap: .6rem; margin-top: var(--space-3); }
@@ -146,7 +146,7 @@ progress::-webkit-progress-bar { background: var(--ink-3); } progress::-webkit-p
   .filters__toggle { display: flex; align-items: center; gap: .6rem; padding: .85rem 1rem; border: 1.5px solid var(--line); border-radius: 12px; font-weight: 700; cursor: pointer; background: var(--ink-1); }
   .filters__body { padding-top: var(--space-4); }
   .pdp { grid-template-columns: 1fr; gap: var(--space-6); } .pdp__gallery { position: static; }
-  .reviews, .checkout, .done, .track-grid, .split { grid-template-columns: 1fr; } .checkout__summary { position: static; order: -1; }
+  .reviews, .checkout, section.done, .track-grid, .split { grid-template-columns: 1fr; } .checkout__summary { position: static; order: -1; }
   .split__art { height: 260px; border-right: 0; border-bottom: 1px solid var(--line-soft); } .split__form { max-width: none; padding-block: var(--space-6); }
   .how__steps { grid-template-columns: 1fr; } .spotlight { grid-template-columns: 1fr; gap: var(--space-6); } .spotlight__cover { max-width: 240px; }
   .genre-index a { grid-template-columns: 1fr auto auto; } .genre-index__desc { display: none; }
@@ -162,3 +162,15 @@ progress::-webkit-progress-bar { background: var(--ink-3); } progress::-webkit-p
   .pdp__bar .price { font-size: 1.5rem; } .floating-wa { bottom: 5.2rem; }
   .specs { grid-template-columns: 1fr; } .section { padding-top: var(--space-7); } .how { margin-top: var(--space-8); }
 }
+
+.price, .choice__price, .line__price, .screen__value, .sum__total dd, .moves li > b, .rank__n {
+  font-weight: 700; letter-spacing: -.01em; font-variant-numeric: lining-nums tabular-nums;
+}
+.price s { font-weight: 500; }
+
+/* ───────── Images : version arabe (texte à droite) ───────── */
+[dir="rtl"] .hero__bg img { object-position: 38% 50%; }
+@media (min-width: 721px) {
+  [dir="rtl"] .hero::after { background: linear-gradient(270deg, var(--ink-0) 0%, rgb(10 8 6 / .9) 26%, rgb(10 8 6 / .45) 58%, rgb(10 8 6 / .05) 100%), linear-gradient(0deg, var(--ink-0) 0%, transparent 22%); }
+}
+[dir="rtl"] .about-band::after { background: linear-gradient(270deg, rgb(10 8 6 / .92) 0%, rgb(10 8 6 / .6) 50%, rgb(10 8 6 / .15) 100%); }

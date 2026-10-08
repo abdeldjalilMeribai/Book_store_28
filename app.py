@@ -144,6 +144,15 @@ def create_app(overrides=None):
             ver = 0
         return url_for("static", filename=path, v=ver)
 
+    @app.template_global()
+    def static_l(path):
+        """Comme static_v, mais en arabe prend la version miroir « -ar » si elle existe."""
+        if str(get_locale()) == "ar":
+            root, ext = os.path.splitext(path)
+            if os.path.exists(os.path.join(app.static_folder, root + "-ar" + ext)):
+                path = root + "-ar" + ext
+        return static_v(path)
+    
     # ── Blueprints ─────────────────────────────────────────
     from views_shop import bp as shop_bp
     from views_account import bp as account_bp

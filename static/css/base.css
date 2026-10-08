@@ -21,7 +21,7 @@ table { border-collapse: collapse; width: 100%; }
 [hidden] { display: none !important; }
 small, .small { font-size: var(--step--1); }
 .muted { color: var(--muted); }
-.pixel { font-family: var(--font-pixel); font-weight: 500; letter-spacing: 0; font-variant-numeric: tabular-nums; }
+.pixel { font-family: var(--font-num); font-weight: 700; letter-spacing: -.01em; font-variant-numeric: lining-nums tabular-nums; }
 .nums { font-variant-numeric: tabular-nums lining-nums; }
 
 /* Surfaces du navigateur dessinées par la marque */
@@ -53,3 +53,4 @@ main { flex: 1; }
 .sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
 .flex-between { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
 .mt-4 { margin-top: var(--space-4); } .mt-5 { margin-top: var(--space-5); } .mt-6 { margin-top: var(--space-6); } .mb-0 { margin-bottom: 0; }
+html.menu-open, html.menu-open body { overflow: hidden; }
