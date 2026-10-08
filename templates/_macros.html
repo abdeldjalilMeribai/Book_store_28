@@ -1,0 +1,43 @@
+{% macro icon(name, cls='') %}<svg class="icon {{ cls }}" aria-hidden="true"><use href="#i-{{ name }}"/></svg>{% endmacro %}
+
+{% macro stars(value) %}
+<span class="stars" role="img" aria-label="{{ _('Note :') }} {{ value or 0 }} {{ _('sur 5') }}">{% for i in range(1, 6) %}<svg class="icon icon-fill{{ '' if (value or 0) >= i - 0.25 else ' off' }}" aria-hidden="true"><use href="#i-star"/></svg>{% endfor %}</span>
+{% endmacro %}
+
+{% macro field(name, label, value='', errors=None, type='text', required=True, hint=None, autocomplete=None, maxlength=None, inputmode=None) %}
+<div class="field">
+  <label for="f-{{ name }}">{{ label }}{% if not required %} <span class="muted">({{ _("facultatif") }})</span>{% endif %}</label>
+  <input class="input" id="f-{{ name }}" name="{{ name }}" type="{{ type }}" value="{{ value }}"{% if required %} required{% endif %}
+    {% if autocomplete %} autocomplete="{{ autocomplete }}"{% endif %}{% if maxlength %} maxlength="{{ maxlength }}"{% endif %}{% if inputmode %} inputmode="{{ inputmode }}"{% endif %}
+    {% if errors and errors.get(name) %} aria-invalid="true" aria-describedby="e-{{ name }}"{% endif %}>
+  {% if hint %}<p class="field-hint">{{ hint }}</p>{% endif %}
+  {% if errors and errors.get(name) %}<p class="field-error" id="e-{{ name }}">{{ errors[name] }}</p>{% endif %}
+</div>
+{% endmacro %}
+
+{% macro book_card(b) %}
+{% set out = b.stock <= 0 %}
+<article class="book" data-book data-id="{{ b.id }}" data-slug="{{ b.slug }}" data-title="{{ b.title }}" data-author="{{ b.author }}" data-price="{{ b.price }}" data-cover="{{ b.cover_url or '' }}" data-stock="{{ b.stock }}">
+  <a class="book__cover" href="{{ url_for('shop.book_detail', slug=b.slug) }}" tabindex="-1" aria-hidden="true">
+    {% if b.cover_url %}<img src="{{ b.cover_url }}" alt="" loading="lazy" width="400" height="600">{% else %}<span class="book__ph">{{ b.title }}</span>{% endif %}
+    {% if b.alt_image %}<img class="book__alt" src="{{ b.alt_image }}" alt="" loading="lazy" width="400" height="600">{% endif %}
+  </a>
+  <div class="book__badges">
+    {% if out %}<span class="badge badge--out">{{ _("Épuisé") }}</span>{% elif b.badge == 'new' %}<span class="badge badge--new">{{ _("Nouveauté") }}</span>{% elif b.badge == 'bestseller' %}<span class="badge badge--bestseller">{{ _("Best-seller") }}</span>{% endif %}
+    {% if b.old_price and not out %}<span class="badge badge--promo">−{{ ((b.old_price - b.price) * 100 / b.old_price) | round | int }} %</span>{% endif %}
+  </div>
+  <button type="button" class="book__wish" data-wish aria-pressed="false" aria-label="{{ _('Ajouter aux favoris') }}">{{ icon('heart') }}</button>
+  {% if not out %}<button type="button" class="btn btn--dark btn--sm book__quick" data-quick="{{ b.id }}">{{ _("Aperçu rapide") }}</button>{% endif %}
+  <div class="book__meta">
+    <h3 class="book__title" dir="auto"><a href="{{ url_for('shop.book_detail', slug=b.slug) }}">{{ b.title }}</a></h3>
+    <p class="book__author">{{ b.author }}</p>
+    {% if b.rating_count %}<span class="small muted">{{ stars(b.rating_avg) }} {{ b.rating_avg }}</span>{% endif %}
+    <div class="book__foot">
+      <span class="price">{{ b.price | money }}{% if b.old_price %}<s>{{ b.old_price | money }}</s>{% endif %}</span>
+      <button type="button" class="btn btn--sm" data-add{% if out %} disabled{% endif %} aria-label="{{ _('Ajouter au panier') }}">{% if out %}{{ _("Épuisé") }}{% else %}{{ _("Ajouter") }}{% endif %}</button>
+    </div>
+  </div>
+</article>
+{% endmacro %}
+
+{% macro status_pill(status) %}<span class="pill pill--{{ status }}">{{ ORDER_STATUS_LABELS.get(status, status) }}</span>{% endmacro %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}{{ title }} — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="wrap error-page">
+  <div class="screen"><span><span class="screen__label">{{ _("Erreur") }}</span><span class="screen__value">{{ code }}</span></span><span class="screen__knobs" aria-hidden="true"><i></i><i></i></span></div>
+  <h1>{{ title }}</h1><p class="muted">{{ text }}</p>
+  <div class="done__actions"><a class="btn btn--lg" href="{{ url_for('shop.home') }}">{{ _("Retour à l'accueil") }}</a><a class="btn btn--lg btn--ghost" href="{{ url_for('shop.catalog') }}">{{ _("Voir le catalogue") }}</a></div>
+</section>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% from "_macros.html" import book_card, stars, icon %}
+{% block title %}{{ book.title }} — {{ book.author }} — {{ settings.site_name }}{% endblock %}
+{% block description %}{{ book.description[:155] }}{% endblock %}
+{% block content %}
+{% set out = book.stock <= 0 %}
+<div class="wrap">
+  <nav class="crumbs" aria-label="{{ _('Fil d\'Ariane') }}">
+    <a href="{{ url_for('shop.home') }}">{{ _("Accueil") }}</a><span aria-hidden="true">/</span><a href="{{ url_for('shop.catalog') }}">{{ _("Catalogue") }}</a>
+    {% if book.category_name %}<span aria-hidden="true">/</span><a href="{{ url_for('shop.catalog', genre=book.category_slug) }}">{{ book.category_name }}</a>{% endif %}
+  </nav>
+</div>
+
+<article class="wrap pdp" data-book data-id="{{ book.id }}" data-slug="{{ book.slug }}" data-title="{{ book.title }}" data-author="{{ book.author }}" data-price="{{ book.price }}" data-cover="{{ book.cover_url or '' }}" data-stock="{{ book.stock }}">
+  <div class="pdp__gallery" data-gallery>
+    {% if gallery | length > 1 %}
+    <ul class="pdp__thumbs" aria-label="{{ _('Images du livre') }}">
+      {% for g_img in gallery %}<li><button type="button" data-thumb="{{ g_img.url }}" data-caption="{{ g_img.caption }}" aria-current="{{ 'true' if loop.first else 'false' }}" aria-label="{{ g_img.caption }}"><img src="{{ g_img.url }}" alt="" width="80" height="120" loading="lazy"></button></li>{% endfor %}
+    </ul>
+    {% endif %}
+    <div class="pdp__stage">
+      {% if gallery %}<img data-stage src="{{ gallery[0].url }}" alt="{{ _('Couverture de %(title)s', title=book.title) }}" width="600" height="900" fetchpriority="high">{% else %}<span class="book__ph">{{ book.title }}</span>{% endif %}
+      {% if out %}<span class="badge badge--out pdp__badge">{{ _("Épuisé") }}</span>{% elif book.badge == 'new' %}<span class="badge badge--new pdp__badge">{{ _("Nouveauté") }}</span>{% elif book.badge == 'bestseller' %}<span class="badge badge--bestseller pdp__badge">{{ _("Best-seller") }}</span>{% endif %}
+    </div>
+  </div>
+
+  <div class="pdp__info">
+    <h1 class="pdp__title" dir="auto">{{ book.title }}</h1>
+    <p class="pdp__author">{{ _("de") }} <a href="{{ url_for('shop.catalog', auteur=book.author_slug) }}">{{ book.author }}</a></p>
+    {% if book.rating_count %}<a class="pdp__rating" href="#avis" data-tab-link="avis">{{ stars(book.rating_avg) }} <b>{{ book.rating_avg }}</b> <span class="muted">({{ book.rating_count }} {{ _("avis") }})</span></a>{% endif %}
+
+    <p class="pdp__price"><span class="price price--big">{{ book.price | money }}</span>{% if book.old_price %}<s class="muted price">{{ book.old_price | money }}</s><span class="badge badge--promo">−{{ ((book.old_price - book.price) * 100 / book.old_price) | round | int }} %</span>{% endif %}</p>
+    <p class="pdp__stock {{ 'is-out' if out else ('is-low' if book.stock <= book.low_stock_threshold else 'is-ok') }}">
+      {% if out %}{{ icon('alert') }} {{ _("Épuisé pour le moment") }}{% elif book.stock <= book.low_stock_threshold %}{{ icon('clock') }} {{ _("Plus que %(n)s exemplaire", n=book.stock) if book.stock <= 1 else _("Plus que %(n)s exemplaires", n=book.stock) }}{% else %}{{ icon('check') }} {{ _("En stock, expédié sous 24 h") }}{% endif %}
+    </p>
+
+    {% if book.highlights %}<ul class="pdp__points">{% for ln in book.highlights | lines %}<li>{{ icon('check') }}{{ ln }}</li>{% endfor %}</ul>{% endif %}
+
+    <div class="pdp__buy">
+      <div class="qty" role="group" aria-label="{{ _('Quantité') }}">
+        <button type="button" data-qty-minus aria-label="{{ _('Diminuer la quantité') }}" disabled>{{ icon('minus') }}</button>
+        <output data-qty-out aria-live="polite">1</output>
+        <button type="button" data-qty-plus aria-label="{{ _('Augmenter la quantité') }}"{% if book.stock <= 1 %} disabled{% endif %}>{{ icon('plus') }}</button>
+      </div>
+      <button type="button" class="btn btn--lg" data-add data-qty-source{% if out %} disabled{% endif %}>{{ icon('bag') }} {{ _("Ajouter au panier") }}</button>
+      <button type="button" class="btn btn--lg btn--ghost" data-buy{% if out %} disabled{% endif %}>{{ _("Commander maintenant") }}</button>
+      <button type="button" class="btn btn--lg btn--ghost pdp__wish" data-wish aria-pressed="false" aria-label="{{ _('Ajouter aux favoris') }}">{{ icon('heart') }}</button>
+    </div>
+
+    <ul class="pdp__promises">
+      <li>{{ icon('cash') }}<span><b>{{ _("Payez à la livraison") }}</b> {{ _("après avoir vérifié votre livre") }}</span></li>
+      <li>{{ icon('truck') }}<span><b>{{ _("Livraison") }} {{ settings.delivery_delay }}</b> {{ _("dans les 58 wilayas") }}</span></li>
+      <li>{{ icon('return') }}<span><b>{{ _("Échange sous %(days)s jours", days=settings.return_days) }}</b> {{ _("si le livre est abîmé") }}</span></li>
+    </ul>
+  </div>
+
+  <div class="pdp__bar" aria-hidden="false">
+    <span class="price">{{ book.price | money }}</span>
+    <button type="button" class="btn" data-add{% if out %} disabled{% endif %}>{{ _("Épuisé") if out else _("Ajouter au panier") }}</button>
+  </div>
+</article>
+
+<section class="wrap pdp-tabs" data-tabs>
+  <div class="tabs" role="tablist" aria-label="{{ _('Détails du livre') }}">
+    <button type="button" role="tab" id="tab-desc" aria-controls="panel-desc" aria-selected="true">{{ _("Résumé") }}</button>
+    <button type="button" role="tab" id="tab-tech" aria-controls="panel-tech" aria-selected="false" tabindex="-1">{{ _("Fiche technique") }}</button>
+    <button type="button" role="tab" id="tab-avis" aria-controls="panel-avis" aria-selected="false" tabindex="-1">{{ _("Avis") }} ({{ book.rating_count }})</button>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="panel-desc" aria-labelledby="tab-desc">{{ book.description | paragraphs }}</div>
+  <div class="tabpanel" role="tabpanel" id="panel-tech" aria-labelledby="tab-tech" hidden>
+    <dl class="specs">
+      <div><dt>{{ _("Auteur") }}</dt><dd>{{ book.author }}</dd></div>
+      {% if book.publisher %}<div><dt>{{ _("Éditeur") }}</dt><dd>{{ book.publisher }}</dd></div>{% endif %}
+      {% if book.category_name %}<div><dt>{{ _("Genre") }}</dt><dd>{{ book.category_name }}</dd></div>{% endif %}
+      <div><dt>{{ _("Langue") }}</dt><dd>{{ VALUE_LABELS.get(book.language, book.language) }}</dd></div>
+      {% if book.pages %}<div><dt>{{ _("Pages") }}</dt><dd class="nums">{{ book.pages }}</dd></div>{% endif %}
+      {% if book.format %}<div><dt>{{ _("Format") }}</dt><dd>{{ VALUE_LABELS.get(book.format, book.format) }}</dd></div>{% endif %}
+      {% if book.year %}<div><dt>{{ _("Année") }}</dt><dd class="nums">{{ book.year }}</dd></div>{% endif %}
+      {% if book.isbn %}<div><dt>{{ _("ISBN") }}</dt><dd class="nums">{{ book.isbn }}</dd></div>{% endif %}
+    </dl>
+  </div>
+  <div class="tabpanel" role="tabpanel" id="panel-avis" aria-labelledby="tab-avis" hidden>
+    <div class="reviews">
+      <div class="reviews__summary">
+        {% if book.rating_count %}
+        <p class="reviews__big pixel">{{ book.rating_avg }}<small>/5</small></p>{{ stars(book.rating_avg) }}
+        <ul class="bars" aria-label="{{ _('Répartition des notes') }}">{% for n in [5, 4, 3, 2, 1] %}<li><span>{{ n }} <svg class="icon icon-fill" aria-hidden="true"><use href="#i-star"/></svg></span><progress max="{{ book.rating_count }}" value="{{ breakdown[n] }}"></progress><span class="nums">{{ breakdown[n] }}</span></li>{% endfor %}</ul>
+        {% else %}<p class="muted">{{ _("Pas encore d'avis. Soyez le premier à partager votre lecture.") }}</p>{% endif %}
+      </div>
+      <div>
+        <ul class="reviews__list">
+          {% for r in reviews %}
+          <li><div class="flex-between"><b>{{ r.author_name }}{% if r.city %} <span class="muted">· {{ r.city }}</span>{% endif %}</b>{{ stars(r.rating) }}</div>
+            <p>{{ r.comment }}</p><small class="muted">{{ r.created_at | d }}</small></li>
+          {% endfor %}
+        </ul>
+        <form class="review-form" method="post" action="{{ url_for('shop.post_review', book_id=book.id) }}">
+          <h3>{{ _("Donnez votre avis") }}</h3>
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <fieldset class="rate"><legend class="label">{{ _("Votre note") }}</legend>
+            {% for n in [5, 4, 3, 2, 1] %}<input type="radio" id="rate{{ n }}" name="rating" value="{{ n }}" required><label for="rate{{ n }}" title="{{ n }} {{ _('sur 5') }}"><svg class="icon icon-fill" aria-hidden="true"><use href="#i-star"/></svg><span class="sr-only">{{ n }} {{ _('sur 5') }}</span></label>{% endfor %}
+          </fieldset>
+          <div class="field-row">
+            <div class="field"><label for="rv-name">{{ _("Nom") }}</label><input class="input" id="rv-name" name="name" maxlength="60" required value="{{ current_user.username if current_user else '' }}" autocomplete="name"></div>
+            <div class="field"><label for="rv-city">{{ _("Ville") }} <span class="muted">({{ _("facultatif") }})</span></label><input class="input" id="rv-city" name="city" maxlength="60"></div>
+          </div>
+          <div class="field"><label for="rv-comment">{{ _("Votre avis") }}</label><textarea class="textarea" id="rv-comment" name="comment" rows="4" minlength="10" maxlength="1200" required></textarea></div>
+          <button class="btn" type="submit">{{ _("Publier mon avis") }}</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if related %}
+<section class="section wrap" aria-labelledby="t-rel">
+  <div class="section__head"><h2 id="t-rel">{{ _("Vous aimerez aussi") }}</h2></div>
+  <div class="shelf">{% for b in related %}{{ book_card(b) }}{% endfor %}</div>
+</section>
+{% endif %}
+{% endblock %}
+{% block scripts %}<script src="{{ static_v('js/book.js') }}" defer></script>{% endblock %}

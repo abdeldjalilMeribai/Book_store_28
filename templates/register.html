@@ -1,0 +1,17 @@
+{% extends "_auth.html" %}
+{% from "_macros.html" import field %}
+{% block title %}{{ _("Créer un compte") }} — {{ settings.site_name }}{% endblock %}
+{% block auth_form %}
+<h1 class="page-title">{{ _("Créer un compte") }}</h1>
+<p class="muted">{{ _("Facultatif : vous pouvez aussi commander sans compte.") }}</p>
+<form method="post" action="{{ url_for('account.register') }}" novalidate>
+  <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+  <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+  {{ field('username', _('Nom'), form.username, errors, autocomplete='name', maxlength=60) }}
+  {{ field('email', _('Adresse e-mail'), form.email, errors, 'email', autocomplete='email', maxlength=255) }}
+  {{ field('password', _('Mot de passe'), '', errors, 'password', autocomplete='new-password', hint=_('8 caractères minimum, avec une majuscule, une minuscule et un chiffre.'), maxlength=200) }}
+  {{ field('confirm', _('Confirmer le mot de passe'), '', errors, 'password', autocomplete='new-password', maxlength=200) }}
+  <button class="btn btn--lg btn--block" type="submit">{{ _("Créer mon compte") }}</button>
+</form>
+<p class="mt-5 muted">{{ _("Déjà inscrit ?") }} <a href="{{ url_for('account.login') }}">{{ _("Se connecter") }}</a></p>
+{% endblock %}

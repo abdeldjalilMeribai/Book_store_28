@@ -1,0 +1,114 @@
+{% extends "base.html" %}
+{% from "_macros.html" import book_card, stars, icon %}
+{% block body_class %}page-home{% endblock %}
+{% block content %}
+<section class="hero">
+  <picture class="hero__bg">
+    <source media="(max-width: 720px)" srcset="{{ static_v('img/hero-1-sm.jpg') }}">
+    <img src="{{ static_v('img/hero-1.jpg') }}" alt="" width="1600" height="900" fetchpriority="high">
+  </picture>
+  <div class="wrap hero__inner">
+    <h1 class="hero__title">{% for ln in settings.hero_title | lines %}{{ ln }}{% if not loop.last %}<br>{% endif %}{% endfor %}</h1>
+    <p class="hero__sub">{{ settings.hero_subtitle }}</p>
+    <div class="screen hero__screen" role="img" aria-label="{{ _('À payer à la commande') }} : 0,00 {{ _('DA') }}">
+      <span class="screen__label">{{ _("À payer") }}<br>{{ _("à la commande") }}</span>
+      <span class="screen__value" aria-hidden="true">0,00<small>{{ _("DA") }}</small></span>
+      <span class="screen__knobs" aria-hidden="true"><i></i><i></i></span>
+    </div>
+    <div class="hero__cta">
+      <a class="btn btn--lg" href="{{ url_for('shop.catalog') }}">{{ _("Voir le catalogue") }} {{ icon('arrow') }}</a>
+      <a class="btn btn--lg btn--ghost" href="{{ url_for('shop.track') }}">{{ _("Suivre ma commande") }}</a>
+    </div>
+  </div>
+</section>
+
+{% if new_books %}
+<section class="section wrap" aria-labelledby="t-new">
+  <div class="section__head"><h2 id="t-new">{{ _("Nouveautés") }}</h2><a class="link-arrow" href="{{ url_for('shop.catalog', badge='new') }}">{{ _("Tout voir") }} {{ icon('arrow') }}</a></div>
+  <div class="shelf">{% for b in new_books %}{{ book_card(b) }}{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if categories %}
+<section class="section wrap" aria-labelledby="t-genres">
+  <h2 id="t-genres" class="section__title">{{ _("Parcourir par genre") }}</h2>
+  <ul class="genre-index">
+    {% for c in categories %}
+    <li><a href="{{ url_for('shop.catalog', genre=c.slug) }}"><span class="genre-index__name">{{ _(c.name) }}</span><span class="genre-index__desc">{{ _(c.description) if c.description else '' }}</span><span class="genre-index__count nums">{{ c.book_count }} {{ _('titre') if c.book_count == 1 else _('titres') }}</span>{{ icon('arrow') }}</a></li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}
+
+<section class="how" aria-labelledby="t-how">
+  <div class="wrap how__inner">
+    <h2 id="t-how">{{ _("Vous ne payez qu'en ouvrant le colis.") }}</h2>
+    <ol class="how__steps">
+      <li><span class="how__n pixel">1</span><div><h3>{{ _("Vous commandez") }}</h3><p>{{ _("Un seul formulaire : nom, téléphone, wilaya. Aucun paiement en ligne, aucune carte.") }}</p></div></li>
+      <li><span class="how__n pixel">2</span><div><h3>{{ _("Nous expédions") }}</h3><p>{{ _("Livraison") }} {{ settings.delivery_delay }} {{ _("dans les 58 wilayas, à domicile ou au bureau de livraison.") }}</p></div></li>
+      <li><span class="how__n pixel">3</span><div><h3>{{ _("Vous vérifiez, puis vous payez") }}</h3><p>{{ _("Le livre est abîmé ? Refusez-le. Sinon, vous réglez le livreur en espèces.") }}</p></div></li>
+    </ol>
+    <a class="btn btn--dark btn--lg" href="{{ url_for('shop.track') }}">{{ _("Suivre ma commande") }} {{ icon('arrow') }}</a>
+  </div>
+</section>
+
+{% if best_books %}
+<section class="section wrap" aria-labelledby="t-best">
+  <div class="section__head"><h2 id="t-best">{{ _("Les plus lus") }}</h2><a class="link-arrow" href="{{ url_for('shop.catalog', tri='popular') }}">{{ _("Tout voir") }} {{ icon('arrow') }}</a></div>
+  <div class="shelf">{% for b in best_books %}{{ book_card(b) }}{% endfor %}</div>
+</section>
+{% endif %}
+
+{% if featured %}{% set f = featured[0] %}
+<section class="section wrap spotlight" aria-labelledby="t-spot">
+  <a class="spotlight__cover" href="{{ url_for('shop.book_detail', slug=f.slug) }}" aria-hidden="true" tabindex="-1">
+    {% if f.cover_url %}<img src="{{ f.cover_url }}" alt="" loading="lazy" width="400" height="600">{% endif %}
+  </a>
+  <div class="spotlight__text">
+    <h2 id="t-spot">{{ _("Coup de cœur") }} : {{ f.title }}</h2>
+    <p class="muted">{{ f.author }}{% if f.category_name %} · {{ f.category_name }}{% endif %}</p>
+    <p>{{ f.description[:340] }}{% if f.description | length > 340 %}…{% endif %}</p>
+    <div class="flex-between spotlight__buy"><span class="price price--big">{{ f.price | money }}</span>
+      <a class="btn btn--lg" href="{{ url_for('shop.book_detail', slug=f.slug) }}">{{ _("Découvrir ce livre") }} {{ icon('arrow') }}</a></div>
+  </div>
+</section>
+{% endif %}
+
+<section class="about-band" aria-labelledby="t-about">
+  <img src="{{ static_v('img/about.jpg') }}" alt="" width="1600" height="900" loading="lazy">
+  <div class="wrap about-band__inner">
+    <div class="about-band__text">
+      <h2 id="t-about">{{ _("Une librairie qui vient à vous.") }}</h2>
+      <p>{{ _("Nous choisissons des livres que nous aimerions recevoir : romans, littérature algérienne, jeunesse, idées. Chaque colis est emballé pour arriver intact.") }}</p>
+      <a class="link-arrow" href="{{ url_for('shop.about') }}">{{ _("Qui sommes-nous") }} {{ icon('arrow') }}</a>
+    </div>
+  </div>
+</section>
+
+{% if reviews %}
+<section class="section wrap" aria-labelledby="t-rev">
+  <h2 id="t-rev" class="section__title">{{ _("Ils ont reçu leur colis") }}</h2>
+  <div class="quotes">
+    {% for r in reviews %}
+    <figure class="quote">
+      {{ stars(r.rating) }}
+      <blockquote>{{ r.comment }}</blockquote>
+      <figcaption><b>{{ r.author_name }}</b>{% if r.city %}, {{ r.city }}{% endif %} — {{ _("sur") }} <a href="{{ url_for('shop.book_detail', slug=r.book_slug) }}">{{ r.book_title }}</a></figcaption>
+    </figure>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<section class="section wrap faq" id="faq" aria-labelledby="t-faq">
+  <h2 id="t-faq" class="section__title">{{ _("Questions fréquentes") }}</h2>
+  <div class="faq__list">
+    <details><summary>{{ _("Comment se passe le paiement ?") }}</summary><p>{{ _("À la livraison, en espèces, une fois le colis ouvert et le livre vérifié. Rien n'est débité à la commande.") }}</p></details>
+    <details><summary>{{ _("Quels sont les délais et les frais de livraison ?") }}</summary><p>{{ _("Comptez") }} {{ settings.delivery_delay }} {{ _("en général. Les frais dépendent de votre wilaya et du mode choisi (domicile ou bureau de livraison) : ils s'affichent avant que vous validiez.") }}</p></details>
+    <details><summary>{{ _("Et si le livre arrive abîmé ?") }}</summary><p>{{ _("Refusez le colis au moment de la livraison, ou contactez-nous sous") }} {{ settings.return_days }} {{ _("jours pour un échange.") }}</p></details>
+    <details><summary>{{ _("Comment suivre ma commande ?") }}</summary><p>{{ _("Utilisez la page") }} <a href="{{ url_for('shop.track') }}">{{ _("Suivre ma commande") }}</a> {{ _("avec votre code de suivi et le numéro de téléphone saisi à la commande.") }}</p></details>
+    <details><summary>{{ _("Puis-je modifier ou annuler une commande ?") }}</summary><p>{{ _("Oui, tant qu'elle n'est pas expédiée : écrivez-nous sur WhatsApp en indiquant votre code de suivi.") }}</p></details>
+    <details><summary>{{ _("Faut-il un compte pour commander ?") }}</summary><p>{{ _("Non. Un compte sert seulement à retrouver vos commandes au même endroit.") }}</p></details>
+  </div>
+</section>
+{% endblock %}

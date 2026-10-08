@@ -1,0 +1,23 @@
+{% extends "admin/base.html" %}
+{%- from "_macros.html" import icon -%}
+{% block title %}{{ _("Genres") }}{% endblock %}
+{% block heading %}{{ _("Genres") }}{% endblock %}
+{% block content %}
+<div class="adm-cols adm-cols--narrow">
+  <section class="panel"><h2 class="adm-h2">{{ _("Nouveau genre") }}</h2>
+    <form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+      <div class="field"><label for="g-name">{{ _("Nom") }}</label><input class="input" id="g-name" name="name" maxlength="60" required></div>
+      <div class="field"><label for="g-desc">{{ _("Description") }} <span class="muted">({{ _("facultatif") }})</span></label><input class="input" id="g-desc" name="description" maxlength="240"></div>
+      <button class="btn" type="submit">{{ icon('plus') }} {{ _("Ajouter") }}</button></form></section>
+  <section>
+    {% if categories %}<ul class="cat-list">{% for c in categories %}
+      <li class="panel"><form method="post" action="{{ url_for('admin.category_edit', cat_id=c.id) }}" class="cat-row"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="field"><label for="n{{ c.id }}">{{ _("Nom") }}</label><input class="input" id="n{{ c.id }}" name="name" value="{{ c.name }}" maxlength="60" required></div>
+        <div class="field"><label for="d{{ c.id }}">{{ _("Description") }}</label><input class="input" id="d{{ c.id }}" name="description" value="{{ c.description or '' }}" maxlength="240"></div>
+        <div class="field cat-row__pos"><label for="p{{ c.id }}">{{ _("Ordre") }}</label><input class="input" id="p{{ c.id }}" name="position" type="number" min="0" max="999" value="{{ c.position }}"></div>
+        <div class="cat-row__act"><span class="muted nums">{{ c.book_count }} {{ _('livres') if c.book_count != 1 else _('livre') }}</span><button class="btn btn--ghost btn--sm" type="submit">{{ _("Enregistrer") }}</button>
+          <button class="btn btn--danger btn--sm" type="submit" formaction="{{ url_for('admin.category_delete', cat_id=c.id) }}" data-confirm-btn="{{ _('Supprimer le genre « %(name)s » ? Ses livres resteront en ligne, sans genre.', name=c.name) }}" aria-label="{{ _('Supprimer %(name)s', name=c.name) }}">{{ icon('trash') }}</button></div></form></li>{% endfor %}</ul>
+    {% else %}<div class="empty">{{ icon('tag') }}<h3>{{ _("Aucun genre") }}</h3><p>{{ _("Créez des genres pour que vos clients parcourent le catalogue.") }}</p></div>{% endif %}
+  </section>
+</div>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% from "_macros.html" import book_card, icon %}
+{% block title %}{% if active_category %}{{ _(active_category.name) }}{% elif author_name %}{{ author_name }}{% elif filters.q %}{{ _('Recherche : %(q)s', q=filters.q) }}{% else %}{{ _('Catalogue') }}{% endif %} — {{ settings.site_name }}{% endblock %}
+{% block content %}
+{% set f = filters %}
+<div class="wrap page-head">
+  <h1 class="page-title">{% if active_category %}{{ _(active_category.name) }}{% elif author_name %}{{ author_name }}{% elif f.q %}« {{ f.q }} »{% elif f.badge == 'new' %}{{ _('Nouveautés') }}{% elif f.badge == 'bestseller' %}{{ _('Best-sellers') }}{% else %}{{ _('Catalogue') }}{% endif %}</h1>
+  <p class="muted" role="status">{{ result.total }} {{ _('livres') if result.total != 1 else _('livre') }}{% if active_category and active_category.description %} · {{ _(active_category.description) }}{% endif %}</p>
+</div>
+
+<div class="wrap catalog">
+  <form class="filters" method="get" action="{{ url_for('shop.catalog') }}" data-filters>
+    <details open data-filters-panel>
+      <summary class="filters__toggle">{{ icon('filter') }} {{ _("Filtres et tri") }}</summary>
+      <div class="filters__body">
+        <div class="field"><label for="flt-q">{{ _("Recherche") }}</label><input class="input" id="flt-q" type="search" name="q" value="{{ f.q }}" maxlength="80" placeholder="{{ _('Titre, auteur, ISBN') }}"></div>
+        <div class="field"><label for="flt-tri">{{ _("Trier par") }}</label>
+          <select class="select" id="flt-tri" name="tri" data-autosubmit>{% for key, (label, _o) in sorts.items() %}<option value="{{ key }}"{% if f.sort == key %} selected{% endif %}>{{ _(label) }}</option>{% endfor %}</select></div>
+        <fieldset class="field"><legend class="label">{{ _("Genre") }}</legend>
+          <div class="choice choice--plain">
+            <label><input type="radio" name="genre" value="" data-autosubmit{% if not f.category %} checked{% endif %}> {{ _("Tous les genres") }}</label>
+            {% for c in nav_categories %}<label><input type="radio" name="genre" value="{{ c.slug }}" data-autosubmit{% if f.category == c.slug %} checked{% endif %}> {{ _(c.name) }} <span class="muted nums">{{ c.book_count }}</span></label>{% endfor %}
+          </div></fieldset>
+        {% if facets.languages | length > 1 %}
+        <div class="field"><label for="flt-lang">{{ _("Langue") }}</label>
+          <select class="select" id="flt-lang" name="langue" data-autosubmit><option value="">{{ _("Toutes") }}</option>{% for l in facets.languages %}<option{% if f.language == l %} selected{% endif %}>{{ _(VALUE_LABELS.get(l, l)) }}</option>{% endfor %}</select></div>
+        {% endif %}
+        <fieldset class="field"><legend class="label">{{ _("Prix (DA)") }}</legend>
+          <div class="field-row field-row--tight">
+            <input class="input" type="number" name="min" min="0" inputmode="numeric" placeholder="{{ _('Min') }}" value="{{ f.min_price if f.min_price is not none else '' }}" aria-label="{{ _('Prix minimum') }}">
+            <input class="input" type="number" name="max" min="0" inputmode="numeric" placeholder="{{ facets.price_max or _('Max') }}" value="{{ f.max_price if f.max_price is not none else '' }}" aria-label="{{ _('Prix maximum') }}">
+          </div></fieldset>
+        <label class="check"><input type="checkbox" name="dispo" value="1" data-autosubmit{% if f.in_stock %} checked{% endif %}> {{ _("En stock uniquement") }}</label>
+        {% if f.badge %}<input type="hidden" name="badge" value="{{ f.badge }}">{% endif %}
+        {% if f.author %}<input type="hidden" name="auteur" value="{{ f.author }}">{% endif %}
+        <div class="filters__actions"><button class="btn btn--block" type="submit">{{ _("Appliquer") }}</button><a class="btn btn--ghost btn--block" href="{{ url_for('shop.catalog') }}">{{ _("Réinitialiser") }}</a></div>
+      </div>
+    </details>
+  </form>
+
+  <div class="catalog__results">
+    {% set chips = [] %}
+    {% if f.q %}{% set _discard = chips.append((_('Recherche : %(q)s', q=f.q), qs_without('q'))) %}{% endif %}
+    {% if active_category %}{% set _discard = chips.append((_(active_category.name), qs_without('genre'))) %}{% endif %}
+    {% if author_name %}{% set _discard = chips.append((author_name, qs_without('auteur'))) %}{% endif %}
+    {% if f.language %}{% set _discard = chips.append((_(VALUE_LABELS.get(f.language, f.language)), qs_without('langue'))) %}{% endif %}
+    {% if f.badge %}{% set _discard = chips.append((_('Nouveautés') if f.badge == 'new' else _('Best-sellers'), qs_without('badge'))) %}{% endif %}
+    {% if f.min_price is not none or f.max_price is not none %}{% set _discard = chips.append((_('Prix') ~ ' ' ~ (f.min_price if f.min_price is not none else 0) ~ '–' ~ (f.max_price if f.max_price is not none else '∞') ~ ' ' ~ _('DA'), qs_without('min', 'max'))) %}{% endif %}
+    {% if f.in_stock %}{% set _discard = chips.append((_('En stock'), qs_without('dispo'))) %}{% endif %}
+    {% if chips %}<div class="chips" aria-label="{{ _('Filtres actifs') }}">{% for label, href in chips %}<a class="chip" href="{{ href }}">{{ label }} {{ icon('close') }}<span class="sr-only">{{ _("Retirer ce filtre") }}</span></a>{% endfor %}</div>{% endif %}
+
+    {% if result['items'] %}
+    <div class="grid-books">{% for b in result['items'] %}{{ book_card(b) }}{% endfor %}</div>
+    {% if result.pages > 1 %}
+    <nav class="pagination" aria-label="{{ _('Pagination') }}">
+      {% if result.page > 1 %}<a href="{{ page_url(result.page - 1) }}" aria-label="{{ _('Page précédente') }}">{{ icon('arrow-left') }}</a>{% endif %}
+      {% for p in range(1, result.pages + 1) %}
+        {% if p == 1 or p == result.pages or (p - result.page) | abs <= 1 %}
+          {% if p == result.page %}<span aria-current="page">{{ p }}</span>{% else %}<a href="{{ page_url(p) }}">{{ p }}</a>{% endif %}
+        {% elif (p - result.page) | abs == 2 %}<span class="gap">…</span>{% endif %}
+      {% endfor %}
+      {% if result.page < result.pages %}<a href="{{ page_url(result.page + 1) }}" aria-label="{{ _('Page suivante') }}">{{ icon('arrow') }}</a>{% endif %}
+    </nav>
+    {% endif %}
+    {% else %}
+    <div class="empty">{{ icon('book') }}<h3>{{ _("Aucun livre ne correspond") }}</h3><p>{{ _("Essayez un autre mot, retirez un filtre ou parcourez tout le catalogue.") }}</p><a class="btn" href="{{ url_for('shop.catalog') }}">{{ _("Voir tout le catalogue") }}</a></div>
+    {% endif %}
+  </div>
+</div>
+{% endblock %}

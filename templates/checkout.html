@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% from "_macros.html" import icon %}
+{% block title %}Commander — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<div class="wrap page-head"><h1 class="page-title">{{ _("Finaliser ma commande") }}</h1><p class="muted">{{ _("Aucun paiement maintenant : vous réglez le livreur en espèces, après avoir vérifié votre livre.") }}</p></div>
+
+<div class="wrap checkout" data-checkout>
+  <div class="empty" data-checkout-empty hidden>{{ icon('bag') }}<h3>{{ _("Votre panier est vide") }}</h3><p>{{ _("Ajoutez un livre pour passer commande.") }}</p><a class="btn" href="{{ url_for('shop.catalog') }}">{{ _("Parcourir le catalogue") }}</a></div>
+
+  <form class="checkout__form" data-checkout-form novalidate hidden>
+    <div class="form-alert flash flash--error" data-form-alert role="alert" hidden>{{ icon('alert') }}<span></span></div>
+    <fieldset class="panel"><legend>{{ _("1. Vos coordonnées") }}</legend>
+      <div class="field-row">
+        <div class="field"><label for="c-name">{{ _("Nom complet") }}</label><input class="input" id="c-name" name="full_name" autocomplete="name" maxlength="80" required><p class="field-error" data-err="full_name" hidden></p></div>
+        <div class="field"><label for="c-phone">{{ _("Téléphone") }}</label><input class="input" id="c-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="05 50 12 34 56" maxlength="20" required><p class="field-error" data-err="phone" hidden></p></div>
+      </div>
+    </fieldset>
+    <fieldset class="panel"><legend>{{ _("2. Livraison") }}</legend>
+      <div class="field-row">
+        <div class="field"><label for="c-wilaya">{{ _("Wilaya") }}</label>
+          <select class="select" id="c-wilaya" name="wilaya" required><option value="">{{ _("Choisir…") }}</option>
+            {% for w in wilayas %}<option value="{{ w.code }}" data-home="{{ w.home_price }}" data-office="{{ w.office_price if w.office_price is not none else '' }}">{{ '%02d' % w.code }} — {{ w.name }}</option>{% endfor %}
+          </select><p class="field-error" data-err="wilaya" hidden></p></div>
+        <div class="field"><label for="c-commune">{{ _("Commune") }}</label><input class="input" id="c-commune" name="commune" maxlength="80" autocomplete="address-level2" required><p class="field-error" data-err="commune" hidden></p></div>
+      </div>
+      <div class="field"><span class="label" id="lbl-method">{{ _("Mode de livraison") }}</span>
+        <div class="choice" role="radiogroup" aria-labelledby="lbl-method">
+          <label><input type="radio" name="delivery_method" value="home" checked>{{ icon('home') }}<span><strong>{{ _("À domicile") }}</strong><small class="muted">{{ _("Le livreur vous appelle et vient chez vous") }}</small></span><span class="choice__price" data-price-home>—</span></label>
+          <label><input type="radio" name="delivery_method" value="office">{{ icon('pin') }}<span><strong>{{ _("Bureau de livraison") }}</strong><small class="muted">{{ _("Vous récupérez le colis au bureau le plus proche") }}</small></span><span class="choice__price" data-price-office>—</span></label>
+        </div><p class="field-error" data-err="delivery_method" hidden></p></div>
+      <div class="field" data-address-field><label for="c-address">{{ _("Adresse complète") }}</label><textarea class="textarea" id="c-address" name="address" rows="2" maxlength="240" autocomplete="street-address" placeholder="N° de rue, quartier, repère"></textarea><p class="field-error" data-err="address" hidden></p></div>
+      <input class="hp" type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
+    </fieldset>
+    <fieldset class="panel"><legend>{{ _("3. Paiement") }}</legend>
+      <div class="choice"><label class="choice__static">{{ icon('check') }}{{ icon('cash') }}<span><strong>{{ _("Paiement à la livraison") }}</strong><small class="muted">{{ _("Espèces, au livreur, après vérification du colis") }}</small></span></label></div>
+    </fieldset>
+    <button class="btn btn--lg btn--block" type="submit" data-submit>{{ _("Confirmer la commande") }} {{ icon('arrow') }}</button>
+    <p class="field-hint">{{ _("En confirmant, vous recevrez un code de suivi à conserver.") }}</p>
+  </form>
+
+  <aside class="checkout__summary" data-checkout-summary hidden aria-label="{{ _('Récapitulatif') }}">
+    <h2>{{ _("Récapitulatif") }}</h2>
+    <div data-checkout-lines></div>
+    <dl class="sum">
+      <div><dt>{{ _("Livres") }}</dt><dd class="nums" data-sum-books>0 {{ _("DA") }}</dd></div>
+      <div><dt>{{ _("Livraison") }}</dt><dd class="nums" data-sum-ship>{{ _("Choisissez une wilaya") }}</dd></div>
+      <div class="sum__total"><dt>{{ _("À régler au livreur") }}</dt><dd class="nums" data-sum-total>—</dd></div>
+    </dl>
+    <div class="screen screen--flat screen--block"><span class="screen__label">{{ _("À payer") }}<br>{{ _("maintenant") }}</span><span class="screen__value">0,00<small>{{ _("DA") }}</small></span></div>
+    <p class="field-hint" data-stock-note></p>
+  </aside>
+</div>
+{% endblock %}
+{% block scripts %}<script src="{{ static_v('js/checkout.js') }}" defer></script>{% endblock %}
