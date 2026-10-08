@@ -1,8 +1,0 @@
-{% extends "base.html" %}
-{% from "_macros.html" import icon %}
-{% block content %}
-<section class="split split--auth">
-  <div class="split__art"><picture><source media="(max-width: 720px)" srcset="{{ static_v('img/deco-motdepasse-sm.jpg') }}"><img src="{{ static_v('img/deco-motdepasse.jpg') }}" alt="" width="1536" height="1024"></picture></div>
-  <div class="split__form wrap">{% block auth_form %}{% endblock %}</div>
-</section>
-{% endblock %}
