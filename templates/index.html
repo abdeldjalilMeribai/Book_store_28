@@ -54,7 +54,7 @@
 
 {% if best_books %}
 <section class="section wrap" aria-labelledby="t-best">
-  <div class="section__head"><h2 id="t-best">{{ _("Les plus lus") }}</h2><a class="link-arrow" href="{{ url_for('shop.catalog', tri='popular') }}">{{ _("Tout voir") }} {{ icon('arrow') }}</a></div>
+  <div class="section__head"><h2 id="t-best">{{ _("Les plus lus") }}</h2><a class="link-arrow" href="{{ url_for('shop.catalog', badge='bestseller') }}">{{ _("Tout voir") }} {{ icon('arrow') }}</a></div>
   <div class="shelf">{% for b in best_books %}{{ book_card(b) }}{% endfor %}</div>
 </section>
 {% endif %}

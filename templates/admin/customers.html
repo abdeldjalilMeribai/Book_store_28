@@ -4,11 +4,25 @@
 {% block heading %}{{ _("Clients") }}{% endblock %}
 {% block content %}
 <h2 class="adm-h2">{{ _("Comptes") }}</h2>
-<div class="table-wrap"><table class="table"><thead><tr><th scope="col">{{ _("Nom") }}</th><th scope="col">{{ _("E-mail") }}</th><th scope="col" class="num">{{ _("Commandes") }}</th><th scope="col">{{ _("Inscrit") }}</th><th scope="col">{{ _("État") }}</th><th scope="col"><span class="sr-only">{{ _("Action") }}</span></th></tr></thead><tbody>
+<div class="table-wrap rwide"><table class="table"><thead><tr><th scope="col">{{ _("Nom") }}</th><th scope="col">{{ _("E-mail") }}</th><th scope="col" class="num">{{ _("Commandes") }}</th><th scope="col">{{ _("Inscrit") }}</th><th scope="col">{{ _("État") }}</th><th scope="col"><span class="sr-only">{{ _("Action") }}</span></th></tr></thead><tbody>
 {% for u in users %}<tr><td><b>{{ u.username }}</b>{% if u.is_admin %} <span class="pill pill--shipped">{{ _("Admin") }}</span>{% endif %}</td><td>{{ u.email }}</td><td class="num nums">{{ u.order_count }}</td><td class="muted">{{ u.created_at | d }}</td>
   <td>{% if u.is_active %}<span class="pill pill--delivered">{{ _("Actif") }}</span>{% else %}<span class="pill pill--cancelled">{{ _("Désactivé") }}</span>{% endif %}</td>
   <td class="actions">{% if u.id != current_user.id %}<form method="post" action="{{ url_for('admin.user_toggle', user_id=u.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn--ghost btn--sm" type="submit">{{ _('Désactiver') if u.is_active else _('Réactiver') }}</button></form>{% endif %}</td></tr>{% endfor %}
 </tbody></table></div>
+<ul class="rlist">{% for u in users %}
+  <li class="rcard rcard--2">
+    <div class="rcard__main">
+      <div class="rcard__row"><b class="rcard__title">{{ u.username }}</b>{% if u.is_admin %}<span class="pill pill--shipped">{{ _("Admin") }}</span>{% endif %}</div>
+      <span class="rcard__sub">{{ u.email }}</span>
+      <div class="rcard__meta">{% if u.is_active %}<span class="pill pill--delivered">{{ _("Actif") }}</span>{% else %}<span class="pill pill--cancelled">{{ _("Désactivé") }}</span>{% endif %}<span class="muted nums">{{ u.order_count }} {{ _("Commandes") }}</span></div></div>
+    <button type="button" class="eye" data-sheet-open aria-label="{{ _('Voir les détails de %(title)s', title=u.username) }}">{{ icon('eye') }}</button>
+    <template data-sheet>
+      <header class="sheet__head sheet__grab" data-sheet-grab><div><h2 class="sheet__title" id="sheet-title">{{ u.username }}</h2><p class="sheet__sub">{% if u.is_active %}<span class="pill pill--delivered">{{ _("Actif") }}</span>{% else %}<span class="pill pill--cancelled">{{ _("Désactivé") }}</span>{% endif %}</p></div></header>
+      <div class="sheet__body"><dl class="sheet__grid">
+        <div class="wide"><dt>{{ _("E-mail") }}</dt><dd>{{ u.email }}</dd></div>
+        <div><dt>{{ _("Commandes") }}</dt><dd class="nums">{{ u.order_count }}</dd></div><div><dt>{{ _("Inscrit") }}</dt><dd class="nums">{{ u.created_at | d }}</dd></div></dl></div>
+      {% if u.id != current_user.id %}<footer class="sheet__act"><form method="post" action="{{ url_for('admin.user_toggle', user_id=u.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn {{ 'btn--danger' if u.is_active else '' }}" type="submit">{{ _('Désactiver') if u.is_active else _('Réactiver') }}</button></form></footer>{% endif %}
+    </template></li>{% endfor %}</ul>
 <h2 class="adm-h2 mt-6">{{ _("Abonnés à la newsletter") }} <span class="muted nums">({{ subscribers | length }})</span></h2>
 {% if subscribers %}<ul class="chips">{% for s in subscribers %}<li class="chip chip--static">{{ s.email }}</li>{% endfor %}</ul>{% else %}<p class="muted">{{ _("Aucun abonné pour l'instant.") }}</p>{% endif %}
 {% endblock %}

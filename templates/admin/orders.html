@@ -5,12 +5,31 @@
 {% block content %}
 <nav class="periods" aria-label="{{ _('Filtrer par statut') }}"><a href="{{ url_for('admin.orders') }}"{% if not status %} aria-current="true"{% endif %}>{{ _("Toutes") }}</a>
   {% for s, label in ORDER_STATUS_LABELS.items() %}<a href="{{ url_for('admin.orders', statut=s) }}"{% if status == s %} aria-current="true"{% endif %}>{{ label }} <span class="nums">{{ counts.get(s, 0) }}</span></a>{% endfor %}</nav>
-<form class="adm-filter" method="get">{% if status %}<input type="hidden" name="statut" value="{{ status }}">{% endif %}<label class="sr-only" for="o-q">{{ _("Rechercher") }}</label><input class="input" id="o-q" type="search" name="q" value="{{ q }}" placeholder="{{ _('Code, nom, téléphone') }}" maxlength="40"><button class="btn btn--ghost" type="submit">{{ _("Rechercher") }}</button></form>
+<form class="adm-filter" method="get">{% if status %}<input type="hidden" name="statut" value="{{ status }}">{% endif %}<label class="sr-only" for="o-q">{{ _("Rechercher") }}</label><input class="input" id="o-q" type="search" name="q" value="{{ q }}" placeholder="{{ _('Code, nom, téléphone') }}" maxlength="40"><button class="btn btn--ghost adm-search" type="submit">{{ icon('search') }}<span class="adm-act__t">{{ _("Rechercher") }}</span></button></form>
 {% if orders %}
-<div class="table-wrap"><table class="table"><thead><tr><th scope="col">{{ _("Code") }}</th><th scope="col">{{ _("Client") }}</th><th scope="col">{{ _("Wilaya") }}</th><th scope="col" class="num">{{ _("Livres") }}</th><th scope="col" class="num">{{ _("Total") }}</th><th scope="col">{{ _("Statut") }}</th><th scope="col">{{ _("Date") }}</th></tr></thead><tbody>
+<div class="table-wrap rwide"><table class="table"><thead><tr><th scope="col">{{ _("Code") }}</th><th scope="col">{{ _("Client") }}</th><th scope="col">{{ _("Wilaya") }}</th><th scope="col" class="num">{{ _("Livres") }}</th><th scope="col" class="num">{{ _("Total") }}</th><th scope="col">{{ _("Statut") }}</th><th scope="col">{{ _("Date") }}</th></tr></thead><tbody>
 {% for o in orders %}<tr><td><a class="pixel" href="{{ url_for('admin.order_detail', order_id=o.id) }}">{{ o.tracking_code }}</a>{% if not o.is_notified %} <span class="dot" title="{{ _('Nouvelle') }}"></span>{% endif %}</td>
   <td><b>{{ o.full_name }}</b><br><small class="muted">{{ o.phone }}</small></td><td>{{ (WILAYA_AR.get(o.wilaya_code) if lang == 'ar' else None) or o.wilaya_name }}<br><small class="muted">{{ DELIVERY_LABELS[o.delivery_method] }}</small></td>
   <td class="num nums">{{ o.qty }}</td><td class="num nums">{{ o.total_amount | money }}</td><td><span class="pill pill--{{ o.status }}">{{ ORDER_STATUS_LABELS[o.status] }}</span></td><td class="muted">{{ o.created_at | dt }}</td></tr>{% endfor %}
 </tbody></table></div>
+<ul class="rlist">{% for o in orders %}{% set wil = (WILAYA_AR.get(o.wilaya_code) if lang == 'ar' else None) or o.wilaya_name %}
+  <li class="rcard rcard--2">
+    <div class="rcard__main">
+      <div class="rcard__row"><span class="pixel rcard__code">{{ o.tracking_code }}</span>{% if not o.is_notified %}<span class="dot" title="{{ _('Nouvelle') }}"></span>{% endif %}<span class="pill pill--{{ o.status }}">{{ ORDER_STATUS_LABELS[o.status] }}</span></div>
+      <b class="rcard__title">{{ o.full_name }}</b><span class="rcard__sub rcard__sub--multi"><span>{{ wil }}</span><span class="nums">{{ o.created_at | dt }}</span></span>
+      <div class="rcard__meta"><span class="rcard__price nums">{{ o.total_amount | money }}</span><span class="muted nums">{{ o.qty }} {{ _("Livres") }}</span></div></div>
+    <button type="button" class="eye" data-sheet-open aria-label="{{ _('Voir les détails de %(title)s', title=o.tracking_code) }}">{{ icon('eye') }}</button>
+    <template data-sheet>
+      <header class="sheet__head sheet__grab" data-sheet-grab><div><h2 class="sheet__title pixel" id="sheet-title">{{ o.tracking_code }}</h2><p class="sheet__sub"><span class="pill pill--{{ o.status }}">{{ ORDER_STATUS_LABELS[o.status] }}</span></p></div></header>
+      <div class="sheet__body"><dl class="sheet__grid">
+        <div class="wide"><dt>{{ _("Client") }}</dt><dd>{{ o.full_name }}</dd></div>
+        <div class="wide"><dt>{{ _("Téléphone") }}</dt><dd class="nums"><a href="tel:{{ o.phone }}">{{ o.phone }}</a></dd></div>
+        <div><dt>{{ _("Total") }}</dt><dd class="nums text-ok">{{ o.total_amount | money }}</dd></div><div><dt>{{ _("Livres") }}</dt><dd class="nums">{{ o.qty }}</dd></div>
+        <div><dt>{{ _("Wilaya") }}</dt><dd>{{ wil }}</dd></div><div><dt>{{ _("Commune") }}</dt><dd>{{ o.commune }}</dd></div>
+        <div class="wide"><dt>{{ _("Livraison") }}</dt><dd>{{ DELIVERY_LABELS[o.delivery_method] }}</dd></div>
+        {% if o.address %}<div class="wide"><dt>{{ _("Adresse") }}</dt><dd>{{ o.address }}</dd></div>{% endif %}
+        <div class="wide"><dt>{{ _("Date") }}</dt><dd class="nums">{{ o.created_at | dt }}</dd></div></dl></div>
+      <footer class="sheet__act"><a class="btn" href="{{ url_for('admin.order_detail', order_id=o.id) }}">{{ icon('box') }} {{ _("Ouvrir la commande") }}</a><a class="btn btn--ghost" href="tel:{{ o.phone }}">{{ icon('phone') }} {{ _("Appeler") }}</a></footer>
+    </template></li>{% endfor %}</ul>
 {% else %}<div class="empty">{{ icon('box') }}<h3>{{ _("Aucune commande") }}</h3><p>{{ _("Elles apparaîtront ici dès qu'un client commande.") }}</p></div>{% endif %}
 {% endblock %}

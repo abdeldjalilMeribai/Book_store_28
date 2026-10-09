@@ -55,7 +55,8 @@ def create_app(overrides=None):
         settings = dict(g.get("settings", DEFAULT_SETTINGS))
         if lang == "ar" and not (request.endpoint or "").startswith("admin."):
             for key in LOCALIZED_SETTINGS:           # version arabe des réglages (sauf dans l'admin)
-                if settings.get(key + "_ar"):
+                # Si la version française est vide (ex. bandeau masqué), on n'affiche rien non plus en arabe.
+                if settings.get(key) and settings.get(key + "_ar"):
                     settings[key] = settings[key + "_ar"]
         return {
             "csrf_token": security.csrf_token,
@@ -206,6 +207,18 @@ def _register_cli(app):
             db.execute("INSERT INTO users(username,email,password_hash,is_admin,session_version) VALUES(?,?,?,1,1)",
                        (username, email, security.hash_password(password)))
         click.echo(f"Administrateur prêt : {email}")
+
+    @app.cli.command("fix-slugs")
+    def fix_slugs():
+        """Recalcule le slug « auteur » de tous les livres (à lancer une fois après la correction des noms arabes)."""
+        changed = 0
+        for row in db.query("SELECT id, author, author_slug FROM books"):
+            new = security.slugify(row["author"])
+            if new != row["author_slug"]:
+                db.execute("UPDATE books SET author_slug=? WHERE id=?", (new, row["id"]))
+                changed += 1
+        click.echo(f"{changed} livre(s) mis à jour.")
+
 
     @app.cli.command("seed-demo")
     def seed_demo():

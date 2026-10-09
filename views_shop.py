@@ -47,15 +47,7 @@ def home():
 def catalog():
     args = request.args
     badge = args.get("badge") if args.get("badge") in ("new", "bestseller") else ""
-    sort = args.get("tri") if args.get("tri") in services.SORTS else "new"
-
-    # Si l'utilisateur choisit explicitement de trier par les plus vendus alors qu'il était filtré sur les nouveautés
-    # ou inversement, on bascule vers le badge correspondant pour afficher immédiatement les bons livres
-    if "tri" in args:
-        if sort == "popular" and badge == "new":
-            badge = "bestseller"
-        elif sort == "new" and badge == "bestseller":
-            badge = "new"
+    sort = args.get("tri") if args.get("tri") in services.SORTS else ""   # vide = ordre par défaut
 
     filters = {
         "q": clean_text(args.get("q"), 80),

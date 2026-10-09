@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-08 08:20+0100\n"
+"POT-Creation-Date: 2026-10-10 00:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -1410,56 +1410,6 @@ msgstr "من نحن"
 msgid "À régler au livreur"
 msgstr "المبلغ الإجمالي عند الاستلام"
 
-msgid "Articles commandés"
-msgstr "الكتب المطلوبة"
-
-msgid "Colis livré avec succès"
-msgstr "تم تسليم الطرد بنجاح"
-
-msgid "Commande annulée"
-msgstr "طلب ملغى"
-
-msgid "Copier"
-msgstr "نسخ"
-
-msgid "Frais de port"
-msgstr "تكلفة التوصيل"
-
-msgid "Le livreur vous contactera par téléphone avant son passage."
-msgstr "سيتصل بك الموزع هاتفياً قبل الوصول لتسليم الطرد."
-
-msgid "Livraison & Règlement"
-msgstr "التوصيل والدفع"
-
-msgid ""
-"Nous préparons soigneusement vos livres. Le transporteur prendra en "
-"charge votre colis sous peu."
-msgstr "نحن نجهز كتبك بعناية فائقة. سيتسلم الموزع طردك في أقرب وقت."
-
-msgid "Paiement en espèces au livreur après vérification du colis."
-msgstr "الدفع نقداً للموزع بعد تفحص الطرد والتأكد منه."
-
-msgid "Statut de la commande"
-msgstr "حالة الطلب"
-
-msgid "Terminé"
-msgstr "مكتمل"
-
-msgid "En cours"
-msgstr "قيد التنفيذ"
-
-msgid "À venir"
-msgstr "قريباً"
-
-msgid "Votre colis est en route !"
-msgstr "طردك في الطريق إليك!"
-
-msgid "Votre commande est en cours de préparation"
-msgstr "طلبك قيد التحضير حالياً"
-
-msgid "Votre commande vous a été remise en mains propres. Bonne lecture !"
-msgstr "تم تسليم طلبك بنجاح. نتمنى لك قراءة ممتعة!"
-
 #, python-format
 msgid "Échange sous %(days)s jours"
 msgstr "استبدال خلال %(days)s أيام"
@@ -1482,19 +1432,6 @@ msgstr "نفد: احذفه من السلة"
 msgid "Épuisé pour le moment"
 msgstr "نفد من المخزون حالياً"
 
-msgid "Étape 1"
-msgstr "المرحلة 1"
-
-msgid "Étape 2"
-msgstr "المرحلة 2"
-
-msgid "Étape 3"
-msgstr "المرحلة 3"
-
-#, python-format
-msgid "Étape %(current)s sur %(total)s"
-msgstr "المرحلة %(current)s من %(total)s"
-
 msgid "Étapes de la commande"
 msgstr "مراحل الطلب"
 
@@ -1509,4 +1446,41 @@ msgstr "في"
 
 msgid "à la commande"
 msgstr "عند الطلب"
+
+msgid "Variation"
+msgstr "التغيير"
+
+msgid "Appeler"
+msgstr "اتصال"
+
+#, python-format
+msgid "Voir les détails de %(title)s"
+msgstr "عرض تفاصيل %(title)s"
+
+msgid "Ouvrir la commande"
+msgstr "فتح الطلب"
+
+msgid "Réception"
+msgstr "استلام"
+
+msgid "Casse"
+msgstr "تلف"
+
+msgid "Inventaire"
+msgstr "جرد"
+
+msgid "Supprimer"
+msgstr "حذف"
+
+msgid "Après ajustement"
+msgstr "بعد التعديل"
+
+msgid "Référence"
+msgstr "المرجع"
+
+msgid "Heure"
+msgstr "الوقت"
+
+msgid "Par"
+msgstr "بواسطة"
 

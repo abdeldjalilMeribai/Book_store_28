@@ -86,9 +86,16 @@ def phone_key(value: str) -> str:
     return re.sub(r"\D", "", value or "")[-9:]
 
 
+_ARABIC_MARKS = re.compile("[\u0610-\u061A\u064B-\u065F\u0670\u06D6-\u06ED\u0640]")  # voyelles brèves, tatwil
+_LIGATURES = str.maketrans({"œ": "oe", "æ": "ae", "ß": "ss", "أ": "ا", "إ": "ا", "آ": "ا", "ٱ": "ا"})
+
+
 def slugify(text: str) -> str:
-    text = unicodedata.normalize("NFKD", str(text or "")).encode("ascii", "ignore").decode()
-    slug = re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
+    """Slug lisible : lettres latines sans accents, lettres arabes conservées (sinon tous les auteurs arabes avaient le slug « item »)."""
+    text = unicodedata.normalize("NFKC", str(text or "")).lower()
+    text = _ARABIC_MARKS.sub("", text).translate(_LIGATURES)
+    text = "".join(c for c in unicodedata.normalize("NFKD", text) if not unicodedata.combining(c))
+    slug = re.sub(r"[\W_]+", "-", text).strip("-")
     return slug or "item"
 
 

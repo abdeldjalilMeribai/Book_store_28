@@ -52,6 +52,7 @@
     <main id="contenu" class="adm__content">{% block content %}{% endblock %}</main>
   </div>
 </div>
+<dialog class="sheet" id="sheet" aria-labelledby="sheet-title"><button type="button" class="icon-btn sheet__x" data-sheet-close aria-label="{{ _('Fermer') }}">{{ icon('close') }}</button><div class="sheet__handle sheet__grab" data-sheet-grab><span class="sheet__bar"></span></div><div class="sheet__panel" data-sheet-panel></div></dialog>
 <div class="toast-zone" data-toasts aria-live="polite"></div>
 <script src="{{ static_v('js/admin.js') }}" defer></script>
 </body>

@@ -457,6 +457,18 @@ ARABIC_MESSAGES = {
     'Étiquette': 'شارة',
     'à': 'في',
     'à la commande': 'عند الطلب',
+    'Variation': 'التغيير',
+    'Appeler': 'اتصال',
+    'Voir les détails de %(title)s': 'عرض تفاصيل %(title)s',
+    'Ouvrir la commande': 'فتح الطلب',
+    'Réception': 'استلام',
+    'Casse': 'تلف',
+    'Inventaire': 'جرد',
+    'Supprimer': 'حذف',
+    'Après ajustement': 'بعد التعديل',
+    'Référence': 'المرجع',
+    'Heure': 'الوقت',
+    'Par': 'بواسطة',
 }
 
 

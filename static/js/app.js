@@ -294,3 +294,54 @@
   window.Z28 = { $, $$, el, icon, fmt, api, toast, csrf, getCart, saveCart, clearCart, addToCart, setQty, removeFromCart, subtotal, verifyCart, itemFrom, MAX_QTY, t, I18N, isRtl };
   renderAll();
 })();
+
+/* Notifications : un clic (ou Entrée / Espace / Échap quand elle a le focus) la ferme.
+   Valable pour tout ce qui porte la classe .toast ou .flash, même créé plus tard par un autre script. */
+(() => {
+  'use strict';
+  const SEL = '.toast, .flash';
+  const HINT = document.documentElement.lang === 'ar' ? 'انقر للإغلاق' : 'Cliquer pour fermer';
+
+  function arm(el) {                                   // rend une notification cliquable et accessible au clavier
+    if (el.dataset.dismissArmed || el.hasAttribute('data-keep')) return;
+    el.dataset.dismissArmed = '1';
+    if (!el.hasAttribute('tabindex')) el.tabIndex = 0;
+    el.title = HINT;
+  }
+
+  function close(el) {
+    if (el.dataset.closing) return;
+    el.dataset.closing = '1';
+    el.classList.add('is-leaving');                    // petite animation de sortie (CSS)
+    setTimeout(() => {
+      const box = el.parentElement;
+      if (el.hasAttribute('data-form-alert')) {        // bandeau d'erreur du formulaire : réutilisé par checkout.js, on le masque seulement
+        el.hidden = true; el.classList.remove('is-leaving'); delete el.dataset.closing;
+      } else {
+        el.remove();
+        if (box && box.classList.contains('flashes') && !box.children.length) box.remove();   // plus de trou vide
+      }
+    }, 220);
+  }
+
+  document.addEventListener('click', (e) => {
+    const target = e.target instanceof Element ? e.target : null;
+    if (!target) return;
+    const news = target.closest('[data-news-msg]');    // message de la newsletter (pied de page)
+    if (news && news.textContent) { news.textContent = ''; return; }
+    const el = target.closest(SEL);
+    if (el && !el.hasAttribute('data-keep') && !target.closest('a, button')) close(el);
+  });
+
+  document.addEventListener('keydown', (e) => {
+    const el = e.target instanceof Element ? e.target.closest(SEL) : null;
+    if (el && !el.hasAttribute('data-keep') && ['Enter', ' ', 'Escape'].includes(e.key)) { e.preventDefault(); close(el); }
+  });
+
+  document.querySelectorAll(SEL).forEach(arm);
+  new MutationObserver((records) => records.forEach((r) => r.addedNodes.forEach((n) => {
+    if (n.nodeType !== 1) return;
+    if (n.matches(SEL)) arm(n);
+    n.querySelectorAll(SEL).forEach(arm);
+  }))).observe(document.body, { childList: true, subtree: true });
+})();

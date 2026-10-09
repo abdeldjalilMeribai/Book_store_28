@@ -4,19 +4,136 @@
 {% block heading %}{{ _("Stock") }}{% endblock %}
 {% block content %}
 <div class="adm-cols adm-cols--stock">
-  <section><h2 class="adm-h2">{{ _("Niveaux de stock") }}</h2>
-    <div class="table-wrap"><table class="table"><thead><tr><th scope="col">{{ _("Livre") }}</th><th scope="col" class="num">{{ _("Stock") }}</th><th scope="col">{{ _("Ajuster") }}</th></tr></thead><tbody>
-    {% for b in books %}<tr id="b{{ b.id }}"{% if focus == b.id %} class="is-focus"{% endif %}>
-      <td><b>{{ b.title }}</b><br><small class="muted">{{ b.author }}</small></td>
-      <td class="num nums {{ 'text-danger' if b.stock == 0 else ('text-warn' if b.stock <= b.low_stock_threshold else '') }}"><b>{{ b.stock }}</b><br><small class="muted">{{ _("alerte ≤") }} {{ b.low_stock_threshold }}</small></td>
-      <td><form class="adjust" method="post" action="{{ url_for('admin.stock_adjust', book_id=b.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
-        <label class="sr-only" for="c{{ b.id }}">{{ _("Variation pour") }} {{ b.title }}</label><input class="input" id="c{{ b.id }}" name="change" type="number" step="1" placeholder="{{ _('+10 ou −2') }}" required>
-        <label class="sr-only" for="r{{ b.id }}">{{ _("Motif") }}</label><input class="input" id="r{{ b.id }}" name="reason" placeholder="{{ _('Motif (réception, casse…)') }}" maxlength="120" required>
-        <label class="sr-only" for="t{{ b.id }}">{{ _("Seuil d'alerte") }}</label><input class="input adjust__thr" id="t{{ b.id }}" name="threshold" type="number" min="0" value="{{ b.low_stock_threshold }}" title="{{ _('Seuil d\'alerte') }}">
-        <button class="btn btn--sm" type="submit">{{ _("Valider") }}</button></form></td></tr>{% endfor %}
-    </tbody></table></div></section>
-  <section><h2 class="adm-h2">{{ _("Historique") }}{% if focus %} <a class="link-arrow small" href="{{ url_for('admin.stock') }}">{{ _("Tout voir") }}</a>{% endif %}</h2>
-    {% if movements %}<ul class="moves">{% for m in movements %}<li><b class="nums {{ 'text-ok' if m.change > 0 else 'text-danger' }}">{{ '+' if m.change > 0 }}{{ m.change }}</b><span><b>{{ m.title }}</b><br><small class="muted">{{ m.reason }} · {{ m.admin_name or _('Système') }} · {{ m.created_at | dt }} · {{ _('reste') }} {{ m.stock_after }}</small></span></li>{% endfor %}</ul>
-    {% else %}<p class="muted">{{ _("Aucun mouvement enregistré.") }}</p>{% endif %}</section>
+  <section>
+    <h2 class="adm-h2">{{ _("Niveaux de stock") }}</h2>
+    <div class="table-wrap rwide">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">{{ _("Livre") }}</th>
+            <th scope="col" class="num">{{ _("Stock") }}</th>
+            <th scope="col">{{ _("Ajuster") }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for b in books %}<tr id="b{{ b.id }}" {% if focus==b.id %} class="is-focus" {% endif %}>
+            <td><b>{{ b.title }}</b><br><small class="muted">{{ b.author }}</small></td>
+            <td
+              class="num nums {{ 'text-danger' if b.stock == 0 else ('text-warn' if b.stock <= b.low_stock_threshold else '') }}">
+              <b>{{ b.stock }}</b><br><small class="muted">{{ _("alerte ≤") }} {{ b.low_stock_threshold }}</small>
+            </td>
+            <td>
+              <form class="adjust" method="post" action="{{ url_for('admin.stock_adjust', book_id=b.id) }}"><input
+                  type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <label class="sr-only" for="c{{ b.id }}">{{ _("Variation pour") }} {{ b.title }}</label><input
+                  class="input" id="c{{ b.id }}" name="change" type="number" step="1" placeholder="{{ _('+10 ou −2') }}"
+                  required>
+                <label class="sr-only" for="r{{ b.id }}">{{ _("Motif") }}</label><input class="input" id="r{{ b.id }}"
+                  name="reason" placeholder="{{ _('Motif (réception, casse…)') }}" maxlength="120" required>
+                <label class="sr-only" for="t{{ b.id }}">{{ _("Seuil d'alerte") }}</label><input
+                  class="input adjust__thr" id="t{{ b.id }}" name="threshold" type="number" min="0"
+                  value="{{ b.low_stock_threshold }}" title="{{ _('Seuil d\'alerte') }}">
+                <button class="btn btn--sm" type="submit">{{ _("Valider") }}</button>
+              </form>
+            </td>
+          </tr>{% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <ul class="rlist">{% for b in books %}{% set st = 'text-danger' if b.stock == 0 else ('text-warn' if b.stock <=
+        b.low_stock_threshold else '' ) %} <li class="rcard{{ ' is-focus' if focus == b.id }}" id="m{{ b.id }}">
+        <span class="qtile nums {{ st }}">{{ b.stock }}</span>
+        <div class="rcard__main"><b class="rcard__title">{{ b.title }}</b><span class="rcard__sub">{{ b.author }}</span>
+          <div class="rcard__meta">{% if b.stock == 0 %}<span class="pill pill--cancelled">{{ _("Épuisé") }}</span>{%
+            elif st %}<span class="pill pill--pending">{{ _("Stock bas") }}</span>{% endif %}<span class="muted nums">{{
+              _("alerte ≤") }} {{ b.low_stock_threshold }}</span></div>
+        </div>
+        <button type="button" class="eye" data-sheet-open
+          aria-label="{{ _('Voir les détails de %(title)s', title=b.title) }}">{{ icon('eye') }}</button>
+        <template data-sheet>
+          <header class="sheet__head sheet__grab" data-sheet-grab>
+            <div>
+              <h2 class="sheet__title" id="sheet-title">{{ b.title }}</h2>
+              <p class="sheet__sub">{{ b.author }}</p>
+            </div>
+          </header>
+          <div class="sheet__body">
+            <dl class="sheet__grid">
+              <div class="wide">
+                <dt>{{ _("Stock") }}</dt>
+                <dd class="sheet__big nums {{ st }}">{{ b.stock }}</dd>
+              </div>
+            </dl>
+            <form class="sheet__form" id="sheet-form" method="post"
+              action="{{ url_for('admin.stock_adjust', book_id=b.id) }}"><input type="hidden" name="csrf_token"
+                value="{{ csrf_token() }}">
+              <div class="field"><label for="s-change">{{ _("Variation") }}</label>
+                <div class="stepper"><button type="button" data-step="-1" aria-label="{{ _('Diminuer') }}">{{
+                    icon('minus') }}</button><input class="input" id="s-change" name="change" type="number" step="1"
+                    inputmode="numeric" placeholder="{{ _('+10 ou −2') }}" required data-current="{{ b.stock }}"><button
+                    type="button" data-step="1" aria-label="{{ _('Augmenter') }}">{{ icon('plus') }}</button></div>
+              </div>
+              <p class="sheet__preview" data-preview-box hidden><span>{{ _("Après ajustement") }}</span><b class="nums"
+                  data-preview-val>{{ b.stock }}</b></p>
+              <div class="field"><label for="s-reason">{{ _("Motif") }}</label><input class="input" id="s-reason"
+                  name="reason" placeholder="{{ _('Motif (réception, casse…)') }}" maxlength="120" required>
+                <div class="fills"><button type="button" data-fill="{{ _('Réception') }}">{{ _("Réception")
+                    }}</button><button type="button" data-fill="{{ _('Casse') }}">{{ _("Casse") }}</button><button
+                    type="button" data-fill="{{ _('Retour') }}">{{ _("Retour") }}</button><button type="button"
+                    data-fill="{{ _('Inventaire') }}">{{ _("Inventaire") }}</button></div>
+              </div>
+              <div class="field"><label for="s-thr">{{ _("Seuil d'alerte") }}</label><input class="input" id="s-thr"
+                  name="threshold" type="number" min="0" inputmode="numeric" value="{{ b.low_stock_threshold }}"></div>
+            </form>
+          </div>
+          <footer class="sheet__act"><button class="btn" type="submit" form="sheet-form">{{ icon('check') }} {{
+              _("Valider") }}</button><a class="btn btn--ghost" href="{{ url_for('admin.stock', livre=b.id) }}">{{
+              icon('clock') }} {{ _("Historique") }}</a></footer>
+        </template></li>{% endfor %}</ul>
+  </section>
+  <section>
+    <h2 class="adm-h2">{{ _("Historique") }}{% if focus %} <a class="link-arrow small"
+        href="{{ url_for('admin.stock') }}">{{ _("Tout voir") }}</a>{% endif %}</h2>
+    {% if movements %}{% set ns = namespace(day='') %}
+    {% for m in movements %}{% set day = m.created_at | d %}{% set is_order = m.reason.startswith('Commande ') %}
+    {% if day != ns.day %}{% if ns.day %}</ul>{% endif %}<h3 class="hday nums">{{ day }}</h3>
+    <ul class="hlist">{% set ns.day = day %}{% endif %}
+      <li class="hcard">
+        <div class="hcard__top">
+          {% if m.cover_url %}<img class="hcard__cover" src="{{ m.cover_url }}" alt="" width="96" height="144"
+            loading="lazy">{% else %}<span class="hcard__cover hcard__cover--ph">{{ icon('book') }}</span>{% endif %}
+          <div class="hcard__id"><b class="hcard__book">{{ m.title }}</b><span class="hcard__author">{{ m.author
+              }}</span>
+            <span class="hcard__delta nums {{ 'is-in' if m.change > 0 else 'is-out' }}">{{ '+' if m.change > 0 }}{{
+              m.change }}</span>
+          </div>
+        </div>
+        <dl class="hcard__rows">
+          <div>
+            <dt>{{ _("Motif") }}</dt>
+            <dd>{{ _("Commande") if is_order else m.reason }}</dd>
+          </div>
+          {% if is_order %}<div>
+            <dt>{{ _("Référence") }}</dt>
+            <dd class="pixel nums">{{ m.reason[9:] }}</dd>
+          </div>{% endif %}
+          <div>
+            <dt>{{ _("Heure") }}</dt>
+            <dd class="nums">{{ (m.created_at | dt).split(' ')[-1] }}</dd>
+          </div>
+          <div>
+            <dt>{{ _("Par") }}</dt>
+            <dd{% if not m.admin_name %} class="muted" {% endif %}>{{ m.admin_name or _('Système') }}</dd>
+          </div>
+          <div>
+            <dt>{{ _("Stock") }}</dt>
+            <dd class="hflow nums"><span>{{ m.stock_after - m.change }}</span><span aria-hidden="true">→</span><b>{{
+                m.stock_after }}</b></dd>
+          </div>
+        </dl>
+      </li>{% endfor %}
+    </ul>
+    {% else %}<p class="muted">{{ _("Aucun mouvement enregistré.") }}</p>{% endif %}
+  </section>
 </div>
 {% endblock %}

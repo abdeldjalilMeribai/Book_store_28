@@ -22,13 +22,12 @@ FROM books b LEFT JOIN categories c ON c.id = b.category_id
 """
 
 SORTS = {
-    "new": ("Nouveautés", "(b.badge = 'new') DESC, b.created_at DESC, b.id DESC"),
-    "popular": ("Les plus vendus", "(b.badge = 'bestseller') DESC, sold DESC, b.id DESC"),
     "price_asc": ("Prix croissant", "b.price ASC, b.id DESC"),
     "price_desc": ("Prix décroissant", "b.price DESC, b.id DESC"),
     "title": ("Titre A → Z", "LOWER(b.title) ASC"),
 }
 
+DEFAULT_ORDER = "b.created_at DESC, b.id DESC"   # ordre quand aucun tri n'est choisi : les plus récents d'abord
 
 def now_utc_str(dt=None):
     return (dt or datetime.now(timezone.utc)).strftime("%Y-%m-%d %H:%M:%S")
@@ -72,7 +71,7 @@ def search_books(filters, page=1, per_page=12, published_only=True):
     if filters.get("in_stock"):
         where.append("b.stock > 0")
     clause = (" WHERE " + " AND ".join(where)) if where else ""
-    order = SORTS.get(filters.get("sort"), SORTS["new"])[1]
+    order = SORTS[filters["sort"]][1] if filters.get("sort") in SORTS else DEFAULT_ORDER
     total = db.scalar(
         "SELECT COUNT(*) FROM books b LEFT JOIN categories c ON c.id = b.category_id" + clause, args
     )
@@ -268,7 +267,10 @@ def get_order_by_code(code):
 
 
 def order_items(order_id):
-    return db.query("SELECT * FROM order_items WHERE order_id = ? ORDER BY id", (order_id,))
+    return db.query(
+        "SELECT oi.*, b.cover_url FROM order_items oi "
+        "LEFT JOIN books b ON b.id = oi.book_id "
+        "WHERE oi.order_id = ? ORDER BY oi.id", (order_id,))
 
 
 def change_order_status(order_id, new_status, admin_id):

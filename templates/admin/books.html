@@ -2,13 +2,13 @@
 {%- from "_macros.html" import icon -%}
 {% block title %}{{ _("Livres") }}{% endblock %}
 {% block heading %}{{ _("Livres") }}{% endblock %}
-{% block actions %}<a class="btn btn--sm" href="{{ url_for('admin.book_new') }}">{{ icon('plus') }} {{ _("Nouveau livre") }}</a>{% endblock %}
+{% block actions %}<a class="btn btn--sm adm-act" href="{{ url_for('admin.book_new') }}">{{ icon('plus') }}<span class="adm-act__t">{{ _("Nouveau livre") }}</span></a>{% endblock %}
 {% block content %}
 <form class="adm-filter" method="get"><label class="sr-only" for="a-q">{{ _("Rechercher") }}</label><input class="input" id="a-q" type="search" name="q" value="{{ q }}" placeholder="{{ _('Titre, auteur, ISBN') }}" maxlength="80">
   <select class="select" name="etat" aria-label="{{ _('État') }}"><option value="">{{ _("Tous") }}</option><option value="low"{% if status == 'low' %} selected{% endif %}>{{ _("Stock bas") }}</option><option value="hidden"{% if status == 'hidden' %} selected{% endif %}>{{ _("Masqués") }}</option></select>
   <button class="btn btn--ghost" type="submit">{{ _("Filtrer") }}</button></form>
 {% if books %}
-<div class="table-wrap"><table class="table">
+<div class="table-wrap rwide"><table class="table">
   <thead><tr><th scope="col">{{ _("Livre") }}</th><th scope="col">{{ _("Genre") }}</th><th scope="col" class="num">{{ _("Prix") }}</th><th scope="col" class="num">{{ _("Achat") }}</th><th scope="col" class="num">{{ _("Stock") }}</th><th scope="col">{{ _("État") }}</th><th scope="col"><span class="sr-only">{{ _("Actions") }}</span></th></tr></thead>
   <tbody>{% for b in books %}<tr>
     <td><div class="cell-book">{% if b.cover_url %}<img src="{{ b.cover_url }}" alt="" width="40" height="60" loading="lazy">{% else %}<span class="cell-book__ph">{{ icon('book') }}</span>{% endif %}<div><b>{{ b.title }}</b><br><small class="muted">{{ b.author }}</small></div></div></td>
@@ -18,5 +18,22 @@
     <td class="actions"><a class="btn btn--ghost btn--sm" href="{{ url_for('admin.book_edit', book_id=b.id) }}">{{ icon('edit') }} {{ _("Modifier") }}</a>
       <form method="post" action="{{ url_for('admin.book_delete', book_id=b.id) }}" data-confirm="{{ _('Supprimer « %(title)s » ? Cette action est définitive.', title=b.title) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn--danger btn--sm" type="submit" aria-label="{{ _('Supprimer %(title)s', title=b.title) }}">{{ icon('trash') }}</button></form></td></tr>{% endfor %}</tbody>
 </table></div>
+<ul class="rlist">{% for b in books %}{% set st = 'text-danger' if b.stock == 0 else ('text-warn' if b.stock <= b.low_stock_threshold else '') %}
+  <li class="rcard">
+    <div class="rcard__media">{% if b.cover_url %}<img src="{{ b.cover_url }}" alt="" width="52" height="78" loading="lazy">{% else %}<span class="rcard__ph">{{ icon('book') }}</span>{% endif %}</div>
+    <div class="rcard__main"><b class="rcard__title">{{ b.title }}</b><span class="rcard__sub">{{ b.author }}</span>
+      <div class="rcard__meta"><span class="rcard__price nums">{{ b.price | money }}</span><span class="nums {{ st }}">{{ _("Stock") }} {{ b.stock }}</span>
+        {% if not b.is_published %}<span class="pill">{{ _("Masqué") }}</span>{% elif b.is_featured %}<span class="pill pill--shipped">{{ _("Coup de cœur") }}</span>{% endif %}</div></div>
+    <button type="button" class="eye" data-sheet-open aria-label="{{ _('Voir les détails de %(title)s', title=b.title) }}">{{ icon('eye') }}</button>
+    <template data-sheet>
+      <header class="sheet__head sheet__grab" data-sheet-grab>{% if b.cover_url %}<img src="{{ b.cover_url }}" alt="" width="58" height="87">{% else %}<span class="rcard__ph">{{ icon('book') }}</span>{% endif %}<div><h2 class="sheet__title" id="sheet-title">{{ b.title }}</h2><p class="sheet__sub">{{ b.author }}</p></div></header>
+      <div class="sheet__body"><dl class="sheet__grid">
+        <div class="wide"><dt>{{ _("Genre") }}</dt><dd>{{ b.category_name or '—' }}</dd></div>
+        <div><dt>{{ _("Prix") }}</dt><dd class="nums">{{ b.price | money }}</dd></div><div><dt>{{ _("Achat") }}</dt><dd class="nums">{{ b.cost_price | money }}</dd></div>
+        <div><dt>{{ _("Marge") }}</dt><dd class="nums text-ok">{{ (b.price - b.cost_price) | money }}</dd></div><div><dt>{{ _("Stock") }}</dt><dd class="nums {{ st }}">{{ b.stock }}</dd></div>
+        <div class="wide"><dt>{{ _("État") }}</dt><dd>{% if not b.is_published %}<span class="pill">{{ _("Masqué") }}</span>{% elif b.is_featured %}<span class="pill pill--shipped">{{ _("Coup de cœur") }}</span>{% else %}<span class="pill pill--delivered">{{ _("En ligne") }}</span>{% endif %}</dd></div></dl></div>
+      <footer class="sheet__act"><a class="btn" href="{{ url_for('admin.book_edit', book_id=b.id) }}">{{ icon('edit') }} {{ _("Modifier") }}</a>
+        <form method="post" action="{{ url_for('admin.book_delete', book_id=b.id) }}" data-confirm="{{ _('Supprimer « %(title)s » ? Cette action est définitive.', title=b.title) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn--danger" type="submit">{{ icon('trash') }} {{ _("Supprimer") }}</button></form></footer>
+    </template></li>{% endfor %}</ul>
 {% else %}<div class="empty">{{ icon('book') }}<h3>{{ _("Aucun livre") }}</h3><p>{{ _("Ajoutez votre premier livre pour remplir le catalogue.") }}</p><a class="btn" href="{{ url_for('admin.book_new') }}">{{ _("Nouveau livre") }}</a></div>{% endif %}
 {% endblock %}

@@ -281,7 +281,7 @@ def stock():
     focus = _int(request.args.get("livre"))
     rows = db.query("SELECT id, title, author, stock, low_stock_threshold, cover_url FROM books ORDER BY "
                     "(stock <= low_stock_threshold) DESC, stock ASC, LOWER(title)")
-    sql = ("SELECT m.*, b.title, u.username AS admin_name FROM stock_movements m "
+    sql = ("SELECT m.*, b.title, b.author, b.cover_url, u.username AS admin_name FROM stock_movements m "
            "JOIN books b ON b.id=m.book_id LEFT JOIN users u ON u.id=m.admin_id ")
     movements = db.query(sql + ("WHERE m.book_id=? " if focus else "") + "ORDER BY m.id DESC LIMIT 60",
                          (focus,) if focus else ())
@@ -394,14 +394,16 @@ def settings():
     if request.method == "POST":
         limits = {"site_name": 40, "tagline": 60, "announcement": 200, "hero_title": 80, "hero_subtitle": 260,
                   "phone": 30, "whatsapp": 20, "email": 120, "instagram": 200, "facebook": 200,
-                  "delivery_delay": 40, "return_days": 3}
+                  "delivery_delay": 40, "return_days": 3,
+                  "announcement_ar": 200, "tagline_ar": 60, "hero_title_ar": 80, "hero_subtitle_ar": 260,
+                  "delivery_delay_ar": 40}
         for key, limit in limits.items():
-            value = clean_text(request.form.get(key), limit, multiline=(key == "hero_title"))
+            value = clean_text(request.form.get(key), limit, multiline=(key in ("hero_title", "hero_title_ar")))
             if key in ("instagram", "facebook") and value and not value.startswith(("https://", "http://")):
                 value = ""
             if key == "whatsapp":
                 value = "".join(ch for ch in value if ch.isdigit())
-            if value or key in ("announcement", "instagram", "facebook"):
+            if value or key in ("announcement", "announcement_ar", "instagram", "facebook"):
                 db.set_setting(key, value)
         flash("Réglages enregistrés.", "success")
         return redirect(url_for("admin.settings"))

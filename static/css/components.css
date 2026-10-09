@@ -298,3 +298,9 @@ dialog[open] { animation: dlg .4s var(--ease); }
 [dir="rtl"] .mobile-sheet nav a { text-align: right; }
 [dir="rtl"] .mobile-sheet nav a .icon,
 [dir="rtl"] .link-arrow .icon { transform: scaleX(-1); }
+
+/* Notifications cliquables : un clic les ferme (voir js/dismiss.js) */
+.toast, .flash:not([data-keep]) { cursor: pointer; }
+.toast { pointer-events: auto; }   /* la zone des toasts ignore la souris : on la réactive sur chaque toast */
+.is-leaving { animation: notif-out .22s var(--ease) forwards; }
+@keyframes notif-out { to { opacity: 0; transform: translateY(8px) scale(.98); } }

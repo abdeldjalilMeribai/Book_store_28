@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-08 08:20+0100\n"
+"POT-Creation-Date: 2026-10-10 00:35+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1427,58 +1427,6 @@ msgstr "À propos"
 msgid "À régler au livreur"
 msgstr "À régler au livreur"
 
-msgid "Articles commandés"
-msgstr "Articles commandés"
-
-msgid "Colis livré avec succès"
-msgstr "Colis livré avec succès"
-
-msgid "Commande annulée"
-msgstr "Commande annulée"
-
-msgid "Copier"
-msgstr "Copier"
-
-msgid "Frais de port"
-msgstr "Frais de port"
-
-msgid "Le livreur vous contactera par téléphone avant son passage."
-msgstr "Le livreur vous contactera par téléphone avant son passage."
-
-msgid "Livraison & Règlement"
-msgstr "Livraison & Règlement"
-
-msgid ""
-"Nous préparons soigneusement vos livres. Le transporteur prendra en "
-"charge votre colis sous peu."
-msgstr ""
-"Nous préparons soigneusement vos livres. Le transporteur prendra en "
-"charge votre colis sous peu."
-
-msgid "Paiement en espèces au livreur après vérification du colis."
-msgstr "Paiement en espèces au livreur après vérification du colis."
-
-msgid "Statut de la commande"
-msgstr "Statut de la commande"
-
-msgid "Terminé"
-msgstr "Terminé"
-
-msgid "En cours"
-msgstr "En cours"
-
-msgid "À venir"
-msgstr "À venir"
-
-msgid "Votre colis est en route !"
-msgstr "Votre colis est en route !"
-
-msgid "Votre commande est en cours de préparation"
-msgstr "Votre commande est en cours de préparation"
-
-msgid "Votre commande vous a été remise en mains propres. Bonne lecture !"
-msgstr "Votre commande vous a été remise en mains propres. Bonne lecture !"
-
 #, python-format
 msgid "Échange sous %(days)s jours"
 msgstr "Échange sous %(days)s jours"
@@ -1501,19 +1449,6 @@ msgstr "Épuisé : retirez-le du panier"
 msgid "Épuisé pour le moment"
 msgstr "Épuisé pour le moment"
 
-msgid "Étape 1"
-msgstr "Étape 1"
-
-msgid "Étape 2"
-msgstr "Étape 2"
-
-msgid "Étape 3"
-msgstr "Étape 3"
-
-#, python-format
-msgid "Étape %(current)s sur %(total)s"
-msgstr "Étape %(current)s sur %(total)s"
-
 msgid "Étapes de la commande"
 msgstr "Étapes de la commande"
 
@@ -1528,4 +1463,41 @@ msgstr "à"
 
 msgid "à la commande"
 msgstr "à la commande"
+
+msgid "Variation"
+msgstr "Variation"
+
+msgid "Appeler"
+msgstr "Appeler"
+
+#, python-format
+msgid "Voir les détails de %(title)s"
+msgstr "Voir les détails de %(title)s"
+
+msgid "Ouvrir la commande"
+msgstr "Ouvrir la commande"
+
+msgid "Réception"
+msgstr "Réception"
+
+msgid "Casse"
+msgstr "Casse"
+
+msgid "Inventaire"
+msgstr "Inventaire"
+
+msgid "Supprimer"
+msgstr "Supprimer"
+
+msgid "Après ajustement"
+msgstr "Après ajustement"
+
+msgid "Référence"
+msgstr "Référence"
+
+msgid "Heure"
+msgstr "Heure"
+
+msgid "Par"
+msgstr "Par"
 
