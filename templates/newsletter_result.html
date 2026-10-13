@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}{{ _("Newsletter") }} — {{ settings.site_name }}{% endblock %}
+{% block content %}
+<section class="wrap error-page">
+  {% if action == "confirm" %}
+    {% if ok %}<h1>{{ _("Inscription confirmée") }}</h1><p class="muted">{{ _("Merci ! Vous recevrez désormais nos nouveautés et nos promotions.") }}</p>
+    {% else %}<h1>{{ _("Lien invalide") }}</h1><p class="muted">{{ _("Ce lien de confirmation n'est pas valide. Inscrivez-vous de nouveau depuis le bas de la page.") }}</p>{% endif %}
+  {% else %}
+    {% if ok %}<h1>{{ _("Vous êtes désinscrit(e)") }}</h1><p class="muted">{{ _("Vous ne recevrez plus nos e-mails. Vous pouvez vous réinscrire à tout moment.") }}</p>
+    {% else %}<h1>{{ _("Lien invalide") }}</h1><p class="muted">{{ _("Ce lien de désinscription n'est pas valide ou a déjà été utilisé.") }}</p>{% endif %}
+  {% endif %}
+  <div class="done__actions"><a class="btn btn--lg" href="{{ url_for('shop.home') }}">{{ _("Retour à l'accueil") }}</a><a class="btn btn--lg btn--ghost" href="{{ url_for('shop.catalog') }}">{{ _("Voir le catalogue") }}</a></div>
+</section>
+{% endblock %}

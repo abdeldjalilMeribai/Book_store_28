@@ -2,19 +2,25 @@
 {%- from "_macros.html" import icon -%}
 {% block title %}{{ _("Commande") }} {{ order.tracking_code }}{% endblock %}
 {% block heading %}{{ _("Commande") }} <span class="pixel">{{ order.tracking_code }}</span>{% endblock %}
-{% block actions %}<a class="btn btn--ghost btn--sm adm-act adm-back" href="{{ url_for('admin.orders') }}">{{ icon('arrow-left') }}<span class="adm-act__t">{{ _("Commandes") }}</span></a>{% endblock %}
+{% block actions %}<a class="btn btn--ghost btn--sm adm-act adm-back" href="{{ url_for('admin.orders') }}">{{
+  icon('arrow-left') }}<span class="adm-act__t">{{ _("Commandes") }}</span></a>{% endblock %}
 {% block content %}
 <div class="adm-cols adm-cols--order">
   <div>
     <section class="panel">
       <h2 class="adm-h2">{{ _("Livres commandés") }}</h2>
-<ul class="order-items">{% for it in items %}
-  <li class="order-item">
-    {% if it.cover_url %}<a class="order-item__cover" href="{{ it.cover_url }}" target="_blank" rel="noopener" aria-label="{{ it.title }}"><img src="{{ it.cover_url }}" alt="" width="96" height="144" decoding="async"></a>
-    {% else %}<div class="order-item__cover">{{ icon('book') }}</div>{% endif %}
-    <div class="order-item__body"><b><bdi>{{ it.title }}</bdi></b><small class="muted"><bdi>{{ it.author }}</bdi></small><small class="muted nums"><bdi>{{ it.quantity }}</bdi> × <bdi>{{ it.price | money }}</bdi></small></div>
-    <span class="order-item__total nums"><bdi>{{ (it.price * it.quantity) | money }}</bdi></span>
-  </li>{% endfor %}</ul>
+      <ul class="order-items">{% for it in items %}
+        <li class="order-item">
+          {% if it.cover_url %}<a class="order-item__cover" href="{{ it.cover_url }}" target="_blank" rel="noopener"
+            aria-label="{{ it.title }}"><img src="{{ it.cover_url }}" alt="" width="96" height="144"
+              decoding="async"></a>
+          {% else %}<div class="order-item__cover">{{ icon('book') }}</div>{% endif %}
+          <div class="order-item__body"><b><bdi>{{ it.title }}</bdi></b><small class="muted"><bdi>{{ it.author
+                }}</bdi></small><small class="muted nums"><bdi>{{ it.quantity }}</bdi> × <bdi>{{ it.price | money
+                }}</bdi></small></div>
+          <span class="order-item__total nums"><bdi>{{ (it.price * it.quantity) | money }}</bdi></span>
+        </li>{% endfor %}
+      </ul>
       <dl class="sum">
         <div>
           <dt>{{ _("Sous-total") }}</dt>
@@ -73,6 +79,10 @@
       <p class="field-hint mt-4">{{ _("Annuler remet les livres en stock automatiquement.") }}</p><button
         class="btn btn--block mt-4" type="submit">{{ _("Mettre à jour") }}</button>
     </form>
+    <form method="post" action="{{ url_for('admin.order_delete', order_id=order.id) }}" class="mt-5"
+      data-confirm="{{ _('Supprimer la commande %(code)s ? Cette action est définitive. Le stock et les gains sont recalculés.', code=order.tracking_code) }}">
+      <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn btn--danger btn--block"
+        type="submit">{{ icon('trash') }} {{ _("Supprimer la commande") }}</button></form>
   </aside>
 </div>
 {% endblock %}

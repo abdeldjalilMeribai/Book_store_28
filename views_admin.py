@@ -2,6 +2,7 @@
 from flask import (Blueprint, abort, current_app, flash, g, jsonify, redirect, render_template, request, url_for)
 
 import db
+import newsletter
 import security
 import services
 from config import DEFAULT_SETTINGS
@@ -160,6 +161,24 @@ def book_edit(book_id):
         abort(404)
     return _book_form(book)
 
+def _announce_to_subscribers(old_book, data, book_id):
+    """Nouveau livre publié → e-mail « Nouveauté » ; livre existant qui passe en promotion → e-mail « Promotion »."""
+    try:
+        if not data.get("is_published"):
+            return 0
+        if old_book is None:
+            kind = "new"
+        else:
+            now_promo = bool(data.get("old_price") and data["old_price"] > data["price"])
+            was_promo = bool(old_book["old_price"] and old_book["old_price"] > old_book["price"])
+            if not now_promo or was_promo:
+                return 0
+            kind = "promo"
+        return newsletter.announce_book(services.get_book(book_id), kind)
+    except Exception:
+        current_app.logger.exception("Annonce newsletter impossible")
+        return 0
+    
 
 def _book_form(book):
     errors, form = {}, _book_form_defaults()
@@ -190,8 +209,9 @@ def _book_form(book):
                     db.execute(f"UPDATE books SET {sets} WHERE id=?", [*data.values(), book_id])
                     if stock_new != book["stock"]:
                         services.adjust_stock(book_id, stock_new - book["stock"], "Correction depuis la fiche livre", g.user["id"])
-                _save_book_images(book_id, request.files, book)
-                flash("Livre enregistré.", "success")
+                _save_book_images(book_id, request.files, book)                
+                notified = _announce_to_subscribers(book, data, book_id) if request.form.get("notify") else 0
+                flash("Livre enregistré." + (f" {notified} abonné(s) prévenu(s) par e-mail." if notified else ""), "success")
                 return redirect(url_for("admin.book_edit", book_id=book_id))
             except InvalidImageError as exc:
                 errors["cover"] = str(exc)
@@ -347,6 +367,15 @@ def order_status(order_id):
         flash(err.message, "error")
     return redirect(url_for("admin.order_detail", order_id=order_id))
 
+@bp.post("/commandes/<int:order_id>/supprimer")
+def order_delete(order_id):
+    try:
+        code = services.delete_order(order_id, g.user["id"])
+        flash(f"Commande {code} supprimée.", "success")
+    except services.OrderError as err:
+        flash(err.message, "error")
+        return redirect(url_for("admin.orders"))
+    return redirect(url_for("admin.orders"))
 
 # ───────────────────────── Clients, avis, réglages ─────────────────────────
 @bp.route("/clients")
@@ -354,8 +383,10 @@ def customers():
     users = db.query(
         "SELECT u.*, (SELECT COUNT(*) FROM orders o WHERE o.user_id=u.id) AS order_count FROM users u "
         "ORDER BY u.is_admin DESC, u.created_at DESC LIMIT 300")
-    subs = db.query("SELECT * FROM subscribers ORDER BY id DESC LIMIT 100")
-    return render_template("admin/customers.html", users=users, subscribers=subs)
+    subs = db.query("SELECT * FROM subscribers WHERE confirmed_at IS NOT NULL ORDER BY id DESC LIMIT 200")
+    sub_count = db.scalar("SELECT COUNT(*) FROM subscribers WHERE confirmed_at IS NOT NULL")
+    sub_pending = db.scalar("SELECT COUNT(*) FROM subscribers WHERE confirmed_at IS NULL")
+    return render_template("admin/customers.html", users=users, subscribers=subs, sub_count=sub_count, sub_pending=sub_pending)
 
 
 @bp.post("/clients/<int:user_id>/actif")

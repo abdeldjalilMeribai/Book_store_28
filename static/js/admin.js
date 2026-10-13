@@ -103,3 +103,48 @@
     fetch('/admin/api/notifications/lu', { method: 'POST', credentials: 'same-origin', headers: { 'X-CSRFToken': csrf(), 'Content-Type': 'application/json' }, body: '{}', keepalive: true });
   });
 })();
+
+/* Notifications : les messages (.flash) se ferment seuls, au clic, avec le bouton ✕ ou Échap ; les toasts se ferment au clic. */
+(() => {
+  'use strict';
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const DELAY = { success: 5000, info: 6000, error: 9000 };
+  const label = document.documentElement.lang === 'ar' ? 'إغلاق' : 'Fermer';
+
+  function close(el) {
+    if (!el || el.classList.contains('is-leaving')) return;
+    el.classList.add('is-leaving');
+    const box = el.parentElement;
+    setTimeout(() => {
+      el.remove();
+      if (box && box.classList.contains('flashes') && !box.querySelector('.flash')) box.remove();
+    }, 380);
+  }
+
+  function arm(el) {
+    const kind = (el.className.match(/flash--(\w+)/) || [])[1];
+    const delay = DELAY[kind] || DELAY.info;
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'flash__close'; btn.setAttribute('aria-label', label);
+    const svg = document.createElementNS(SVG_NS, 'svg'); svg.setAttribute('class', 'icon'); svg.setAttribute('aria-hidden', 'true');
+    const use = document.createElementNS(SVG_NS, 'use'); use.setAttribute('href', '#i-close');
+    svg.append(use); btn.append(svg); el.append(btn);
+    let timer;
+    const start = () => { clearTimeout(timer); timer = setTimeout(() => close(el), delay); };
+    const stop = () => clearTimeout(timer);
+    el.addEventListener('mouseenter', stop); el.addEventListener('mouseleave', start);
+    el.addEventListener('focusin', stop); el.addEventListener('focusout', start);
+    start();
+  }
+
+  document.querySelectorAll('.flashes .flash').forEach(arm);
+
+  // Clic n'importe où sur un message ou un toast (y compris ceux créés plus tard par app.js / admin.js)
+  document.addEventListener('click', (e) => {
+    const el = e.target instanceof Element && e.target.closest('.flashes .flash, .toast');
+    if (el) close(el);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.querySelectorAll('.flashes .flash, .toast').forEach(close);
+  });
+})();

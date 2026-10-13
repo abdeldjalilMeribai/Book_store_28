@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-10 00:35+0100\n"
+"POT-Creation-Date: 2026-10-13 23:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ar\n"
@@ -1115,6 +1115,17 @@ msgstr "هل تريد حذف هذا التقييم؟"
 msgid "Supprimer cette image ?"
 msgstr "هل تريد حذف هذه الصورة؟"
 
+msgid "Supprimer la commande"
+msgstr "حذف الطلب"
+
+#, python-format
+msgid ""
+"Supprimer la commande %(code)s ? Cette action est définitive. Le stock et"
+" les gains sont recalculés."
+msgstr ""
+"هل تريد حذف الطلب %(code)s؟ هذا الإجراء نهائي. سيُعاد حساب المخزون "
+"والأرباح."
+
 #, python-format
 msgid "Supprimer l'avis de %(name)s"
 msgstr "حذف تقييم %(name)s"
@@ -1483,4 +1494,55 @@ msgstr "الوقت"
 
 msgid "Par"
 msgstr "بواسطة"
+
+msgid "Adresse e-mail invalide."
+msgstr "عنوان البريد الإلكتروني غير صالح."
+
+msgid "Trop de demandes. Réessayez plus tard."
+msgstr "طلبات كثيرة جداً. حاول مرة أخرى لاحقاً."
+
+msgid ""
+"Presque terminé ! Nous venons de vous envoyer un e-mail : cliquez sur le "
+"lien qu'il contient pour confirmer votre inscription."
+msgstr ""
+"أوشكنا على الانتهاء! أرسلنا إليك رسالة بريد إلكتروني: اضغط على الرابط "
+"الموجود فيها لتأكيد اشتراكك."
+
+msgid "Newsletter"
+msgstr "النشرة البريدية"
+
+msgid "Inscription confirmée"
+msgstr "تم تأكيد الاشتراك"
+
+msgid "Merci ! Vous recevrez désormais nos nouveautés et nos promotions."
+msgstr "شكراً لك! ستصلك من الآن فصاعداً آخر إصداراتنا وعروضنا."
+
+msgid "Lien invalide"
+msgstr "رابط غير صالح"
+
+msgid ""
+"Ce lien de confirmation n'est pas valide. Inscrivez-vous de nouveau "
+"depuis le bas de la page."
+msgstr "رابط التأكيد غير صالح. سجّل من جديد من أسفل الصفحة."
+
+msgid "Vous êtes désinscrit(e)"
+msgstr "تم إلغاء اشتراكك"
+
+msgid ""
+"Vous ne recevrez plus nos e-mails. Vous pouvez vous réinscrire à tout "
+"moment."
+msgstr "لن تصلك رسائلنا بعد الآن. يمكنك إعادة الاشتراك في أي وقت."
+
+msgid "Ce lien de désinscription n'est pas valide ou a déjà été utilisé."
+msgstr "رابط إلغاء الاشتراك غير صالح أو سبق استخدامه."
+
+#, python-format
+msgid "%(n)s inscription(s) en attente de confirmation par e-mail."
+msgstr "%(n)s اشتراك(ات) في انتظار التأكيد عبر البريد الإلكتروني."
+
+msgid "Prévenir les abonnés par e-mail"
+msgstr "إبلاغ المشتركين عبر البريد الإلكتروني"
+
+msgid "Envoyé seulement pour un nouveau livre ou un livre qui passe en promotion."
+msgstr "يُرسل فقط عند إضافة كتاب جديد أو عند تحويل كتاب إلى عرض تخفيض."
 

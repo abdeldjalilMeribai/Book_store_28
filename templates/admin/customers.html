@@ -23,6 +23,7 @@
         <div><dt>{{ _("Commandes") }}</dt><dd class="nums">{{ u.order_count }}</dd></div><div><dt>{{ _("Inscrit") }}</dt><dd class="nums">{{ u.created_at | d }}</dd></div></dl></div>
       {% if u.id != current_user.id %}<footer class="sheet__act"><form method="post" action="{{ url_for('admin.user_toggle', user_id=u.id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="btn {{ 'btn--danger' if u.is_active else '' }}" type="submit">{{ _('Désactiver') if u.is_active else _('Réactiver') }}</button></form></footer>{% endif %}
     </template></li>{% endfor %}</ul>
-<h2 class="adm-h2 mt-6">{{ _("Abonnés à la newsletter") }} <span class="muted nums">({{ subscribers | length }})</span></h2>
+<h2 class="adm-h2 mt-6">{{ _("Abonnés à la newsletter") }} <span class="muted nums">({{ sub_count }})</span></h2>
+{% if sub_pending %}<p class="muted">{{ _("%(n)s inscription(s) en attente de confirmation par e-mail.", n=sub_pending) }}</p>{% endif %}
 {% if subscribers %}<ul class="chips">{% for s in subscribers %}<li class="chip chip--static">{{ s.email }}</li>{% endfor %}</ul>{% else %}<p class="muted">{{ _("Aucun abonné pour l'instant.") }}</p>{% endif %}
 {% endblock %}

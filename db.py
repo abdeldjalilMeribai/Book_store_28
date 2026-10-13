@@ -138,6 +138,11 @@ CREATE TABLE IF NOT EXISTS subscribers (
     created_at TEXT NOT NULL DEFAULT (to_char(timezone('utc', now()), 'YYYY-MM-DD HH24:MI:SS'))
 );
 
+ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS confirmed_at TEXT;
+ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS token TEXT;
+ALTER TABLE subscribers ADD COLUMN IF NOT EXISTS lang TEXT NOT NULL DEFAULT 'fr';
+CREATE UNIQUE INDEX IF NOT EXISTS ux_subscribers_token ON subscribers(token);
+
 CREATE TABLE IF NOT EXISTS settings (
     key TEXT PRIMARY KEY,
     value TEXT NOT NULL

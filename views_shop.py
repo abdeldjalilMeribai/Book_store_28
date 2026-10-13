@@ -4,9 +4,10 @@ from urllib.parse import urlparse
 
 from flask import (Blueprint, abort, current_app, g, jsonify, redirect, render_template, request,
                    session, url_for)
-from flask_babel import get_locale
+from flask_babel import gettext as _, get_locale
 
 import db
+import newsletter
 import security
 import services
 from data_dz import (BADGES, DELIVERY_LABELS, ORDER_STATUS_LABELS, WILAYAS, WILAYA_AR, delivery_price_for)
@@ -298,12 +299,26 @@ def api_newsletter():
     if data.get("website"):
         return jsonify({"success": True})
     if not security.valid_email(email):
-        return jsonify({"success": False, "error": "Adresse e-mail invalide."}), 422
-    if security.throttle_blocked("news", security.client_ip(), 6, 3600):
-        return jsonify({"success": False, "error": "Trop de demandes. Réessayez plus tard."}), 429
-    security.throttle_hit("news", security.client_ip())
-    db.execute("INSERT INTO subscribers(email) VALUES(?) ON CONFLICT (email) DO NOTHING", (email,))
-    return jsonify({"success": True, "message": "C'est noté. Vous recevrez nos nouveautés."})
+        return jsonify({"success": False, "error": _("Adresse e-mail invalide.")}), 422
+    ip = security.client_ip()
+    if security.throttle_blocked("news", ip, 6, 3600) or security.throttle_blocked("news-mail", email, 3, 3600):
+        return jsonify({"success": False, "error": _("Trop de demandes. Réessayez plus tard.")}), 429
+    security.throttle_hit("news", ip)
+    security.throttle_hit("news-mail", email)
+    newsletter.subscribe(email, str(get_locale()))
+    return jsonify({"success": True, "message": _("Presque terminé ! Nous venons de vous envoyer un e-mail : cliquez sur le lien qu'il contient pour confirmer votre inscription.")})
+
+
+@bp.get("/newsletter/confirmer/<token>")
+def newsletter_confirm(token):
+    ok = newsletter.confirm(token)
+    return render_template("newsletter_result.html", ok=ok, action="confirm"), (200 if ok else 404)
+
+
+@bp.get("/newsletter/desinscription/<token>")
+def newsletter_unsubscribe(token):
+    ok = newsletter.unsubscribe(token)
+    return render_template("newsletter_result.html", ok=ok, action="unsubscribe"), (200 if ok else 404)
 
 
 @bp.route("/robots.txt")

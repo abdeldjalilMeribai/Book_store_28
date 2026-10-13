@@ -306,6 +306,23 @@ def change_order_status(order_id, new_status, admin_id):
         conn.execute("UPDATE orders SET status=? WHERE id=?", (new_status, order_id))
     return old
 
+def delete_order(order_id, admin_id):
+    """Supprime une commande. Si elle n'était pas annulée, ses livres retournent en stock.
+    Gains et bénéfices se recalculent seuls (ils sont calculés depuis les commandes)."""
+    with db.transaction() as conn:
+        order = conn.execute("SELECT * FROM orders WHERE id=? FOR UPDATE", (order_id,)).fetchone()
+        if order is None:
+            raise OrderError("Commande introuvable.", status=404)
+        if order["status"] != "cancelled":  # annulée = stock déjà remis
+            items = conn.execute("SELECT * FROM order_items WHERE order_id=?", (order_id,)).fetchall()
+            for it in items:
+                conn.execute("UPDATE books SET stock = stock + ? WHERE id=?", (it["quantity"], it["book_id"]))
+                after = conn.execute("SELECT stock FROM books WHERE id=?", (it["book_id"],)).fetchone()["stock"]
+                conn.execute(
+                    "INSERT INTO stock_movements(book_id, admin_id, change, reason, stock_after) VALUES(?,?,?,?,?)",
+                    (it["book_id"], admin_id, it["quantity"], f"Suppression {order['tracking_code']}", after))
+        conn.execute("DELETE FROM orders WHERE id=?", (order_id,))  # order_items : suppression en cascade
+    return order["tracking_code"]
 
 def adjust_stock(book_id, change, reason, admin_id):
     if change == 0:

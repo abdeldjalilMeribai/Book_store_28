@@ -12,7 +12,7 @@
   try {
     const dataNode = document.getElementById('i18n-data');
     if (dataNode && dataNode.textContent) I18N = JSON.parse(dataNode.textContent);
-  } catch {}
+  } catch { }
   const t = (k, fb = '') => I18N[k] != null ? I18N[k] : fb;
   const isRtl = document.documentElement.dir === 'rtl';
   const fmt = (n) => {
@@ -290,7 +290,15 @@
     const { data } = await api('/api/newsletter', { email: fd.get('email'), website: fd.get('website') });
     msg.textContent = data.success ? data.message || t('thanks', 'Merci !') : data.error || t('generic_error', 'Une erreur est survenue.'); if (data.success) form.reset();
   }));
-
+  // Suivi de commande : après la recherche, on descend automatiquement jusqu'au statut
+  const trackResult = $('[data-track-result]');
+  if (trackResult) {
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const go = (behavior) => trackResult.scrollIntoView({ behavior, block: 'start' });
+    requestAnimationFrame(() => { go(reduce ? 'auto' : 'smooth'); trackResult.focus({ preventScroll: true }); });
+    // Filet de sécurité : si le navigateur a annulé le défilement pendant le chargement, on le refait
+    window.addEventListener('load', () => setTimeout(() => { if (trackResult.getBoundingClientRect().top > window.innerHeight * 0.6) go('auto'); }, 700));
+  }
   window.Z28 = { $, $$, el, icon, fmt, api, toast, csrf, getCart, saveCart, clearCart, addToCart, setQty, removeFromCart, subtotal, verifyCart, itemFrom, MAX_QTY, t, I18N, isRtl };
   renderAll();
 })();
@@ -344,4 +352,49 @@
     if (n.matches(SEL)) arm(n);
     n.querySelectorAll(SEL).forEach(arm);
   }))).observe(document.body, { childList: true, subtree: true });
+})();
+
+/* Notifications : les messages (.flash) se ferment seuls, au clic, avec le bouton ✕ ou Échap ; les toasts se ferment au clic. */
+(() => {
+  'use strict';
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const DELAY = { success: 5000, info: 6000, error: 9000 };
+  const label = document.documentElement.lang === 'ar' ? 'إغلاق' : 'Fermer';
+
+  function close(el) {
+    if (!el || el.classList.contains('is-leaving')) return;
+    el.classList.add('is-leaving');
+    const box = el.parentElement;
+    setTimeout(() => {
+      el.remove();
+      if (box && box.classList.contains('flashes') && !box.querySelector('.flash')) box.remove();
+    }, 380);
+  }
+
+  function arm(el) {
+    const kind = (el.className.match(/flash--(\w+)/) || [])[1];
+    const delay = DELAY[kind] || DELAY.info;
+    const btn = document.createElement('button');
+    btn.type = 'button'; btn.className = 'flash__close'; btn.setAttribute('aria-label', label);
+    const svg = document.createElementNS(SVG_NS, 'svg'); svg.setAttribute('class', 'icon'); svg.setAttribute('aria-hidden', 'true');
+    const use = document.createElementNS(SVG_NS, 'use'); use.setAttribute('href', '#i-close');
+    svg.append(use); btn.append(svg); el.append(btn);
+    let timer;
+    const start = () => { clearTimeout(timer); timer = setTimeout(() => close(el), delay); };
+    const stop = () => clearTimeout(timer);
+    el.addEventListener('mouseenter', stop); el.addEventListener('mouseleave', start);
+    el.addEventListener('focusin', stop); el.addEventListener('focusout', start);
+    start();
+  }
+
+  document.querySelectorAll('.flashes .flash').forEach(arm);
+
+  // Clic n'importe où sur un message ou un toast (y compris ceux créés plus tard par app.js / admin.js)
+  document.addEventListener('click', (e) => {
+    const el = e.target instanceof Element && e.target.closest('.flashes .flash, .toast');
+    if (el) close(el);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') document.querySelectorAll('.flashes .flash, .toast').forEach(close);
+  });
 })();

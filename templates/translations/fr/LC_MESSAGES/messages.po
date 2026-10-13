@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-10-10 00:35+0100\n"
+"POT-Creation-Date: 2026-10-13 23:50+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fr\n"
@@ -1122,6 +1122,17 @@ msgstr "Supprimer cet avis ?"
 msgid "Supprimer cette image ?"
 msgstr "Supprimer cette image ?"
 
+msgid "Supprimer la commande"
+msgstr "Supprimer la commande"
+
+#, python-format
+msgid ""
+"Supprimer la commande %(code)s ? Cette action est définitive. Le stock et"
+" les gains sont recalculés."
+msgstr ""
+"Supprimer la commande %(code)s ? Cette action est définitive. Le stock et"
+" les gains sont recalculés."
+
 #, python-format
 msgid "Supprimer l'avis de %(name)s"
 msgstr "Supprimer l'avis de %(name)s"
@@ -1500,4 +1511,59 @@ msgstr "Heure"
 
 msgid "Par"
 msgstr "Par"
+
+msgid "Adresse e-mail invalide."
+msgstr "Adresse e-mail invalide."
+
+msgid "Trop de demandes. Réessayez plus tard."
+msgstr "Trop de demandes. Réessayez plus tard."
+
+msgid ""
+"Presque terminé ! Nous venons de vous envoyer un e-mail : cliquez sur le "
+"lien qu'il contient pour confirmer votre inscription."
+msgstr ""
+"Presque terminé ! Nous venons de vous envoyer un e-mail : cliquez sur le "
+"lien qu'il contient pour confirmer votre inscription."
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Inscription confirmée"
+msgstr "Inscription confirmée"
+
+msgid "Merci ! Vous recevrez désormais nos nouveautés et nos promotions."
+msgstr "Merci ! Vous recevrez désormais nos nouveautés et nos promotions."
+
+msgid "Lien invalide"
+msgstr "Lien invalide"
+
+msgid ""
+"Ce lien de confirmation n'est pas valide. Inscrivez-vous de nouveau "
+"depuis le bas de la page."
+msgstr ""
+"Ce lien de confirmation n'est pas valide. Inscrivez-vous de nouveau "
+"depuis le bas de la page."
+
+msgid "Vous êtes désinscrit(e)"
+msgstr "Vous êtes désinscrit(e)"
+
+msgid ""
+"Vous ne recevrez plus nos e-mails. Vous pouvez vous réinscrire à tout "
+"moment."
+msgstr ""
+"Vous ne recevrez plus nos e-mails. Vous pouvez vous réinscrire à tout "
+"moment."
+
+msgid "Ce lien de désinscription n'est pas valide ou a déjà été utilisé."
+msgstr "Ce lien de désinscription n'est pas valide ou a déjà été utilisé."
+
+#, python-format
+msgid "%(n)s inscription(s) en attente de confirmation par e-mail."
+msgstr "%(n)s inscription(s) en attente de confirmation par e-mail."
+
+msgid "Prévenir les abonnés par e-mail"
+msgstr "Prévenir les abonnés par e-mail"
+
+msgid "Envoyé seulement pour un nouveau livre ou un livre qui passe en promotion."
+msgstr "Envoyé seulement pour un nouveau livre ou un livre qui passe en promotion."
 
